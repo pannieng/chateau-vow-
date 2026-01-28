@@ -1973,8 +1973,6 @@ const BackgroundAudio = ({
     />
   );
 };
-
-
 // In Atmosphere component
 const Atmosphere = React.memo(({ seed = 0 }: { seed?: number }) => {
   const isMobile = useMemo(() => window.innerWidth <= 768, []);
