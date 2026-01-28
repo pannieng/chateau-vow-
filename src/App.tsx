@@ -618,7 +618,7 @@ const BreakCeremony = ({
             }}>
               {/* Tea Liquid */}
               <motion.div
-                animate={{
+                animate={{ 
                   height: ['48px', '51px', '48px'],
                   background: [
                     'linear-gradient(to bottom, #FFB6C1, #FF69B4)',
@@ -853,14 +853,14 @@ const BreakCeremony = ({
             {[...Array(8)].map((_, i) => (
               <motion.div
                 key={`sugar-${i}`}
-                animate={{
+                animate={{ 
                   opacity: [0, 0.8, 0],
                   scale: [0.5, 1, 0.5]
                 }}
-                transition={{
+                transition={{ 
                   duration: 3,
                   delay: i * 0.2,
-                  repeat: Infinity
+                  repeat: Infinity 
                 }}
                 style={{
                   position: 'absolute',
@@ -1276,11 +1276,11 @@ const BreakCeremony = ({
       {[...Array(12)].map((_, i) => (
         <motion.div
           key={`petal-${i}`}
-          initial={{
-            y: -50,
+          initial={{ 
+            y: -50, 
             x: `${10 + i * 8}%`,
             rotate: 0,
-            opacity: 0
+            opacity: 0 
           }}
           animate={{
             y: '120vh',
@@ -1312,15 +1312,15 @@ const BreakCeremony = ({
       {[...Array(8)].map((_, i) => (
         <motion.div
           key={`sparkle-${i}`}
-          animate={{
+          animate={{ 
             scale: [0, 1, 0],
             opacity: [0, 0.8, 0],
             rotate: 360
           }}
-          transition={{
+          transition={{ 
             duration: 3,
             delay: i * 0.4,
-            repeat: Infinity
+            repeat: Infinity 
           }}
           style={{
             position: 'absolute',
@@ -2540,6 +2540,7 @@ const CharacterCutIn = ({ character, onComplete }: {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
       className="character-cutin"
       style={{
         position: 'fixed',
@@ -3539,95 +3540,95 @@ const SelectionStage = ({
 
             {/* Selection indicator - SAME SIZE */}
             {selectedCharacter === companion.id && (
-              <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                className="selection-indicator"
-                style={{
-                  position: 'absolute',
-                  top: '-15px',
-                  right: '-15px',
-                  width: '50px',
-                  height: '50px',
-                  zIndex: 3
-                }}
-              >
-                {/* Outer wax ring */}
-                <motion.div
-                  animate={{
-                    boxShadow: [
-                      '0 0 20px rgba(255, 105, 180, 0.4)',
-                      '0 0 30px rgba(255, 105, 180, 0.6)',
-                      '0 0 20px rgba(255, 105, 180, 0.4)'
-                    ]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity
-                  }}
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'linear-gradient(135deg, #FF6B93, #FF1493)',
-                    borderRadius: '50%',
-                    boxShadow: '0 0 25px rgba(255, 105, 180, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.3)'
-                  }}
-                />
-
-                {/* Inner wax texture */}
-                <div style={{
-                  position: 'absolute',
-                  inset: '8px',
-                  background: 'linear-gradient(135deg, #FF8FAB, #FF6B93)',
-                  borderRadius: '50%',
-                  border: '2px solid rgba(255, 255, 255, 0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  {/* Wax seal symbol */}
-                  <div style={{
-                    width: '30px',
-                    height: '30px',
-                    border: '2px solid rgba(255, 255, 255, 0.2)',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      style={{
-                        fontSize: '18px',
-                        color: 'rgba(255, 255, 255, 0.9)',
-                        fontWeight: 'bold'
-                      }}
-                    >
-                      ✦
-                    </motion.div>
-                  </div>
-                </div>
-
-                {/* Dripping wax effect */}
-                <motion.div
-                  animate={{ y: [0, 3, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  style={{
-                    position: 'absolute',
-                    bottom: '-5px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: '15px',
-                    height: '10px',
-                    background: 'linear-gradient(to bottom, #FF1493, #FF6B93)',
-                    borderRadius: '0 0 8px 8px',
-                    filter: 'blur(1px)'
-                  }}
-                />
-              </motion.div>
-            )}
+  <motion.div
+    initial={{ scale: 0, rotate: -180 }}
+    animate={{ scale: 1, rotate: 0 }}
+    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+    className="selection-indicator"
+    style={{
+      position: 'absolute',
+      top: '-15px',
+      right: '-15px',
+      width: '50px',
+      height: '50px',
+      zIndex: 3
+    }}
+  >
+    {/* Outer wax ring */}
+    <motion.div
+      animate={{
+        boxShadow: [
+          '0 0 20px rgba(255, 105, 180, 0.4)',
+          '0 0 30px rgba(255, 105, 180, 0.6)',
+          '0 0 20px rgba(255, 105, 180, 0.4)'
+        ]
+      }}
+      transition={{
+        duration: 2,
+        repeat: Infinity
+      }}
+      style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(135deg, #FF6B93, #FF1493)',
+        borderRadius: '50%',
+        boxShadow: '0 0 25px rgba(255, 105, 180, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.3)'
+      }}
+    />
+    
+    {/* Inner wax texture */}
+    <div style={{
+      position: 'absolute',
+      inset: '8px',
+      background: 'linear-gradient(135deg, #FF8FAB, #FF6B93)',
+      borderRadius: '50%',
+      border: '2px solid rgba(255, 255, 255, 0.3)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}>
+      {/* Wax seal symbol */}
+      <div style={{
+        width: '30px',
+        height: '30px',
+        border: '2px solid rgba(255, 255, 255, 0.2)',
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          style={{
+            fontSize: '18px',
+            color: 'rgba(255, 255, 255, 0.9)',
+            fontWeight: 'bold'
+          }}
+        >
+          ✦
+        </motion.div>
+      </div>
+    </div>
+    
+    {/* Dripping wax effect */}
+    <motion.div
+      animate={{ y: [0, 3, 0] }}
+      transition={{ duration: 2, repeat: Infinity }}
+      style={{
+        position: 'absolute',
+        bottom: '-5px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '15px',
+        height: '10px',
+        background: 'linear-gradient(to bottom, #FF1493, #FF6B93)',
+        borderRadius: '0 0 8px 8px',
+        filter: 'blur(1px)'
+      }}
+    />
+  </motion.div>
+)}
 
             {/* Hover effect border */}
             <motion.div
@@ -4875,103 +4876,103 @@ const TimerStage = ({
                 boxShadow: '0 20px 50px rgba(255, 182, 193, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.2)'
               }}
             >
-              {/* Tea Ceremony Button - Minimal Sakura */}
-              <motion.button
-                onClick={handleStartBreak}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                style={{
-                  position: 'relative',
-                  padding: '16px 32px',
-                  borderRadius: '20px',
-                  border: '2px solid rgba(255, 182, 193, 0.6)',
-                  background: 'linear-gradient(135deg, rgba(255, 248, 250, 0.95), rgba(255, 240, 245, 0.95))',
-                  color: '#4A2C3A',
-                  fontWeight: '600',
-                  fontSize: '14px',
-                  letterSpacing: '1px',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  backdropFilter: 'blur(10px)',
-                  overflow: 'hidden',
-                  minWidth: '200px',
-                  justifyContent: 'center',
-                  boxShadow: '0 8px 25px rgba(255, 182, 193, 0.4)'
-                }}
-              >
-                {/* Sakura pattern background */}
-                <div style={{
-                  position: 'absolute',
-                  inset: 0,
-                  opacity: 0.1,
-                  backgroundImage: `radial-gradient(circle at 20% 30%, #FFB6C1 2px, transparent 2px),
+{/* Tea Ceremony Button - Minimal Sakura */}
+<motion.button
+  onClick={handleStartBreak}
+  whileHover={{ scale: 1.05, y: -2 }}
+  whileTap={{ scale: 0.98 }}
+  style={{
+    position: 'relative',
+    padding: '16px 32px',
+    borderRadius: '20px',
+    border: '2px solid rgba(255, 182, 193, 0.6)',
+    background: 'linear-gradient(135deg, rgba(255, 248, 250, 0.95), rgba(255, 240, 245, 0.95))',
+    color: '#4A2C3A',
+    fontWeight: '600',
+    fontSize: '14px',
+    letterSpacing: '1px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    backdropFilter: 'blur(10px)',
+    overflow: 'hidden',
+    minWidth: '200px',
+    justifyContent: 'center',
+    boxShadow: '0 8px 25px rgba(255, 182, 193, 0.4)'
+  }}
+>
+  {/* Sakura pattern background */}
+  <div style={{
+    position: 'absolute',
+    inset: 0,
+    opacity: 0.1,
+    backgroundImage: `radial-gradient(circle at 20% 30%, #FFB6C1 2px, transparent 2px),
                       radial-gradient(circle at 80% 70%, #FFB6C1 2px, transparent 2px),
                       radial-gradient(circle at 40% 80%, #FFB6C1 2px, transparent 2px)`,
-                  backgroundSize: '30px 30px',
-                  pointerEvents: 'none'
-                }} />
+    backgroundSize: '30px 30px',
+    pointerEvents: 'none'
+  }} />
 
-                <Tea size={20} style={{ color: '#FF69B4' }} />
-                <span>Tea Ceremony</span>
-              </motion.button>
+  <Tea size={20} style={{ color: '#FF69B4' }} />
+  <span>Tea Ceremony</span>
+</motion.button>
 
-              {/* End Vow Button - Minimal Sakura */}
-              <motion.button
-                onClick={() => setShowEndConfirmation(true)}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                style={{
-                  position: 'relative',
-                  padding: '16px 32px',
-                  borderRadius: '20px',
-                  border: '2px solid rgba(255, 105, 180, 0.6)',
-                  background: 'linear-gradient(135deg, rgba(255, 182, 193, 0.9), rgba(255, 105, 180, 0.9))',
-                  color: 'white',
-                  fontWeight: '600',
-                  fontSize: '14px',
-                  letterSpacing: '1px',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  backdropFilter: 'blur(10px)',
-                  overflow: 'hidden',
-                  minWidth: '200px',
-                  justifyContent: 'center',
-                  boxShadow: '0 8px 25px rgba(255, 105, 180, 0.4)'
-                }}
-              >
-                {/* Falling sakura animation */}
-                <div style={{
-                  position: 'absolute',
-                  inset: 0,
-                  overflow: 'hidden',
-                  pointerEvents: 'none'
-                }}>
-                  {[...Array(5)].map((_, i) => (
-                    <motion.div
-                      key={`minimal-petal-${i}`}
-                      initial={{ y: -10, x: i * 25, opacity: 0 }}
-                      animate={{ y: 50, opacity: [0, 1, 0] }}
-                      transition={{ duration: 3, delay: i * 0.6, repeat: Infinity }}
-                      style={{
-                        position: 'absolute',
-                        width: '6px',
-                        height: '6px',
-                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4))',
-                        borderRadius: '50% 0 50% 50%',
-                        filter: 'blur(0.5px)',
-                        transform: `rotate(${i * 72}deg)`
-                      }}
-                    />
-                  ))}
-                </div>
+{/* End Vow Button - Minimal Sakura */}
+<motion.button
+  onClick={() => setShowEndConfirmation(true)}
+  whileHover={{ scale: 1.05, y: -2 }}
+  whileTap={{ scale: 0.98 }}
+  style={{
+    position: 'relative',
+    padding: '16px 32px',
+    borderRadius: '20px',
+    border: '2px solid rgba(255, 105, 180, 0.6)',
+    background: 'linear-gradient(135deg, rgba(255, 182, 193, 0.9), rgba(255, 105, 180, 0.9))',
+    color: 'white',
+    fontWeight: '600',
+    fontSize: '14px',
+    letterSpacing: '1px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    backdropFilter: 'blur(10px)',
+    overflow: 'hidden',
+    minWidth: '200px',
+    justifyContent: 'center',
+    boxShadow: '0 8px 25px rgba(255, 105, 180, 0.4)'
+  }}
+>
+  {/* Falling sakura animation */}
+  <div style={{
+    position: 'absolute',
+    inset: 0,
+    overflow: 'hidden',
+    pointerEvents: 'none'
+  }}>
+    {[...Array(5)].map((_, i) => (
+      <motion.div
+        key={`minimal-petal-${i}`}
+        initial={{ y: -10, x: i * 25, opacity: 0 }}
+        animate={{ y: 50, opacity: [0, 1, 0] }}
+        transition={{ duration: 3, delay: i * 0.6, repeat: Infinity }}
+        style={{
+          position: 'absolute',
+          width: '6px',
+          height: '6px',
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4))',
+          borderRadius: '50% 0 50% 50%',
+          filter: 'blur(0.5px)',
+          transform: `rotate(${i * 72}deg)`
+        }}
+      />
+    ))}
+  </div>
 
-                <span style={{ fontSize: '20px' }}>✿</span>
-                <span>End Sacred Vow</span>
-              </motion.button>
+  <span style={{ fontSize: '20px' }}>✿</span>
+  <span>End Sacred Vow</span>
+</motion.button>
 
 
             </motion.div>
@@ -5048,84 +5049,6 @@ export default function App() {
   const [showCutIn, setShowCutIn] = useState(false);
   const [characterClickCounts, setCharacterClickCounts] = useState<Record<number, number>>({});
   const [secretDialogue, setSecretDialogue] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [showDiscordMessage, setShowDiscordMessage] = useState(true); // New state for showing message
-  const [messageVisible, setMessageVisible] = useState(true); // Controls message visibility
-
-  // Initialize Discord SDK with proper error handling
-  useEffect(() => {
-    console.log('🚀 App starting initialization...');
-    console.log('🌐 Window location:', window.location.href);
-    
-    const urlParams = new URLSearchParams(window.location.search);
-    const frameId = urlParams.get('frame_id');
-    const instanceId = urlParams.get('instance_id');
-    
-    console.log('📊 Discord URL params:', { frameId, instanceId });
-    
-    // Check if we're running inside Discord
-    const isInDiscord = frameId || instanceId || 
-                        window.location.hostname.includes('discord') ||
-                        window.location.hostname === 'localhost' && (frameId || instanceId);
-    
-    console.log('🔍 Is in Discord context?', isInDiscord);
-
-    const initializeApp = async () => {
-      if (isInDiscord) {
-        try {
-          console.log('🔄 Attempting Discord SDK initialization...');
-          
-          // Check if client ID exists
-          const clientId = import.meta.env.VITE_DISCORD_CLIENT_ID;
-          if (!clientId) {
-            console.error('❌ VITE_DISCORD_CLIENT_ID is not defined in .env file');
-            throw new Error('Discord client ID not configured');
-          }
-          
-          console.log('🔑 Using client ID:', clientId);
-          
-          const discordSdk = new DiscordSDK(clientId);
-          
-          // Set a timeout for Discord SDK ready
-          const timeoutPromise = new Promise((_, reject) => 
-            setTimeout(() => reject(new Error('Discord SDK initialization timeout')), 5000)
-          );
-          
-          // Race between SDK ready and timeout
-          await Promise.race([discordSdk.ready(), timeoutPromise]);
-          
-          console.log('✅ Discord SDK initialized successfully!');
-          setIsDiscordReady(true);
-          
-        } catch (error) {
-          console.warn('⚠️ Discord SDK failed, falling back to standalone mode:', error);
-          // Continue anyway - the app will work without Discord SDK
-        }
-      } else {
-        console.log('🌍 Running in standalone mode (not in Discord)');
-        // Show Discord message in browser for 5 seconds
-        setTimeout(() => {
-          setShowDiscordMessage(false);
-        }, 5000);
-      }
-      
-      // Always set loading to false after 1 second minimum
-      setTimeout(() => {
-        setIsLoading(false);
-        console.log('🎮 App ready! Starting from stage:', stage);
-      }, 1000);
-    };
-
-    initializeApp();
-  }, []);
-
-  // Close Discord message when user clicks close
-  const handleCloseDiscordMessage = () => {
-    setMessageVisible(false);
-    setTimeout(() => {
-      setShowDiscordMessage(false);
-    }, 300);
-  };
 
   // Handle name submission
   const handleNameSubmit = useCallback((name: string) => {
@@ -5166,15 +5089,18 @@ export default function App() {
       sealSound.volume = 0.3;
       sealSound.play().catch(console.error);
 
+      // Remove the old body transform animations that cause greyish effect
+      // and use a cleaner pink transition
       setTimeout(() => {
         setIsSealing(false);
         // Brief pause before timer starts
         setTimeout(() => {
           setStage('timer');
         }, 300);
-      }, 1200);
+      }, 1200); // Match animation duration
     }
   }, [selectedCharacter, selectedTime]);
+
 
   const shouldPlayAudio = stage !== 'landing' && stage !== 'name_entry';
 
@@ -5188,366 +5114,150 @@ export default function App() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  useEffect(() => {
+    const initializeDiscord = async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const frameId = urlParams.get('frame_id');
+      const instanceId = urlParams.get('instance_id');
+
+      if (frameId || instanceId || window.location.hostname.includes('discord')) {
+        try {
+          const discordSdk = new DiscordSDK(import.meta.env.VITE_DISCORD_CLIENT_ID);
+          await discordSdk.ready();
+          console.log('✅ Discord SDK initialized successfully');
+          setIsDiscordReady(true);
+        } catch (error) {
+          console.warn('⚠️ Discord SDK initialization failed:', error);
+        }
+      } else {
+        console.log('ℹ️ Running in standalone mode (not in Discord)');
+      }
+    };
+
+    initializeDiscord();
+  }, []);
+
   return (
     <div className="fixed inset-0 w-screen h-screen overflow-hidden bg-black text-[#fffff0] font-serif">
-      {/* TEMPORARY DISCORD MESSAGE OVERLAY - Shows for 5 seconds then fades */}
-      {showDiscordMessage && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: messageVisible ? 1 : 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
-          style={{
-            background: 'linear-gradient(135deg, rgba(114, 137, 218, 0.95) 0%, rgba(66, 69, 73, 0.95) 100%)',
-            backdropFilter: 'blur(10px)'
-          }}
-        >
-          {/* Animated background elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            {[...Array(8)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ 
-                  y: -50, 
-                  x: Math.random() * window.innerWidth, 
-                  opacity: 0,
-                  scale: 0 
-                }}
-                animate={{ 
-                  y: window.innerHeight + 100,
-                  x: Math.random() * 200 - 100,
-                  opacity: [0, 0.5, 0],
-                  scale: [0, 1, 0.5],
-                  rotate: 360
-                }}
-                transition={{
-                  duration: 15 + Math.random() * 10,
-                  delay: Math.random() * 2,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                className="absolute"
-                style={{
-                  width: '30px',
-                  height: '30px',
-                  background: 'radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent)',
-                  borderRadius: '50%'
-                }}
-              />
-            ))}
-          </div>
+      <BackgroundAudio
+        src="/audio/landing.mp3"
+        volume={0.4}
+        isPlaying={shouldPlayAudio}
+      />
 
+      <AnimatePresence>
+        {isSealing && (
           <motion.div
-            initial={{ scale: 0.9, y: 30, opacity: 0 }}
-            animate={{ 
-              scale: messageVisible ? 1 : 0.95, 
-              y: messageVisible ? 0 : 20, 
-              opacity: messageVisible ? 1 : 0 
-            }}
-            transition={{ 
-              type: "spring", 
-              damping: 25,
-              stiffness: 100 
-            }}
-            className="relative bg-[#23272a] rounded-2xl p-6 md:p-8 max-w-lg w-full border-2 border-[#7289da] shadow-2xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="seal-overlay"
           >
-            {/* Close button */}
-            <motion.button
-              onClick={handleCloseDiscordMessage}
-              whileHover={{ scale: 1.1, rotate: 90 }}
-              whileTap={{ scale: 0.9 }}
-              className="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#7289da]/20 flex items-center justify-center text-white hover:bg-[#7289da]/40 transition-colors z-10"
-            >
-              <span className="text-lg">×</span>
-            </motion.button>
-
-            {/* Content */}
-            <div className="text-center">
-              {/* Icon */}
-              <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ delay: 0.2, type: "spring" }}
-                className="inline-block p-4 bg-[#7289da]/20 rounded-full mb-4"
-              >
-                <div className="text-3xl">🎮</div>
-              </motion.div>
-
-              {/* Title */}
-              <h1 className="text-2xl md:text-3xl font-bold text-white mb-3">
-                Welcome to The Château Vow
-              </h1>
-              
-              {/* Description */}
-              <p className="text-[#99aab5] mb-6">
-                This app is optimized for Discord. For the best experience, launch it from within Discord.
-              </p>
-
-              {/* Countdown timer */}
-              <motion.div 
-                className="mb-6"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.3 }}
-              >
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#2c2f33] rounded-full">
-                  <div className="w-2 h-2 bg-[#7289da] rounded-full animate-pulse" />
-                  <span className="text-[#99aab5] text-sm">
-                    Auto-continue in <span className="text-white font-bold">5s</span>
-                  </span>
-                </div>
-              </motion.div>
-
-              {/* Action buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <motion.button
-                  onClick={handleCloseDiscordMessage}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-5 py-3 bg-[#7289da] hover:bg-[#5b6eae] text-white rounded-lg font-bold flex-1 min-w-[140px] transition-all flex items-center justify-center gap-2"
-                >
-                  <span>🚀</span>
-                  Continue Anyway
-                </motion.button>
-
-                <motion.button
-                  onClick={() => window.open('https://discord.com/developers/applications', '_blank')}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-5 py-3 bg-[#2c2f33] hover:bg-[#23272a] text-white rounded-lg font-bold border border-[#7289da]/30 flex-1 min-w-[140px] transition-all flex items-center justify-center gap-2"
-                >
-                  <span>⚙️</span>
-                  Discord Setup
-                </motion.button>
-              </div>
-
-              {/* Hint */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
-                className="mt-6 pt-4 border-t border-[#7289da]/20"
-              >
-                <p className="text-[#99aab5] text-sm">
-                  Running in browser mode. Some Discord features may be limited.
-                </p>
-              </motion.div>
+            <div className="white-flash" />
+            <div className="petal-burst">
+              {Array.from({ length: 30 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="petal"
+                  initial={{
+                    x: 0,
+                    y: 0,
+                    opacity: 1,
+                    rotate: 0
+                  }}
+                  animate={{
+                    x: (Math.random() - 0.5) * 200,
+                    y: (Math.random() - 0.5) * 200,
+                    opacity: 0,
+                    rotate: 360
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    ease: "easeOut"
+                  }}
+                />
+              ))}
             </div>
           </motion.div>
+        )}
+      </AnimatePresence>
 
-          {/* Hint at bottom */}
+      {/* SECRET DIALOGUE OVERLAY */}
+      <AnimatePresence>
+        {secretDialogue && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: messageVisible ? 0.7 : 0, y: messageVisible ? 0 : 20 }}
-            transition={{ delay: 1 }}
-            className="absolute bottom-6 text-center text-[#99aab5] text-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="secret-dialogue-global"
           >
-            <p>This message auto-closes in a few seconds</p>
+            <div className="secret-bubble">{secretDialogue}</div>
           </motion.div>
-        </motion.div>
-      )}
+        )}
+      </AnimatePresence>
 
-      {/* LOADING OVERLAY */}
-      {isLoading && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[9998] flex flex-col items-center justify-center bg-black"
-          style={{
-            background: 'linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #000000 100%)'
-          }}
-        >
-          {/* Animated loading effect */}
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="relative mb-8"
-          >
-            <div className="w-24 h-24 border-4 border-[#ff6b93] border-t-transparent rounded-full animate-spin" />
-            <motion.div
-              animate={{
-                rotate: 360,
-                scale: [1, 1.2, 1]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-              className="absolute inset-0 flex items-center justify-center"
-            >
-              <div className="w-16 h-16 border-2 border-[#ffb6c1] border-dashed rounded-full" />
-            </motion.div>
-          </motion.div>
-
-          {/* Loading text */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-center"
-          >
-            <h2 className="text-2xl font-bold text-[#ff6b93] mb-2">
-              The Château Vow
-            </h2>
-            <p className="text-[#ffb6c1] text-sm mb-4">
-              Initializing ceremony...
-            </p>
-            
-            {/* Debug info (visible in console) */}
-            <div className="text-xs text-gray-500 mt-6 hidden">
-              Debug: {window.location.href}
-            </div>
-          </motion.div>
-
-          {/* Loading dots */}
-          <div className="flex gap-2 mt-4">
-            {[0, 1, 2].map((i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  y: [0, -10, 0],
-                  opacity: [0.3, 1, 0.3]
-                }}
-                transition={{
-                  duration: 1,
-                  delay: i * 0.2,
-                  repeat: Infinity
-                }}
-                className="w-2 h-2 bg-[#ff6b93] rounded-full"
-              />
-            ))}
-          </div>
-        </motion.div>
-      )}
-
-      {/* MAIN APP CONTENT - Only show when not loading AND not showing Discord message */}
-      {!isLoading && !showDiscordMessage && (
-        <>
-          <BackgroundAudio
-            src="/audio/landing.mp3"
-            volume={0.4}
-            isPlaying={shouldPlayAudio}
+      {/* CHARACTER CUT-IN */}
+      <AnimatePresence>
+        {showCutIn && selectedCharacter && (
+          <CharacterCutIn
+            character={COMPANIONS.find(c => c.id === selectedCharacter) || null}
+            onComplete={() => setShowCutIn(false)}
           />
+        )}
+      </AnimatePresence>
 
-          <AnimatePresence>
-            {isSealing && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="seal-overlay"
-              >
-                <div className="white-flash" />
-                <div className="petal-burst">
-                  {Array.from({ length: 30 }).map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="petal"
-                      initial={{
-                        x: 0,
-                        y: 0,
-                        opacity: 1,
-                        rotate: 0
-                      }}
-                      animate={{
-                        x: (Math.random() - 0.5) * 200,
-                        y: (Math.random() - 0.5) * 200,
-                        opacity: 0,
-                        rotate: 360
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        ease: "easeOut"
-                      }}
-                    />
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+      <AnimatePresence mode="wait">
+        {stage === 'landing' && (
+          <LandingStage
+            isOpening={isOpening}
+            onBegin={() => setStage('name_entry')}
+          />
+        )}
 
-          {/* SECRET DIALOGUE OVERLAY */}
-          <AnimatePresence>
-            {secretDialogue && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="secret-dialogue-global"
-              >
-                <div className="secret-bubble">{secretDialogue}</div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+        {stage === 'name_entry' && (
+          <NameEntryStage onNameSubmitted={handleNameSubmit} />
+        )}
 
-          {/* CHARACTER CUT-IN */}
-          <AnimatePresence>
-            {showCutIn && selectedCharacter && (
-              <CharacterCutIn
-                character={COMPANIONS.find(c => c.id === selectedCharacter) || null}
-                onComplete={() => setShowCutIn(false)}
-              />
-            )}
-          </AnimatePresence>
+        {stage === 'selection' && (
+          <SelectionStage
+            selectedCharacter={selectedCharacter}
+            onSelect={(id) => {
+              if (id) handleCharacterClick(id);
+              setSelectedCharacter(id);
+            }}
+            onConfirm={handleConfirmSelection}
+            characterClickCounts={characterClickCounts}
+            onSecretDialogue={handleSecretDialogue}
+          />
+        )}
 
-          <AnimatePresence mode="wait">
-            {stage === 'landing' && (
-              <LandingStage
-                isOpening={isOpening}
-                onBegin={() => setStage('name_entry')}
-              />
-            )}
+        {stage === 'vow_setup' && selectedCharacter && (
+          <VowSetupStage
+            selectedCharacter={selectedCharacter}
+            selectedTime={selectedTime}
+            playerName={playerName}
+            onSelectTime={setSelectedTime}
+            onConfirmVow={handleConfirmVow}
+            onGoBack={() => {
+              // Clear the selected time and go back to selection
+              setSelectedTime(null);
+              setStage('selection');
+            }}
+          />
+        )}
 
-            {stage === 'name_entry' && (
-              <NameEntryStage onNameSubmitted={handleNameSubmit} />
-            )}
-
-            {stage === 'selection' && (
-              <SelectionStage
-                selectedCharacter={selectedCharacter}
-                onSelect={(id) => {
-                  if (id) handleCharacterClick(id);
-                  setSelectedCharacter(id);
-                }}
-                onConfirm={handleConfirmSelection}
-                characterClickCounts={characterClickCounts}
-                onSecretDialogue={handleSecretDialogue}
-              />
-            )}
-
-            {stage === 'vow_setup' && selectedCharacter && (
-              <VowSetupStage
-                selectedCharacter={selectedCharacter}
-                selectedTime={selectedTime}
-                playerName={playerName}
-                onSelectTime={setSelectedTime}
-                onConfirmVow={handleConfirmVow}
-                onGoBack={() => {
-                  // Clear the selected time and go back to selection
-                  setSelectedTime(null);
-                  setStage('selection');
-                }}
-              />
-            )}
-
-            {stage === 'timer' && selectedCharacter && selectedTime && (
-              <TimerStage
-                selectedCharacter={selectedCharacter}
-                selectedTime={selectedTime}
-                playerName={playerName}
-                onEndVow={() => {
-                  setStage('selection');
-                  setSelectedTime(null);
-                }}
-              />
-            )}
-          </AnimatePresence>
-        </>
-      )}
+        {stage === 'timer' && selectedCharacter && selectedTime && (
+          <TimerStage
+            selectedCharacter={selectedCharacter}
+            selectedTime={selectedTime}
+            playerName={playerName}
+            onEndVow={() => {
+              setStage('selection');
+              setSelectedTime(null);
+            }}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
