@@ -1974,70 +1974,74 @@ const BackgroundAudio = ({
   );
 };
 // In Atmosphere component
-const Atmosphere = React.memo(({ seed = 0 }: { seed?: number }) => {
+const Atmosphere = ({ seed = 0 }: { seed?: number }) => {
   const isMobile = useMemo(() => window.innerWidth <= 768, []);
-  
-  // Reduce particle count significantly
-  const particleCount = isMobile ? 8 : 12; // Was 20-30
-  const bokehCount = isMobile ? 4 : 6; // Was 6-8
 
-  const bokeh = useMemo(() =>
-    Array.from({ length: bokehCount }).map((_, i) => ({
-      key: `b-${seed}-${i}`,
-      left: `${(i * 25) % 100}%`,
-      top: `${(i * 20) % 80}%`,
-      size: 15 + ((i * 5) % 10), // Smaller sizes
-      delay: (i * 0.5) % 2,
-      dur: 12 + (i % 4), // Longer durations for smoother
-    })),
-    [seed, bokehCount]
+  const particleCount = isMobile ? 2 : 4;
+  const petalCount = isMobile ? 3 : 5;
+
+  const bokeh = useMemo(
+    () =>
+      Array.from({ length: 4 }).map((_, i) => ({  // Reduced from 6 to 4
+        key: `b-${seed}-${i}`,
+        left: `${(i * 20 + seed * 7) % 100}%`,
+        top: `${(i * 25 + seed * 11) % 80}%`,
+        size: 20 + ((i * 9) % 20), // Reduced max size
+        delay: (i * 0.8) % 2.5,
+        dur: 8 + (i % 3) * 1.8, // Reduced duration
+      })),
+    [seed]
   );
 
-  // Use CSS transform instead of top/left animations
-  const particles = useMemo(() =>
-    Array.from({ length: particleCount }).map((_, i) => ({
-      key: `p-${seed}-${i}`,
-      transform: `translate(${(i * 30) % 100}vw, ${(i * 20) % 100}vh)`,
-      delay: (i * 0.3) % 2,
-      dur: 15 + (i % 6),
-      size: 8 + ((i * 2) % 4),
-    })),
-    [seed, particleCount]
+  const petals = useMemo(
+    () =>
+      Array.from({ length: 5 }).map((_, i) => ({  // Reduced from 8 to 5
+        key: `p-${seed}-${i}`,
+        left: `${(i * 20 + seed * 13) % 100}%`,
+        delay: (i * 0.6) % 2.5,
+        dur: 10 + (i % 4) * 1.5,
+        size: 6 + ((i * 3) % 4),
+        drift: -20 + ((i * 17) % 40), // Reduced drift
+      })),
+    [seed]
   );
 
   return (
     <div className="particles atmosphere" aria-hidden="true">
       {bokeh.map((b) => (
-        <div
+        <span
           key={b.key}
           className="bokeh"
           style={{
-            transform: `translate(${b.left}, ${b.top})`,
+            left: b.left,
+            top: b.top,
             width: `${b.size}px`,
             height: `${b.size}px`,
-            animation: `bokehFloat ${b.dur}s ease-in-out ${b.delay}s infinite`,
-            // Remove blur for better performance
-            // filter: 'blur(0.5px)', // Comment out or reduce
-            willChange: 'transform',
+            animationDelay: `${b.delay}s`,
+            animationDuration: `${b.dur}s`,
+            // Add will-change for better performance
+            willChange: 'transform, opacity'
           }}
         />
       ))}
-      {particles.map((p) => (
-        <div
+      {petals.map((p) => (
+        <span
           key={p.key}
-          className="particle"
+          className="petal"
           style={{
-            transform: p.transform,
+            left: p.left,
             width: `${p.size}px`,
             height: `${p.size}px`,
-            animation: `particleFloat ${p.dur}s linear ${p.delay}s infinite`,
-            willChange: 'transform',
+            animationDelay: `${p.delay}s`,
+            animationDuration: `${p.dur}s`,
+            ['--petal-drift' as any]: `${p.drift}px`,
+            willChange: 'transform, opacity'
           }}
         />
       ))}
     </div>
   );
-});
+};
 
 const RegistryItem = ({
   icon: Icon,
@@ -2536,7 +2540,6 @@ const CharacterCutIn = ({ character, onComplete }: {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
       className="character-cutin"
       style={{
         position: 'fixed',
