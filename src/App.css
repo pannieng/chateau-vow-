@@ -1905,4 +1905,2002 @@ video {
       0 10px 30px rgba(255, 182, 193, 0.2),
       0 5px 15px rgba(255, 182, 193, 0.1) !important;
   }
+
+  /* =========================== */
+  /* MOBILE RESPONSIVE STYLES */
+  /* =========================== */
+
+  @media (max-width: 768px) {
+
+    /* --- GENERAL LAYOUT --- */
+    .landing-stage {
+      background: linear-gradient(135deg, #fff0f5 0%, #ffe6eb 100%);
+    }
+
+    /* --- LANDING PAGE --- */
+    .landing-titleWrap {
+      top: 20px;
+      padding: 0 15px;
+    }
+
+    .landing-title {
+      font-size: clamp(28px, 8vw, 40px);
+      line-height: 1.2;
+    }
+
+    .landing-subtitle {
+      font-size: clamp(12px, 3vw, 14px);
+      margin-top: 5px;
+    }
+
+    .landing-content {
+      padding: 15px;
+      align-items: flex-start;
+      padding-top: 120px;
+    }
+
+    .landing-card {
+      width: 95vw;
+      padding: 30px 20px;
+      margin-top: 0;
+    }
+
+    .landing-proclamation {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    /* Hide registry panel on mobile */
+    .registry-panel {
+      display: none;
+    }
+
+    /* --- SELECTION STAGE --- */
+    .galgame-selection-stage {
+      padding: 10px;
+    }
+
+    .galgame-dialogue-overlay {
+      top: 10px;
+      width: 95vw;
+      height: 150px;
+      padding: 15px;
+    }
+
+    .dialogue-character-portrait {
+      display: none;
+    }
+
+    .character-cards-container {
+      top: 170px;
+      gap: 15px;
+      padding: 0 10px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      justify-content: flex-start;
+    }
+
+    .galgame-character-card {
+      width: 160px;
+      height: 300px;
+      padding: 15px;
+      flex-shrink: 0;
+    }
+
+    .galgame-character-card.selected {
+      transform: scale(1.05);
+    }
+
+    /* Character image in cards */
+    .galgame-character-card .character-image {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 15px;
+    }
+
+    /* Character info */
+    .galgame-character-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .selection-actions {
+      bottom: 20px;
+      gap: 15px;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .selection-actions button {
+      min-width: 100%;
+      padding: 12px 20px;
+      font-size: 14px;
+    }
+
+    /* --- VOW SETUP STAGE --- */
+    .vow-setup-stage {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 15px;
+      overflow-y: auto;
+    }
+
+    .character-video-container {
+      height: 40vh;
+      min-height: 250px;
+      border-radius: 15px;
+    }
+
+    .vn-dialogue-box {
+      position: relative;
+      bottom: auto;
+      left: 0;
+      right: 0;
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .time-orbs-container {
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    .time-selection-title {
+      font-size: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .time-orbs-grid {
+      gap: 15px;
+      max-width: 100%;
+    }
+
+    .time-orb {
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .time-duration {
+      font-size: 28px;
+    }
+
+    .time-label {
+      font-size: 14px;
+    }
+
+    .begin-ceremony-btn {
+      margin-top: 25px;
+      padding: 14px 30px;
+      font-size: 14px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .character-hint {
+      display: none;
+    }
+
+    /* Back button */
+    .vow-setup-stage .back-button {
+      top: 15px;
+      left: 15px;
+      padding: 10px 15px;
+      font-size: 13px;
+    }
+
+    /* --- TIMER STAGE --- */
+    .timer-stage {
+      padding: 15px;
+    }
+
+    /* Timer display */
+    .timer-character-name {
+      top: 15px;
+      left: 15px;
+      font-size: 16px;
+      padding: 8px 12px;
+    }
+
+    /* Timer controls */
+    .timer-controls {
+      position: fixed;
+      bottom: 15px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
+      gap: 10px;
+      background: rgba(255, 240, 245, 0.9);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 182, 193, 0.3);
+    }
+
+    .timer-controls button {
+      width: 100%;
+      max-width: 300px;
+      justify-content: center;
+    }
+
+    /* Spirit meter */
+    .spirit-meter-container {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      width: 80px;
+      height: 200px;
+      z-index: 20;
+    }
+
+    .sakura-branch {
+      width: 3px;
+    }
+
+    .branch-leaves {
+      width: 15px;
+      height: 6px;
+    }
+
+    .flower-bud {
+      width: 16px;
+      height: 16px;
+    }
+
+    .flower-petal {
+      width: 12px;
+      height: 12px;
+    }
+
+    .spirit-progress-label {
+      font-size: 10px;
+      bottom: -30px;
+    }
+
+    /* Dialogue bubble */
+    .live-dialogue-container {
+      top: 80px;
+      width: 90vw;
+    }
+
+    .speech-bubble-timer {
+      padding: 12px 16px;
+    }
+
+    .dialogue-text {
+      font-size: 13px;
+    }
+
+    .dialogue-hint {
+      font-size: 10px;
+    }
+
+    /* Video container */
+    .gaze-container {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      min-height: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .gaze-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      top: 15px;
+      right: 100px;
+      font-size: 11px;
+      padding: 6px 12px;
+    }
+
+    .progress-dot {
+      width: 6px;
+      height: 6px;
+    }
+
+    /* Zen mode indicator */
+    .zen-mode-indicator {
+      top: 15px;
+      right: 15px;
+      padding: 6px 12px;
+      font-size: 11px;
+    }
+
+    /* --- NAME ENTRY STAGE --- */
+    .name-entry-container {
+      width: 95vw;
+      padding: 20px;
+    }
+
+    .name-entry-title {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    .name-input {
+      width: 100%;
+      max-width: 280px;
+      padding: 14px 20px;
+      font-size: 16px;
+    }
+
+    .name-submit-btn {
+      padding: 12px 25px;
+      font-size: 15px;
+    }
+
+    /* --- CHARACTER CUT-IN --- */
+    .character-cutin {
+      padding: 20px;
+    }
+
+    .character-cutin .character-image {
+      width: 150px;
+      height: 150px;
+    }
+
+    .character-cutin h2 {
+      font-size: 20px;
+    }
+
+    /* --- GALGAME CONFIRMATION --- */
+    .galgame-confirmation-container {
+      width: 95vw;
+      padding: 20px;
+      margin: 10px;
+    }
+
+    .character-emotional-portrait {
+      width: 120px;
+      height: 120px;
+    }
+
+    .galgame-dialogue-box {
+      padding: 20px;
+    }
+
+    .galgame-decision-options {
+      gap: 15px;
+    }
+
+    .galgame-decision-options button {
+      padding: 15px 20px;
+      font-size: 14px;
+    }
+
+    /* --- BREAK CEREMONY --- */
+    .break-ceremony .ceremony-container {
+      width: 95vw;
+      padding: 20px;
+    }
+
+    .break-tea-set {
+      width: 200px;
+      height: 200px;
+    }
+
+    .break-message {
+      font-size: 20px;
+    }
+
+    .break-timer {
+      font-size: 28px;
+    }
+
+    /* --- SECRET DIALOGUE --- */
+    .secret-dialogue-global {
+      top: 80px;
+      width: 90vw;
+    }
+
+    .secret-bubble {
+      max-width: 280px;
+      padding: 12px 16px;
+      font-size: 13px;
+    }
+
+    /* --- ANIMATION OPTIMIZATIONS --- */
+    /* Reduce animations on mobile for better performance */
+    .particle,
+    .bokeh,
+    .petal {
+      animation-duration: calc(var(--duration, 10s) * 1.5);
+      opacity: 0.3;
+    }
+
+    /* Reduce blur effects */
+    .landing-card,
+    .registry-panel-inner,
+    .vn-dialogue-box,
+    .speech-bubble-timer {
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    /* Simplify shadows */
+    .invitation-card,
+    .landing-card,
+    .timer-controls,
+    .time-orb {
+      box-shadow: 0 8px 25px rgba(255, 182, 193, 0.15);
+    }
+
+    /* --- TOUCH FRIENDLY SIZES --- */
+    button,
+    .invitation-hit,
+    .time-orb,
+    .galgame-character-card {
+      min-height: 44px;
+      /* Minimum touch target size */
+      min-width: 44px;
+    }
+
+    /* Increase spacing for touch */
+    .carousel {
+      padding: 15px 10px;
+      gap: 15px;
+    }
+
+    .invitation-card {
+      width: 200px;
+      height: 320px;
+    }
+
+    .invitation-image {
+      width: 160px;
+      height: 160px;
+    }
+
+    /* --- FONT SIZES --- */
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2;
+    }
+
+    p {
+      line-height: 1.4;
+    }
+
+    /* --- UTILITY CLASSES --- */
+    .mobile-hide {
+      display: none;
+    }
+
+    .mobile-show {
+      display: block;
+    }
+
+    /* --- SCROLLING --- */
+    .character-cards-container,
+    .time-orbs-grid {
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    .character-cards-container::-webkit-scrollbar,
+    .time-orbs-grid::-webkit-scrollbar {
+      display: none;
+      /* Chrome, Safari, Opera */
+    }
+  }
+
+  /* Extra small phones */
+  @media (max-width: 360px) {
+    .landing-title {
+      font-size: 24px;
+    }
+
+    .galgame-character-card {
+      width: 140px;
+      height: 280px;
+      padding: 12px;
+    }
+
+    .time-orb {
+      padding: 15px;
+    }
+
+    .time-duration {
+      font-size: 24px;
+    }
+
+    .timer-controls button {
+      padding: 12px 15px;
+      font-size: 13px;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .registry-panel {
+      right: 20px;
+      width: 320px;
+    }
+
+    .carousel {
+      max-width: 95vw;
+    }
+
+    .invitation-card {
+      width: 220px;
+      height: 340px;
+    }
+
+    .vow-setup-stage {
+      grid-template-columns: 45% 55%;
+      gap: 30px;
+      padding: 30px;
+    }
+
+    .vn-dialogue-box {
+      right: calc(55% + 60px);
+    }
+  }
+
+  /* --- SAFARI SPECIFIC FIXES --- */
+  @supports (-webkit-touch-callout: none) {
+
+    .landing-stage,
+    .timer-stage,
+    .vow-setup-stage {
+      height: -webkit-fill-available;
+      /* Fix for mobile Safari 100vh issue */
+    }
+
+    .gaze-container video {
+      object-fit: cover;
+      /* Ensure video covers properly on iOS */
+    }
+  }
+
+  /* --- HIGH DPI SCREENS --- */
+  @media (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi) {
+
+    .border,
+    .invitation-card,
+    .time-orb {
+      border-width: 0.5px;
+      /* Thinner borders for retina */
+    }
+  }
+
+  /* --- DARK MODE ADJUSTMENTS --- */
+  @media (prefers-color-scheme: dark) {
+    .landing-stage {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+
+    .landing-card {
+      background: rgba(30, 30, 46, 0.9);
+      color: #e2e8f0;
+    }
+
+    .invitation-card {
+      background: rgba(30, 30, 46, 0.9);
+    }
+
+    .timer-stage {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+  }
+
+  /* --- ACCESSIBILITY --- */
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    .particle,
+    .bokeh,
+    .petal {
+      display: none;
+    }
+  }
+
+  /* --- PRINT STYLES --- */
+  @media print {
+
+    .timer-stage,
+    .vow-setup-stage,
+    .selection-stage {
+      display: none;
+    }
+
+    .landing-stage {
+      display: block;
+      background: white;
+      color: black;
+    }
+  }
+
+  /* --- ORIENTATION SPECIFIC --- */
+  @media (orientation: landscape) and (max-width: 768px) {
+    .landing-titleWrap {
+      top: 10px;
+    }
+
+    .landing-content {
+      padding-top: 80px;
+    }
+
+    .character-cards-container {
+      top: 140px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      height: 60vh;
+    }
+
+    .galgame-character-card {
+      height: 80%;
+    }
+
+    .timer-controls {
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .timer-controls button {
+      width: auto;
+      min-width: 180px;
+    }
+  }
+
+  /* === MOBILE FIRST STYLES === */
+
+  /* Base mobile styles for all components */
+  .landing-stage {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: -webkit-fill-available;
+    /* Fix for mobile Safari */
+    overflow: hidden;
+    background: linear-gradient(135deg, #fff5f7 0%, #ffe6eb 100%);
+  }
+
+  /* Mobile landing page */
+  .landing-titleWrap {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 12;
+    pointer-events: none;
+    text-align: center;
+    padding: 0 15px;
+  }
+
+  .landing-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: #ff6b93;
+    font-size: 32px;
+    text-shadow: 0 1px 0 #fff, 0 2px 0 rgba(255, 255, 255, 0.8);
+    line-height: 1.2;
+  }
+
+  .landing-subtitle {
+    margin-top: 5px;
+    font-family: ui-rounded, "Comic Sans MS", "Trebuchet MS", system-ui, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: #4a2c3a;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+  }
+
+  .landing-content {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    padding-top: 120px;
+    /* Make room for title */
+  }
+
+  .landing-card {
+    width: 95vw;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 182, 193, 0.6);
+    border-radius: 24px;
+    padding: 30px 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 40px rgba(255, 182, 193, 0.15);
+  }
+
+  /* Hide registry panel on mobile */
+  .registry-panel {
+    display: none;
+  }
+
+  /* Mobile character selection */
+  .galgame-selection-stage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffffff 0%, #fff5f7 100%);
+    padding: 10px;
+  }
+
+  .galgame-dialogue-overlay {
+    position: absolute !important;
+    top: 10px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 95vw !important;
+    height: 150px !important;
+    padding: 15px !important;
+    z-index: 50 !important;
+  }
+
+  .character-cards-container {
+    position: absolute;
+    top: 170px;
+    left: 0;
+    right: 0;
+    display: flex;
+    gap: 15px;
+    padding: 0 10px;
+    overflow-x: auto;
+    justify-content: flex-start;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .character-cards-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .galgame-character-card {
+    width: 160px !important;
+    height: 300px !important;
+    padding: 15px !important;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+  }
+
+  .selection-actions {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px;
+    z-index: 40;
+  }
+
+  .selection-actions button {
+    width: 100% !important;
+    max-width: 300px;
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+  }
+
+  /* Mobile vow setup stage */
+  .vow-setup-stage {
+    position: fixed;
+    inset: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    padding: 15px !important;
+    overflow-y: auto !important;
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe6eb 100%);
+  }
+
+  .character-video-container {
+    height: 35vh !important;
+    min-height: 200px !important;
+    border-radius: 15px !important;
+    margin-top: 20px;
+  }
+
+  .vn-dialogue-box {
+    position: relative !important;
+    bottom: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    padding: 20px !important;
+  }
+
+  .time-orbs-container {
+    padding: 0 !important;
+    margin-top: 20px !important;
+  }
+
+  .time-selection-title {
+    font-size: 20px !important;
+    margin-bottom: 20px !important;
+    text-align: center !important;
+  }
+
+  .time-orbs-grid {
+    gap: 15px !important;
+    max-width: 100% !important;
+  }
+
+  .time-orb {
+    padding: 20px !important;
+    border-radius: 15px !important;
+  }
+
+  .time-duration {
+    font-size: 28px !important;
+  }
+
+  .time-label {
+    font-size: 14px !important;
+  }
+
+  .begin-ceremony-btn {
+    margin-top: 25px !important;
+    padding: 14px 30px !important;
+    font-size: 14px !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .vow-setup-stage .back-button {
+    top: 15px !important;
+    left: 15px !important;
+    padding: 10px 15px !important;
+    font-size: 13px !important;
+  }
+
+  .character-hint {
+    display: none !important;
+  }
+
+  /* Mobile timer stage */
+  .timer-stage {
+    padding: 15px !important;
+  }
+
+  .timer-character-name {
+    top: 15px !important;
+    left: 15px !important;
+    font-size: 16px !important;
+    padding: 8px 12px !important;
+  }
+
+  .live-dialogue-container {
+    top: 80px !important;
+    width: 90vw !important;
+  }
+
+  .speech-bubble-timer {
+    padding: 12px 16px !important;
+  }
+
+  .dialogue-text {
+    font-size: 13px !important;
+  }
+
+  .dialogue-hint {
+    font-size: 10px !important;
+  }
+
+  .timer-controls {
+    position: fixed !important;
+    bottom: 15px !important;
+    left: 0 !important;
+    right: 0 !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 15px !important;
+    gap: 10px !important;
+    background: rgba(255, 240, 245, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border-top: 1px solid rgba(255, 182, 193, 0.3) !important;
+    z-index: 30 !important;
+  }
+
+  .timer-controls button {
+    width: 100% !important;
+    max-width: 300px !important;
+    justify-content: center !important;
+    min-height: 48px !important;
+    /* Touch-friendly */
+  }
+
+  .spirit-meter-container {
+    position: fixed !important;
+    top: 15px !important;
+    right: 15px !important;
+    width: 80px !important;
+    height: 200px !important;
+    z-index: 20 !important;
+  }
+
+  .gaze-container {
+    position: relative !important;
+    width: 100% !important;
+    height: 40vh !important;
+    min-height: 250px !important;
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    margin-top: 20px !important;
+  }
+
+  .gaze-video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .progress-indicator {
+    top: 15px !important;
+    right: 100px !important;
+    font-size: 11px !important;
+    padding: 6px 12px !important;
+  }
+
+  .zen-mode-indicator {
+    top: 15px !important;
+    right: 15px !important;
+    padding: 6px 12px !important;
+    font-size: 11px !important;
+  }
+
+  /* Mobile name entry */
+  .name-entry-container {
+    width: 95vw !important;
+    padding: 20px !important;
+  }
+
+  .name-entry-title {
+    font-size: 22px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .name-input {
+    width: 100% !important;
+    max-width: 280px !important;
+    padding: 14px 20px !important;
+    font-size: 16px !important;
+  }
+
+  .name-submit-btn {
+    padding: 12px 25px !important;
+    font-size: 15px !important;
+  }
+
+  /* Mobile break ceremony */
+  .break-ceremony {
+    padding: 20px !important;
+  }
+
+  .break-tea-set {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .break-message {
+    font-size: 20px !important;
+  }
+
+  .break-timer {
+    font-size: 28px !important;
+  }
+
+  /* Mobile galgame confirmation */
+  .galgame-confirmation-container {
+    width: 95vw !important;
+    padding: 20px !important;
+    margin: 10px !important;
+  }
+
+  .character-emotional-portrait {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .galgame-dialogue-box {
+    padding: 20px !important;
+  }
+
+  .galgame-decision-options {
+    gap: 15px !important;
+  }
+
+  .galgame-decision-options button {
+    padding: 15px 20px !important;
+    font-size: 14px !important;
+  }
+
+  /* Secret dialogue */
+  .secret-dialogue-global {
+    top: 80px !important;
+    width: 90vw !important;
+  }
+
+  .secret-bubble {
+    max-width: 280px !important;
+    padding: 12px 16px !important;
+    font-size: 13px !important;
+  }
+
+  /* Touch-friendly sizes */
+  button,
+  .invitation-hit,
+  .time-orb,
+  .galgame-character-card {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+
+  /* Utility classes for mobile */
+  .mobile-hide {
+    display: none !important;
+  }
+
+  .mobile-show {
+    display: block !important;
+  }
+
+  /* Reduce animations on mobile for performance */
+  @media (max-width: 768px) {
+
+    .particle,
+    .bokeh,
+    .petal {
+      animation-duration: calc(var(--duration, 10s) * 1.5) !important;
+      opacity: 0.3 !important;
+      filter: blur(0.5px) !important;
+    }
+
+    .landing-card,
+    .registry-panel-inner,
+    .vn-dialogue-box,
+    .speech-bubble-timer {
+      backdrop-filter: blur(5px) !important;
+      -webkit-backdrop-filter: blur(5px) !important;
+    }
+
+    .invitation-card,
+    .landing-card,
+    .timer-controls,
+    .time-orb {
+      box-shadow: 0 8px 25px rgba(255, 182, 193, 0.15) !important;
+    }
+  }
+
+  /* === DESKTOP STYLES === */
+  @media (min-width: 769px) {
+    .landing-titleWrap {
+      top: 34px;
+      padding: 0 18px;
+    }
+
+    .landing-title {
+      font-size: clamp(40px, 6vw, 72px);
+      text-shadow: 0 1px 0 #fff, 0 2px 0 #fff, 0 3px 0 rgba(255, 255, 255, 0.8), 0 4px 20px rgba(255, 182, 193, 0.3);
+    }
+
+    .landing-subtitle {
+      margin-top: 10px;
+      font-size: clamp(14px, 1.6vw, 18px);
+      letter-spacing: 0.06em;
+    }
+
+    .landing-content {
+      padding: 24px;
+      align-items: center;
+      padding-top: 0;
+    }
+
+    .landing-card {
+      width: min(420px, 92vw);
+      padding: 44px 40px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 25px 120px rgba(255, 182, 193, 0.2);
+    }
+
+    .registry-panel {
+      display: block;
+      position: fixed;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 360px;
+      z-index: 12;
+    }
+
+    .vow-setup-stage {
+      display: grid !important;
+      grid-template-columns: 40% 60% !important;
+      gap: 40px !important;
+      padding: 40px !important;
+      overflow-y: hidden !important;
+    }
+
+    .character-video-container {
+      height: 100% !important;
+      margin-top: 0 !important;
+    }
+
+    .vn-dialogue-box {
+      position: absolute !important;
+      bottom: 40px !important;
+      left: 40px !important;
+      right: calc(60% + 80px) !important;
+      width: auto !important;
+      margin: 0 !important;
+    }
+
+    .character-hint {
+      display: block !important;
+    }
+
+    .timer-controls {
+      position: fixed !important;
+      bottom: 40px !important;
+      left: 40px !important;
+      right: auto !important;
+      flex-direction: row !important;
+      background: transparent !important;
+      border-top: none !important;
+      padding: 0 !important;
+    }
+
+    .timer-controls button {
+      width: auto !important;
+      min-width: 180px !important;
+    }
+  }
+
+  /* === TABLET STYLES === */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .registry-panel {
+      right: 20px;
+      width: 320px;
+    }
+
+    .vow-setup-stage {
+      grid-template-columns: 45% 55% !important;
+      gap: 30px !important;
+      padding: 30px !important;
+    }
+
+    .vn-dialogue-box {
+      right: calc(55% + 60px) !important;
+    }
+  }
+
+  /* === LANDSCAPE ORIENTATION === */
+  @media (orientation: landscape) and (max-width: 768px) {
+    .landing-titleWrap {
+      top: 10px;
+    }
+
+    .landing-content {
+      padding-top: 80px;
+    }
+
+    .character-cards-container {
+      top: 140px;
+      height: 60vh;
+      flex-wrap: nowrap;
+    }
+
+    .galgame-character-card {
+      height: 80% !important;
+    }
+
+    .timer-controls {
+      flex-direction: row !important;
+      justify-content: center !important;
+      flex-wrap: wrap !important;
+    }
+
+    .timer-controls button {
+      width: auto !important;
+      min-width: 180px !important;
+    }
+  }
+
+  /* === HIGH DPI SCREENS === */
+  @media (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi) {
+
+    .border,
+    .invitation-card,
+    .time-orb {
+      border-width: 0.5px !important;
+    }
+  }
+
+  /* === DARK MODE SUPPORT === */
+  @media (prefers-color-scheme: dark) {
+    .landing-stage {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+
+    .landing-card {
+      background: rgba(30, 30, 46, 0.9);
+      color: #e2e8f0;
+    }
+
+    .invitation-card {
+      background: rgba(30, 30, 46, 0.9);
+    }
+
+    .timer-stage {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+  }
+
+  /* === REDUCED MOTION === */
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    .particle,
+    .bokeh,
+    .petal {
+      display: none !important;
+    }
+  }
+
+  /* === SAFARI SPECIFIC FIXES === */
+  @supports (-webkit-touch-callout: none) {
+
+    .landing-stage,
+    .timer-stage,
+    .vow-setup-stage {
+      height: -webkit-fill-available;
+    }
+  }
+
+  /* =========================== */
+/* RESPONSIVE LAYOUT STYLES */
+/* =========================== */
+
+/* Base responsive container */
+.responsive-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Mobile-first responsive adjustments */
+@media (max-width: 768px) {
+  /* --- GENERAL UTILITIES --- */
+  .mobile-hide {
+    display: none !important;
+  }
+  
+  .mobile-show {
+    display: block !important;
+  }
+  
+  .mobile-stack {
+    flex-direction: column !important;
+  }
+  
+  .mobile-center {
+    text-align: center !important;
+    justify-content: center !important;
+  }
+  
+  /* --- LANDING STAGE COMPRESSION --- */
+  .landing-stage {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .landing-titleWrap {
+    top: 20px;
+    padding: 0 15px;
+  }
+  
+  .landing-title {
+    font-size: clamp(28px, 8vw, 40px) !important;
+    line-height: 1.2;
+    margin-bottom: 5px;
+  }
+  
+  .landing-subtitle {
+    font-size: clamp(12px, 3vw, 14px) !important;
+    margin-top: 5px;
+  }
+  
+  .landing-content {
+    padding: 15px;
+    padding-top: 100px;
+  }
+  
+  .landing-card {
+    width: 92vw !important;
+    max-width: 400px;
+    padding: 30px 20px !important;
+    margin: 0 auto;
+    backdrop-filter: blur(5px);
+  }
+  
+  .landing-proclamation {
+    font-size: 14px !important;
+    line-height: 1.5;
+    margin-bottom: 25px;
+  }
+  
+  .wax-button {
+    width: 90px !important;
+    height: 90px !important;
+  }
+  
+  .landing-subhint {
+    font-size: 11px !important;
+    margin-top: 15px;
+  }
+  
+  /* Hide registry on mobile */
+  .registry-panel {
+    display: none !important;
+  }
+  
+  /* --- NAME ENTRY STAGE COMPRESSION --- */
+  .name-entry-stage {
+    padding: 20px;
+  }
+  
+  .name-entry-container {
+    width: 100% !important;
+    padding: 20px;
+  }
+  
+  .name-entry-title {
+    font-size: 22px !important;
+    margin-bottom: 30px;
+    line-height: 1.3;
+  }
+  
+  .name-input {
+    width: 100% !important;
+    max-width: 280px;
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+  
+  .name-submit-btn {
+    padding: 12px 25px;
+    font-size: 15px;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .name-entry-hint {
+    font-size: 12px;
+    margin-top: 20px;
+  }
+  
+  /* --- SELECTION STAGE COMPRESSION --- */
+  .galgame-selection-stage {
+    padding: 10px;
+  }
+  
+  .galgame-dialogue-overlay {
+    position: relative !important;
+    width: 95vw !important;
+    height: auto !important;
+    min-height: 140px;
+    margin: 10px auto;
+    padding: 15px !important;
+    left: 0 !important;
+    transform: none !important;
+    top: 0 !important;
+  }
+  
+  .dialogue-character-portrait {
+    display: none;
+  }
+  
+  .character-cards-container {
+    position: relative !important;
+    top: 0 !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 60vh;
+    margin-top: 10px;
+  }
+  
+  .galgame-character-card {
+    width: 100% !important;
+    height: 280px !important;
+    padding: 12px !important;
+    margin: 0 auto;
+  }
+  
+  /* Adjust card content for mobile */
+  .galgame-character-card .character-image {
+    width: 100px !important;
+    height: 100px !important;
+    margin-bottom: 10px;
+  }
+  
+  .galgame-character-card h3 {
+    font-size: 16px !important;
+    margin-bottom: 6px;
+  }
+  
+  .selection-actions {
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 182, 193, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+  }
+  
+  .selection-actions button {
+    width: 100% !important;
+    padding: 14px !important;
+    font-size: 14px !important;
+    border-radius: 12px;
+  }
+  
+  /* --- VOW SETUP STAGE COMPRESSION --- */
+  .vow-setup-stage {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    padding: 15px !important;
+    overflow-y: auto;
+  }
+  
+  .character-video-container {
+    height: 30vh !important;
+    min-height: 200px;
+    width: 100%;
+    border-radius: 15px;
+  }
+  
+  .vn-dialogue-box {
+    position: relative !important;
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    margin: 15px 0;
+    padding: 20px !important;
+  }
+  
+  .time-orbs-container {
+    width: 100%;
+    padding: 0 !important;
+  }
+  
+  .time-selection-title {
+    font-size: 18px !important;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .time-orbs-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .time-orb {
+    width: 100%;
+    padding: 18px !important;
+    border-radius: 15px;
+  }
+  
+  .time-duration {
+    font-size: 24px !important;
+  }
+  
+  .time-label {
+    font-size: 14px !important;
+  }
+  
+  .time-description {
+    font-size: 11px !important;
+  }
+  
+  .begin-ceremony-btn {
+    width: 100%;
+    padding: 16px !important;
+    margin-top: 20px;
+    font-size: 15px;
+  }
+  
+  .character-hint {
+    display: none;
+  }
+  
+  /* Back button positioning */
+  .vow-setup-stage .back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 8px 12px;
+    font-size: 12px;
+    z-index: 10;
+  }
+  
+  /* --- TIMER STAGE COMPRESSION --- */
+  .timer-stage {
+    padding: 10px;
+  }
+  
+  /* Timer header */
+  .timer-character-name {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 14px !important;
+    padding: 6px 12px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  /* Video container */
+  .gaze-container {
+    height: 40vh;
+    min-height: 250px;
+    margin-top: 50px;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+  /* Dialogue bubble */
+  .live-dialogue-container {
+    top: 60px !important;
+    width: 95vw !important;
+  }
+  
+  .speech-bubble-timer {
+    padding: 12px 16px !important;
+    font-size: 13px;
+  }
+  
+  .dialogue-text {
+    font-size: 12px !important;
+  }
+  
+  /* Timer controls at bottom */
+  .timer-controls {
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    padding: 15px;
+    gap: 10px;
+    background: rgba(255, 240, 245, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 182, 193, 0.3);
+    z-index: 100;
+  }
+  
+  .timer-controls button {
+    width: 100% !important;
+    padding: 14px !important;
+    font-size: 14px !important;
+    border-radius: 12px;
+  }
+  
+  /* Spirit meter adjustment */
+  .spirit-meter-container {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    width: 60px !important;
+    height: 180px !important;
+  }
+  
+  .sakura-branch {
+    width: 3px;
+  }
+  
+  .branch-leaves {
+    width: 12px;
+    height: 5px;
+  }
+  
+  .flower-bud {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .flower-petal {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .spirit-progress-label {
+    font-size: 10px !important;
+    bottom: -30px;
+  }
+  
+  /* Progress indicator */
+  .progress-indicator {
+    display: none; /* Hide on mobile for simplicity */
+  }
+  
+  /* Zen mode indicator */
+  .zen-mode-indicator {
+    top: 10px;
+    right: 75px;
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+  
+  /* Immersive timer */
+  .immersive-timer-container {
+    display: none; /* Hide pocket watch on mobile */
+  }
+  
+  /* --- BREAK CEREMONY COMPRESSION --- */
+  .break-ceremony {
+    padding: 20px;
+  }
+  
+  .break-ceremony .ceremony-container {
+    width: 95vw;
+    padding: 20px;
+  }
+  
+  .break-tea-set {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .break-message {
+    font-size: 18px !important;
+    margin-bottom: 15px;
+  }
+  
+  .break-timer {
+    font-size: 24px !important;
+    margin-bottom: 20px;
+  }
+  
+  .break-hint {
+    font-size: 12px;
+  }
+  
+  /* --- GALGAME CONFIRMATION COMPRESSION --- */
+  .galgame-confirmation-overlay {
+    padding: 15px;
+  }
+  
+  .galgame-confirmation-container {
+    width: 95vw !important;
+    padding: 20px !important;
+    margin: 0 auto;
+  }
+  
+  .character-emotional-portrait {
+    width: 100px !important;
+    height: 100px !important;
+    margin-bottom: 20px;
+  }
+  
+  .galgame-dialogue-box {
+    padding: 15px !important;
+    margin-bottom: 20px;
+  }
+  
+  .galgame-dialogue-box div {
+    font-size: 14px !important;
+  }
+  
+  .galgame-decision-options {
+    gap: 12px;
+  }
+  
+  .galgame-decision-options button {
+    padding: 12px 15px !important;
+    font-size: 13px !important;
+  }
+  
+  /* --- CHARACTER CUT-IN COMPRESSION --- */
+  .character-cutin {
+    padding: 20px;
+  }
+  
+  .character-cutin .character-image {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .character-cutin h2 {
+    font-size: 18px;
+  }
+  
+  /* --- SECRET DIALOGUE COMPRESSION --- */
+  .secret-dialogue-global {
+    top: 60px;
+    width: 90vw;
+  }
+  
+  .secret-bubble {
+    max-width: 250px;
+    padding: 12px 16px;
+    font-size: 12px;
+  }
+  
+  /* --- PERFORMANCE OPTIMIZATIONS FOR MOBILE --- */
+  /* Reduce particles for better performance */
+  .atmosphere {
+    opacity: 0.5;
+  }
+  
+  .bokeh {
+    display: none; /* Hide bokeh on mobile */
+  }
+  
+  .petal {
+    animation-duration: 15s !important; /* Slower animation */
+  }
+  
+  /* Reduce blur effects */
+  .landing-card,
+  .vn-dialogue-box,
+  .speech-bubble-timer {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+  
+  /* Simplify shadows */
+  .invitation-card,
+  .galgame-character-card,
+  .time-orb {
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.15);
+  }
+  
+  /* Touch-friendly minimum sizes */
+  button,
+  .invitation-hit,
+  .time-orb,
+  .galgame-character-card {
+    min-height: 44px; /* Apple's recommended touch target size */
+    min-width: 44px;
+  }
+  
+  /* Ensure proper scrolling */
+  .character-cards-container,
+  .vow-setup-stage,
+  .timer-stage {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Hide scrollbars but keep functionality */
+  .character-cards-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* --- FONT SIZE ADJUSTMENTS --- */
+  h1, h2, h3 {
+    line-height: 1.2;
+  }
+  
+  p {
+    line-height: 1.4;
+  }
+  
+  .btn-text {
+    font-size: 14px;
+  }
+  
+  .subtext {
+    font-size: 11px;
+  }
+}
+
+/* === TABLET (769px to 1024px) === */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Adjust for tablets */
+  .landing-card {
+    width: 85vw;
+    max-width: 500px;
+  }
+  
+  .registry-panel {
+    right: 20px;
+    width: 300px;
+  }
+  
+  .character-cards-container {
+    gap: 20px;
+    padding: 0 30px;
+  }
+  
+  .galgame-character-card {
+    width: 170px !important;
+    height: 320px !important;
+  }
+  
+  .vow-setup-stage {
+    grid-template-columns: 45% 55% !important;
+    gap: 30px !important;
+    padding: 30px !important;
+  }
+  
+  .vn-dialogue-box {
+    right: calc(55% + 60px) !important;
+  }
+  
+  .timer-controls {
+    left: 30px;
+    bottom: 30px;
+  }
+}
+
+/* === SMALL PHONES (max-width: 360px) === */
+@media (max-width: 360px) {
+  .landing-title {
+    font-size: 24px !important;
+  }
+  
+  .landing-card {
+    padding: 25px 15px !important;
+  }
+  
+  .galgame-character-card {
+    height: 260px !important;
+    padding: 10px !important;
+  }
+  
+  .time-orb {
+    padding: 15px !important;
+  }
+  
+  .time-duration {
+    font-size: 22px !important;
+  }
+  
+  .timer-controls button {
+    padding: 12px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* === LANDSCAPE ORIENTATION ON MOBILE === */
+@media (orientation: landscape) and (max-width: 768px) {
+  .landing-titleWrap {
+    top: 10px;
+  }
+  
+  .landing-content {
+    padding-top: 60px;
+  }
+  
+  .character-cards-container {
+    grid-template-columns: repeat(3, 1fr);
+    max-height: 50vh;
+  }
+  
+  .galgame-character-card {
+    height: 90% !important;
+  }
+  
+  .timer-controls {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .timer-controls button {
+    width: 48% !important;
+    min-width: auto;
+  }
+  
+  .gaze-container {
+    height: 60vh;
+  }
+}
+
+/* === SAFARI SPECIFIC FIXES === */
+@supports (-webkit-touch-callout: none) {
+  .landing-stage,
+  .timer-stage,
+  .vow-setup-stage,
+  .name-entry-stage {
+    height: -webkit-fill-available;
+  }
+}
+
+/* === DARK MODE SUPPORT === */
+@media (prefers-color-scheme: dark) {
+  @media (max-width: 768px) {
+    .landing-stage {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+    
+    .landing-card {
+      background: rgba(30, 30, 46, 0.95);
+      color: #e2e8f0;
+    }
+    
+    .invitation-card,
+    .galgame-character-card {
+      background: rgba(30, 30, 46, 0.95);
+      color: #e2e8f0;
+    }
+    
+    .selection-actions,
+    .timer-controls {
+      background: rgba(30, 30, 46, 0.95);
+      border-color: rgba(255, 182, 193, 0.2);
+    }
+  }
+}
+
+/* === REDUCED MOTION SUPPORT === */
+@media (prefers-reduced-motion: reduce) {
+  @media (max-width: 768px) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    
+    .particle,
+    .bokeh,
+    .petal {
+      display: none;
+    }
+  }
+}
 }

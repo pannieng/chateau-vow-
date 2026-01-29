@@ -22,6 +22,7 @@ interface Companion {
   videoSmilingUrl: string;
   vibeHearts: 1 | 2 | 3;
   imageUrl: string;
+  sadimageUrl: string;
   affinity: number;
   // New dialogue stages for timer
   startDialogue: string[];
@@ -60,6 +61,7 @@ const COMPANIONS: Companion[] = [
     vibeHearts: 1,
     affinity: 0,
     imageUrl: "/images/characters/1.png",
+    sadimageUrl: "/images/sadcharacters/1.png",
     startDialogue: [
       "Let us begin. I shall keep watch.",
       "Focus your mind. I will be your witness.",
@@ -96,6 +98,7 @@ const COMPANIONS: Companion[] = [
     vibeHearts: 1,
     affinity: 0,
     imageUrl: "/images/characters/2.png",
+    sadimageUrl: "/images/sadcharacters/2.png",
     startDialogue: [
       "Let us begin. I shall keep watch.",
       "Focus your mind. I will be your witness.",
@@ -132,6 +135,7 @@ const COMPANIONS: Companion[] = [
     vibeHearts: 1,
     affinity: 0,
     imageUrl: "/images/characters/4.png",
+    sadimageUrl: "/images/sadcharacters/3.png",
     startDialogue: [
       "Let us begin. I shall keep watch.",
       "Focus your mind. I will be your witness.",
@@ -168,6 +172,7 @@ const COMPANIONS: Companion[] = [
     vibeHearts: 1,
     affinity: 0,
     imageUrl: "/images/characters/3.png",
+    sadimageUrl: "/images/sadcharacters/4.png",
     startDialogue: [
       "Let us begin. I shall keep watch.",
       "Focus your mind. I will be your witness.",
@@ -204,6 +209,7 @@ const COMPANIONS: Companion[] = [
     vibeHearts: 1,
     affinity: 0,
     imageUrl: "/images/characters/5.png",
+    sadimageUrl: "/images/sadcharacters/5.png",
     startDialogue: [
       "Let us begin. I shall keep watch.",
       "Focus your mind. I will be your witness.",
@@ -618,7 +624,7 @@ const BreakCeremony = ({
             }}>
               {/* Tea Liquid */}
               <motion.div
-                animate={{ 
+                animate={{
                   height: ['48px', '51px', '48px'],
                   background: [
                     'linear-gradient(to bottom, #FFB6C1, #FF69B4)',
@@ -853,14 +859,14 @@ const BreakCeremony = ({
             {[...Array(8)].map((_, i) => (
               <motion.div
                 key={`sugar-${i}`}
-                animate={{ 
+                animate={{
                   opacity: [0, 0.8, 0],
                   scale: [0.5, 1, 0.5]
                 }}
-                transition={{ 
+                transition={{
                   duration: 3,
                   delay: i * 0.2,
-                  repeat: Infinity 
+                  repeat: Infinity
                 }}
                 style={{
                   position: 'absolute',
@@ -1276,11 +1282,11 @@ const BreakCeremony = ({
       {[...Array(12)].map((_, i) => (
         <motion.div
           key={`petal-${i}`}
-          initial={{ 
-            y: -50, 
+          initial={{
+            y: -50,
             x: `${10 + i * 8}%`,
             rotate: 0,
-            opacity: 0 
+            opacity: 0
           }}
           animate={{
             y: '120vh',
@@ -1312,15 +1318,15 @@ const BreakCeremony = ({
       {[...Array(8)].map((_, i) => (
         <motion.div
           key={`sparkle-${i}`}
-          animate={{ 
+          animate={{
             scale: [0, 1, 0],
             opacity: [0, 0.8, 0],
             rotate: 360
           }}
-          transition={{ 
+          transition={{
             duration: 3,
             delay: i * 0.4,
-            repeat: Infinity 
+            repeat: Infinity
           }}
           style={{
             position: 'absolute',
@@ -1527,7 +1533,7 @@ const GalgameEndConfirmation = ({
             }}
           >
             <img
-              src={selected?.imageUrl}
+              src={selected?.sadimageUrl}
               alt={selected?.name}
               style={{
                 width: '100%',
@@ -1536,23 +1542,39 @@ const GalgameEndConfirmation = ({
                 filter: 'brightness(0.9) contrast(1.1)'
               }}
             />
-            {/* Tear effect */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: [0, 1, 0], y: [0, 30, 60] }}
-              transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-              style={{
-                position: 'absolute',
-                top: '40px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '3px',
-                height: '15px',
-                background: 'linear-gradient(to bottom, rgba(173, 216, 230, 0.8), transparent)',
-                borderRadius: '3px',
-                filter: 'blur(1px)'
-              }}
-            />
+            {/* Rain effect - Multiple droplets */}
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              overflow: 'hidden',
+              pointerEvents: 'none'
+            }}>
+              {[...Array(8)].map((_, i) => (
+                <motion.div
+                  key={`rain-drop-${i}`}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{
+                    opacity: [0, 0.8, 0],
+                    y: [0, 40 + i * 5, 80]
+                  }}
+                  transition={{
+                    duration: 1.5 + i * 0.2,
+                    repeat: Infinity,
+                    delay: i * 0.3
+                  }}
+                  style={{
+                    position: 'absolute',
+                    top: '30px',
+                    left: `${40 + i * 15}px`,
+                    width: '2px',
+                    height: '20px',
+                    background: 'linear-gradient(to bottom, rgba(173, 216, 230, 0.9), rgba(135, 206, 250, 0.4), transparent)',
+                    borderRadius: '0 0 2px 2px',
+                    filter: 'blur(0.5px)'
+                  }}
+                />
+              ))}
+            </div>
           </div>
 
           {/* Glowing aura */}
@@ -1676,7 +1698,6 @@ const GalgameEndConfirmation = ({
                   gap: '15px'
                 }}
               >
-                <div style={{ fontSize: '24px' }}>💝</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: '18px', fontWeight: 'bold' }}>Stay with {selected?.name}</div>
                   <div style={{ fontSize: '12px', opacity: 0.9 }}>Continue the vow and cherish this moment</div>
@@ -1718,7 +1739,6 @@ const GalgameEndConfirmation = ({
                   gap: '15px'
                 }}
               >
-                <div style={{ fontSize: '24px' }}>💔</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: '18px', fontWeight: 'bold' }}>End the Vow Anyway</div>
                   <div style={{ fontSize: '12px', opacity: 0.9 }}>Break the promise and return to selection</div>
@@ -2816,12 +2836,212 @@ const NameEntryStage = ({
 }) => {
   const [inputValue, setInputValue] = useState('');
   const [isFocused, setIsFocused] = useState(false);
+  const [showInput, setShowInput] = useState(false);
+  const [currentStep, setCurrentStep] = useState(0); // 0: intro, 1: name input, 2: confirmation
+  const [dialogueText, setDialogueText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [characterMood, setCharacterMood] = useState('neutral'); // neutral, curious, happy
+  const [showCharacter, setShowCharacter] = useState(true);
+
+  // Dialogue lines with different moods
+  const dialogues = {
+    neutral: [
+      "In the garden where sakura petals dance...",
+      "A new vow is about to begin.",
+      "Before we seal this promise...",
+      "Please, tell me your name.",
+      "What should I call you?"
+    ],
+    curious: [
+      "Hmm... I don't think I've heard that name before.",
+      "That's an interesting name.",
+      "I'll remember it well.",
+      "Now, let me see...",
+      "Your name sounds like a gentle breeze."
+    ],
+    happy: [
+      "What a beautiful name!",
+      "It suits you perfectly.",
+      "I'm happy to meet you.",
+      "Now our vow can truly begin.",
+      "Your name will be whispered in the wind."
+    ]
+  };
+
+  // Character expressions
+  const characterExpressions = {
+    neutral: "#FFB6C1",
+    curious: "#FF69B4",
+    happy: "#FF1493"
+  };
+
+  // Character dialogue responses
+  const characterResponses = [
+    "I see...",
+    "That's a lovely name.",
+    "I'll remember it forever.",
+    "It sounds wonderful.",
+    "Perfect."
+  ];
+
+  // Initialize with opening sequence
+  useEffect(() => {
+    startOpeningSequence();
+  }, []);
+
+  const startOpeningSequence = () => {
+    setDialogueText('');
+    setIsTyping(true);
+    setCharacterMood('neutral');
+
+    let dialogueIndex = 0;
+    const currentDialogues = dialogues.neutral;
+
+    const typeNextDialogue = () => {
+      if (dialogueIndex < currentDialogues.length) {
+        setDialogueText('');
+        let charIndex = 0;
+        const currentLine = currentDialogues[dialogueIndex];
+
+        const typingInterval = setInterval(() => {
+          if (charIndex < currentLine.length) {
+            setDialogueText(currentLine.substring(0, charIndex + 1));
+            charIndex++;
+          } else {
+            clearInterval(typingInterval);
+
+            // Pause before next dialogue
+            setTimeout(() => {
+              dialogueIndex++;
+              if (dialogueIndex === 3) { // When asking for name
+                setShowInput(true);
+              }
+              if (dialogueIndex < currentDialogues.length) {
+                typeNextDialogue();
+              } else {
+                setIsTyping(false);
+              }
+            }, 1200);
+          }
+        }, 30);
+      }
+    };
+
+    typeNextDialogue();
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (inputValue.trim()) {
-      onNameSubmitted(inputValue.trim());
+      // Character reaction based on name length
+      if (inputValue.trim().length <= 3) {
+        setCharacterMood('curious');
+      } else {
+        setCharacterMood('happy');
+      }
+
+      // Show confirmation sequence
+      setCurrentStep(2);
+      setIsTyping(true);
+
+      const randomResponse = characterResponses[Math.floor(Math.random() * characterResponses.length)];
+      const confirmationText = `"${inputValue.trim()}"... ${randomResponse}`;
+
+      setDialogueText('');
+      let i = 0;
+      const typingInterval = setInterval(() => {
+        if (i < confirmationText.length) {
+          setDialogueText(confirmationText.substring(0, i + 1));
+          i++;
+        } else {
+          clearInterval(typingInterval);
+          setIsTyping(false);
+
+          // Submit after brief moment
+          setTimeout(() => {
+            onNameSubmitted(inputValue.trim());
+          }, 1500);
+        }
+      }, 40);
     }
+  };
+
+  const handleSkipTyping = () => {
+    if (isTyping) {
+      setIsTyping(false);
+      const currentDialogues = dialogues[characterMood as keyof typeof dialogues];
+      setDialogueText(currentDialogues[currentDialogues.length - 1]);
+    }
+  };
+
+  const handleRandomName = () => {
+    const englishNames = [
+      // Romantic/Soft Names
+      'Lily', 'Rose', 'Violet', 'Iris', 'Dahlia', 'Jasmine', 'Hazel', 'Willow',
+
+      // Classic Names
+      'Elara', 'Serena', 'Aurora', 'Celine', 'Luna', 'Stella', 'Nova', 'Celeste',
+
+      // Nature-Inspired
+      'River', 'Skye', 'Brook', 'Ash', 'Rowan', 'Sage', 'Reed', 'Flora',
+
+      // Mystical/Ethereal
+      'Lyra', 'Aria', 'Elara', 'Nyx', 'Phoebe', 'Selene', 'Thalia', 'Calliope',
+
+      // Gender-Neutral Options
+      'Riley', 'Jordan', 'Alex', 'Taylor', 'Casey', 'Morgan', 'Jamie', 'Quinn',
+
+      // Short & Sweet
+      'Kai', 'Leo', 'Max', 'Sam', 'Eve', 'Ava', 'Ian', 'Roy'
+    ];
+
+    const randomName = englishNames[Math.floor(Math.random() * englishNames.length)];
+    setInputValue(randomName);
+
+    // Play a gentle sound effect
+    const sound = new Audio('/audio/light-bell.mp3');
+    sound.volume = 0.3;
+    sound.play().catch(console.error);
+
+    // Character reaction based on name type
+    const romanticNames = ['Lily', 'Rose', 'Violet', 'Aurora', 'Serena', 'Celeste'];
+    const natureNames = ['River', 'Skye', 'Willow', 'Sage', 'Rowan', 'Flora'];
+
+    if (romanticNames.includes(randomName)) {
+      setCharacterMood('happy');
+    } else if (natureNames.includes(randomName)) {
+      setCharacterMood('curious');
+    } else {
+      setCharacterMood('neutral');
+    }
+
+    // Optional: Show a brief tooltip with name meaning
+    setTimeout(() => {
+      const nameMeanings: Record<string, string> = {
+        'Lily': 'Purity and beauty',
+        'Rose': 'Love and passion',
+        'Violet': 'Modesty and faithfulness',
+        'Aurora': 'Dawn, new beginnings',
+        'Serena': 'Calm and peaceful',
+        'Celeste': 'Heavenly',
+        'River': 'Flow and change',
+        'Skye': 'Freedom and openness',
+        'Willow': 'Grace and flexibility',
+        'Sage': 'Wisdom and healing',
+        'Lyra': 'Harmony and music',
+        'Aria': 'Melody and air',
+        'Elara': 'Bright and shining',
+        'Phoebe': 'Radiant and pure',
+        'Kai': 'Ocean and sea',
+        'Leo': 'Lion, strength',
+        'Luna': 'Moon, night',
+        'Stella': 'Star, light'
+      };
+
+      if (nameMeanings[randomName]) {
+        console.log(`${randomName}: ${nameMeanings[randomName]}`);
+      }
+    }, 100);
   };
 
   return (
@@ -2830,83 +3050,1046 @@ const NameEntryStage = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="name-entry-stage"
+      className="galgame-name-entry-stage"
+      style={{
+        position: 'fixed',
+        inset: 0,
+        background: 'linear-gradient(135deg, #FFFAFA 0%, #FFF0F5 100%)',
+        overflow: 'hidden',
+        fontFamily: "'Noto Sans JP', 'Segoe UI', sans-serif"
+      }}
     >
-      <BackgroundVideo src="/videos/landing.mp4" brightness="brightness-[0.7]" />
-      <div className="name-entry-overlay" />
-      <Atmosphere seed={2} />
+      {/* Enhanced Background with Depth */}
+      <div className="galgame-background" style={{
+        position: 'absolute',
+        inset: 0,
+        overflow: 'hidden',
+        background: 'linear-gradient(to bottom, #FFF8F8 0%, #FFECEC 100%)'
+      }}>
+        {/* Layered Sakura Background */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: `
+            radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(255, 182, 193, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 40% 80%, rgba(255, 182, 193, 0.03) 0%, transparent 50%)
+          `,
+          filter: 'blur(20px)'
+        }} />
 
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="name-entry-container"
-      >
-        <div className="name-entry-title">
-          ✦ To Whom Shall The Vow Be Dedicated? ✦
-        </div>
-
-        <form onSubmit={handleSubmit} className="name-entry-form">
-          <div className="relative">
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
-              placeholder="Enter your name, wanderer..."
-              className={`name-input ${isFocused ? 'name-input--focused' : ''}`}
-              maxLength={20}
-              autoFocus
-            />
-            <div className={`name-input-glow ${isFocused ? 'name-input-glow--active' : ''}`} />
-            <div className="name-input-underline" />
-          </div>
-
-          <motion.button
-            type="submit"
-            className="name-submit-btn"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            disabled={!inputValue.trim()}
-          >
-            <span className="name-submit-text">Enter The Garden</span>
-            <span className="name-submit-arrow">→</span>
-          </motion.button>
-        </form>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="name-entry-hint"
-        >
-          Your name will be remembered throughout this ceremony
-        </motion.div>
-      </motion.div>
-
-      {/* Sakura petals falling specifically */}
-      <div className="name-entry-petals">
-        {Array.from({ length: 12 }).map((_, i) => (
+        {/* Animated Sakura Petals */}
+        {[...Array(20)].map((_, i) => (
           <motion.div
-            key={i}
+            key={`petal-${i}`}
             className="sakura-petal"
-            initial={{ y: -50, x: Math.random() * 100, opacity: 0, rotate: 0 }}
+            initial={{
+              y: -50,
+              x: Math.random() * window.innerWidth,
+              opacity: 0,
+              rotate: 0,
+              scale: Math.random() * 0.5 + 0.5
+            }}
             animate={{
               y: window.innerHeight + 100,
-              x: Math.random() * 100 - 50 + (i % 3) * 50,
-              opacity: [0, 1, 1, 0],
-              rotate: 360
+              x: `calc(${Math.random() * 100}% - 50px)`,
+              rotate: 360 + Math.random() * 180,
+              opacity: [0, 0.6, 0.3, 0],
+              scale: [1, 1.2, 1]
             }}
             transition={{
-              duration: 8 + Math.random() * 4,
-              delay: i * 0.3,
+              duration: 20 + Math.random() * 15,
+              delay: Math.random() * 5,
               repeat: Infinity,
               ease: "linear"
             }}
+            style={{
+              position: 'absolute',
+              width: '20px',
+              height: '20px',
+              background: 'linear-gradient(135deg, #FFB6C1, #FF69B4)',
+              borderRadius: '50% 0 50% 50%',
+              filter: 'blur(1px)',
+              opacity: 0.7,
+              boxShadow: '0 2px 8px rgba(255, 182, 193, 0.4)'
+            }}
           />
         ))}
+
+        {/* Gentle Bokeh Lights */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={`bokeh-${i}`}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{
+              scale: [0.7, 1.3, 0.7],
+              opacity: [0.2, 0.5, 0.2]
+            }}
+            transition={{
+              duration: 8 + i * 3,
+              delay: i * 0.8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            style={{
+              position: 'absolute',
+              left: `${10 + i * 12}%`,
+              top: `${15 + (i % 4) * 20}%`,
+              width: '100px',
+              height: '100px',
+              background: 'radial-gradient(circle, rgba(255, 182, 193, 0.25) 0%, transparent 70%)',
+              filter: 'blur(15px)',
+              borderRadius: '50%'
+            }}
+          />
+        ))}
+
+        {/* Subtle Grid Pattern */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: `linear-gradient(rgba(255, 182, 193, 0.03) 1px, transparent 1px),
+                           linear-gradient(90deg, rgba(255, 182, 193, 0.03) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px',
+          opacity: 0.3
+        }} />
       </div>
+
+      {/* Character Sprite (Left Side) */}
+      {showCharacter && (
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+          className="character-sprite"
+          style={{
+            position: 'absolute',
+            left: '80px',
+            bottom: '200px',
+            width: '300px',
+            height: '500px',
+            zIndex: 30,
+            display: 'flex',
+            alignItems: 'flex-end',
+            justifyContent: 'center'
+          }}
+        >
+          {/* Character Container */}
+          <div style={{
+            position: 'relative',
+            width: '250px',
+            height: '400px'
+          }}>
+            {/* Character Frame with Glow */}
+            <motion.div
+              animate={{
+                y: [0, -5, 0],
+                scale: characterMood === 'happy' ? [1, 1.02, 1] : 1
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              style={{
+                width: '100%',
+                height: '100%',
+                background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 252, 0.9))',
+                borderRadius: '20px',
+                position: 'relative',
+                overflow: 'hidden',
+                boxShadow: `
+            0 20px 60px rgba(255, 105, 180, 0.3),
+            inset 0 0 40px rgba(255, 255, 255, 0.4)
+          `,
+                border: '3px solid rgba(255, 255, 255, 0.8)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                padding: '30px 20px'
+              }}
+            >
+              {/* Circle Frame for Character Image */}
+              <motion.div
+                animate={characterMood === 'happy' ? {
+                  scale: [1, 1.05, 1],
+                  boxShadow: [
+                    '0 0 30px rgba(255, 105, 180, 0.4)',
+                    '0 0 50px rgba(255, 105, 180, 0.6)',
+                    '0 0 30px rgba(255, 105, 180, 0.4)'
+                  ]
+                } : {}}
+                transition={{ duration: 2, repeat: Infinity }}
+                style={{
+                  width: '160px',
+                  height: '160px',
+                  borderRadius: '50%',
+                  border: '4px solid rgba(255, 182, 193, 0.8)',
+                  background: 'linear-gradient(135deg, #FFF5F5, #FFECEC)',
+                  marginBottom: '25px',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  boxShadow: '0 15px 40px rgba(255, 182, 193, 0.4)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                {/* Character Image */}
+                <div style={{
+                  width: '150px',
+                  height: '150px',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  position: 'relative',
+                  border: '2px solid rgba(255, 255, 255, 0.9)',
+                  boxShadow: 'inset 0 0 20px rgba(255, 255, 255, 0.5)'
+                }}>
+
+
+                  <img
+                    src="/images/witness-character.png"
+                    alt="Witness Character"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      filter: characterMood === 'happy' ? 'brightness(1.1) saturate(1.2)' :
+                        characterMood === 'curious' ? 'brightness(1.05)' : 'none'
+                    }}
+                  />
+
+                  {/* Gradient Overlay */}
+                  <div style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'radial-gradient(circle at 30% 30%, transparent 50%, rgba(255, 182, 193, 0.2) 100%)',
+                    mixBlendMode: 'overlay'
+                  }} />
+                </div>
+
+                {/* Animated Ring Around Image */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  style={{
+                    position: 'absolute',
+                    inset: '-10px',
+                    border: '2px dashed rgba(255, 182, 193, 0.4)',
+                    borderRadius: '50%',
+                    filter: 'blur(1px)'
+                  }}
+                />
+              </motion.div>
+
+              {/* Character Info */}
+              <div style={{
+                textAlign: 'center',
+                marginTop: '10px'
+              }}>
+                {/* Character Name */}
+                <div style={{
+                  fontSize: '22px',
+                  color: '#FF69B4',
+                  fontWeight: 'bold',
+                  marginBottom: '8px',
+                  textShadow: '0 2px 4px rgba(255, 105, 180, 0.2)',
+                  letterSpacing: '1px'
+                }}>
+                  WITNESS
+                </div>
+
+                {/* Status Indicator */}
+                <div style={{
+                  fontSize: '14px',
+                  color: '#FFB6C1',
+                  fontStyle: 'italic',
+                  marginBottom: '15px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px'
+                }}>
+                  <motion.div
+                    animate={{
+                      scale: characterMood === 'happy' ? [1, 1.2, 1] : 1,
+                      opacity: characterMood === 'happy' ? [0.7, 1, 0.7] : 0.7
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    style={{
+                      width: '8px',
+                      height: '8px',
+                      borderRadius: '50%',
+                      background: characterMood === 'happy' ? '#4CAF50' :
+                        characterMood === 'curious' ? '#FFC107' : '#9E9E9E'
+                    }}
+                  />
+                  <span>
+                    {characterMood === 'happy' ? 'Delighted' :
+                      characterMood === 'curious' ? 'Curious' : 'Waiting'}
+                  </span>
+                </div>
+
+                {/* Mood Description */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  key={characterMood}
+                  style={{
+                    fontSize: '13px',
+                    color: '#7A5A6A',
+                    fontStyle: 'italic',
+                    lineHeight: '1.4',
+                    padding: '10px 15px',
+                    background: 'rgba(255, 255, 255, 0.7)',
+                    borderRadius: '10px',
+                    border: '1px solid rgba(255, 182, 193, 0.3)',
+                    maxWidth: '200px',
+                    margin: '0 auto'
+                  }}
+                >
+                  {characterMood === 'happy' && "I'm glad to meet you!"}
+                  {characterMood === 'curious' && "That's an interesting name..."}
+                  {characterMood === 'neutral' && "Waiting for your response."}
+                </motion.div>
+              </div>
+
+              {/* Decorative Elements */}
+              <div style={{
+                position: 'absolute',
+                top: '20px',
+                right: '20px',
+                opacity: 0.3
+              }}>
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                  style={{ fontSize: '24px', color: '#FFB6C1' }}
+                >
+                  ✿
+                </motion.div>
+              </div>
+
+              <div style={{
+                position: 'absolute',
+                bottom: '20px',
+                left: '20px',
+                opacity: 0.3
+              }}>
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                  style={{ fontSize: '24px', color: '#FFB6C1' }}
+                >
+                  ✿
+                </motion.div>
+              </div>
+            </motion.div>
+
+
+            {/* Character Name Plate */}
+            <div style={{
+              position: 'absolute',
+              top: '-20px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              background: 'linear-gradient(135deg, #FF69B4, #FF1493)',
+              color: 'white',
+              padding: '10px 30px',
+              borderRadius: '25px',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              letterSpacing: '2px',
+              boxShadow: '0 10px 30px rgba(255, 105, 180, 0.4)',
+              whiteSpace: 'nowrap',
+              zIndex: 2,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px'
+            }}>
+              <span style={{ fontSize: '18px' }}>✦</span>
+              THE WITNESS
+              <span style={{ fontSize: '18px' }}>✦</span>
+            </div>
+
+            {/* Sparkle Effects Around Character */}
+            {characterMood === 'happy' && (
+              <div style={{
+                position: 'absolute',
+                inset: '-20px',
+                overflow: 'hidden',
+                pointerEvents: 'none',
+                zIndex: 1
+              }}>
+                {[...Array(8)].map((_, i) => (
+                  <motion.div
+                    key={`character-sparkle-${i}`}
+                    initial={{ scale: 0, opacity: 0, x: '50%', y: '50%' }}
+                    animate={{
+                      scale: [0, 1.5, 0],
+                      opacity: [0, 0.8, 0],
+                      x: ['50%', `${Math.cos(i * 45) * 100 + 50}%`],
+                      y: ['50%', `${Math.sin(i * 45) * 100 + 50}%`]
+                    }}
+                    transition={{
+                      duration: 2,
+                      delay: i * 0.3,
+                      repeat: Infinity
+                    }}
+                    style={{
+                      position: 'absolute',
+                      left: '50%',
+                      top: '50%',
+                      width: '15px',
+                      height: '15px',
+                      background: 'radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent 70%)',
+                      borderRadius: '50%',
+                      filter: 'blur(1px)',
+                      transform: 'translate(-50%, -50%)'
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Glow Effect Based on Mood */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{
+                opacity: characterMood === 'happy' ? 0.6 :
+                  characterMood === 'curious' ? 0.3 : 0.1,
+                scale: 1.2
+              }}
+              transition={{ duration: 0.5 }}
+              style={{
+                position: 'absolute',
+                inset: '-15px',
+                background: `radial-gradient(circle, ${characterMood === 'happy' ? 'rgba(255, 105, 180, 0.6)' :
+                  characterMood === 'curious' ? 'rgba(255, 182, 193, 0.4)' :
+                    'rgba(255, 182, 193, 0.2)'
+                  }, transparent 70%)`,
+                filter: 'blur(15px)',
+                zIndex: -1,
+                borderRadius: '30px'
+              }}
+            />
+          </div>
+        </motion.div>
+      )}
+
+      {/* Main Galgame Dialogue Box */}
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.3, type: "spring", stiffness: 100 }}
+        className="galgame-dialogue-box"
+        onClick={handleSkipTyping}
+        style={{
+          position: 'absolute',
+          bottom: '40px',
+          left: showCharacter ? 'calc(300px + 100px)' : '50%',
+          transform: showCharacter ? 'none' : 'translateX(-50%)',
+          width: showCharacter ? 'calc(100vw - 400px - 80px)' : 'min(800px, 95vw)',
+          minWidth: '400px',
+          height: '200px',
+          background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.98), rgba(255, 250, 252, 0.98))',
+          backdropFilter: 'blur(20px)',
+          borderRadius: '20px',
+          border: '3px solid rgba(255, 182, 193, 0.5)',
+          boxShadow: `
+            0 25px 60px rgba(255, 182, 193, 0.25),
+            0 0 40px rgba(255, 255, 255, 0.4) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.9) inset
+          `,
+          cursor: isTyping ? 'pointer' : 'default',
+          zIndex: 50,
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          padding: '0 30px'
+        }}
+      >
+        {/* Dialogue Content */}
+        <div style={{
+          flex: 1,
+          minHeight: '140px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center'
+        }}>
+          {/* Character Name */}
+          <div style={{
+            color: '#FF69B4',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            letterSpacing: '2px',
+            marginBottom: '15px',
+            textTransform: 'uppercase',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px'
+          }}>
+            <div style={{
+              width: '10px',
+              height: '10px',
+              borderRadius: '50%',
+              background: '#FF69B4',
+              animation: 'pulse 2s infinite'
+            }} />
+            THE WITNESS
+          </div>
+
+          {/* Dialogue Text */}
+          <div style={{
+            color: '#4A2C3A',
+            fontSize: '20px',
+            lineHeight: '1.6',
+            fontFamily: "'Noto Sans JP', sans-serif",
+            fontWeight: 400,
+            letterSpacing: '0.5px',
+            textShadow: '0 1px 2px rgba(255, 255, 255, 0.8)',
+            minHeight: '80px'
+          }}>
+            "{dialogueText}"
+            {isTyping && (
+              <motion.span
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 0.8, repeat: Infinity }}
+                style={{
+                  marginLeft: '5px',
+                  color: '#FF69B4',
+                  fontWeight: 'bold'
+                }}
+              >
+                ▌
+              </motion.span>
+            )}
+          </div>
+
+          {/* Hint Text */}
+          {isTyping && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="dialogue-hint"
+              style={{
+                marginTop: '15px',
+                fontSize: '12px',
+                color: '#FFB6C1',
+                fontStyle: 'italic',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}
+            >
+              <div style={{ fontSize: '16px', color: '#FF69B4' }}>▶</div>
+              Click to skip
+            </motion.div>
+          )}
+        </div>
+
+        {/* Decorative Corners */}
+        <div className="dialogue-corners">
+          <div style={{
+            position: 'absolute',
+            top: '15px',
+            left: '15px',
+            width: '30px',
+            height: '30px',
+            borderTop: '2px solid rgba(255, 182, 193, 0.6)',
+            borderLeft: '2px solid rgba(255, 182, 193, 0.6)',
+            borderRadius: '8px 0 0 0'
+          }} />
+          <div style={{
+            position: 'absolute',
+            top: '15px',
+            right: '15px',
+            width: '30px',
+            height: '30px',
+            borderTop: '2px solid rgba(255, 182, 193, 0.6)',
+            borderRight: '2px solid rgba(255, 182, 193, 0.6)',
+            borderRadius: '0 8px 0 0'
+          }} />
+          <div style={{
+            position: 'absolute',
+            bottom: '15px',
+            left: '15px',
+            width: '30px',
+            height: '30px',
+            borderBottom: '2px solid rgba(255, 182, 193, 0.6)',
+            borderLeft: '2px solid rgba(255, 182, 193, 0.6)',
+            borderRadius: '0 0 0 8px'
+          }} />
+          <div style={{
+            position: 'absolute',
+            bottom: '15px',
+            right: '15px',
+            width: '30px',
+            height: '30px',
+            borderBottom: '2px solid rgba(255, 182, 193, 0.6)',
+            borderRight: '2px solid rgba(255, 182, 193, 0.6)',
+            borderRadius: '0 0 8px 0'
+          }} />
+        </div>
+      </motion.div>
+
+      {/* Name Input Section */}
+      <AnimatePresence>
+        {showInput && currentStep < 2 && (
+          <motion.div
+            initial={{ y: 100, opacity: 0, scale: 0.9 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={{ y: 50, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="galgame-name-input-container"
+            style={{
+              position: 'absolute',
+              top: '80px',
+              left: showCharacter ? 'calc(300px + 100px)' : '50%',
+              transform: showCharacter ? 'none' : 'translateX(-50%)',
+              width: showCharacter ? 'calc(100vw - 400px - 80px)' : 'min(600px, 90vw)',
+              minWidth: '400px',
+              background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 250, 252, 0.95))',
+              borderRadius: '20px',
+              padding: '30px',
+              border: '3px solid rgba(255, 182, 193, 0.5)',
+              boxShadow: '0 20px 50px rgba(255, 182, 193, 0.25)',
+              zIndex: 40,
+              backdropFilter: 'blur(10px)'
+            }}
+          >
+            <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+              {/* Title with Japanese Text */}
+              <div style={{
+                textAlign: 'center',
+                marginBottom: '30px',
+                position: 'relative'
+              }}>
+                <div style={{
+                  fontSize: '0.9rem',
+                  color: '#FF69B4',
+                  fontWeight: 'bold',
+                  letterSpacing: '3px',
+                  marginBottom: '8px',
+                  textTransform: 'uppercase'
+                }}>
+                  ENTER YOUR NAME
+                </div>
+                <div style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: '1.1rem',
+                  color: '#4A2C3A',
+                  letterSpacing: '1px',
+                  marginBottom: '15px',
+                  fontStyle: 'italic'
+                }}>
+                  What shall I call you, wanderer?
+                </div>
+
+                {/* Animated Line */}
+                <motion.div
+                  animate={{ scaleX: [0, 1, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  style={{
+                    height: '2px',
+                    width: '150px',
+                    background: 'linear-gradient(90deg, transparent, #FF69B4, transparent)',
+                    margin: '0 auto',
+                    borderRadius: '1px'
+                  }}
+                />
+              </div>
+
+              {/* Elegant Name Input */}
+              <div style={{ position: 'relative', marginBottom: '30px' }}>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '15px',
+                  marginBottom: '10px'
+                }}>
+                  <div style={{
+                    fontSize: '14px',
+                    color: '#FF69B4',
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontWeight: '600',
+                    letterSpacing: '1px'
+                  }}>
+                    NAME:
+                  </div>
+                  <div style={{
+                    fontSize: '12px',
+                    color: '#FFB6C1',
+                    fontStyle: 'italic',
+                    fontFamily: "'Cormorant Garamond', serif"
+                  }}>
+                    (Maximum 16 characters)
+                  </div>
+                </div>
+
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
+                  placeholder="Enter your name here..."
+                  style={{
+                    width: '100%',
+                    padding: '20px 25px',
+                    background: 'rgba(255, 255, 255, 0.9)',
+                    border: `2px solid ${isFocused ? '#FF69B4' : 'rgba(255, 182, 193, 0.4)'}`,
+                    borderRadius: '12px',
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: '18px',
+                    color: '#4A2C3A',
+                    outline: 'none',
+                    transition: 'all 0.3s ease',
+                    boxShadow: isFocused
+                      ? '0 10px 30px rgba(255, 105, 180, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.4)'
+                      : '0 5px 20px rgba(255, 182, 193, 0.15), inset 0 0 10px rgba(255, 255, 255, 0.3)',
+                    letterSpacing: '1px'
+                  }}
+                  maxLength={16}
+                  autoFocus
+                />
+
+                {/* Input Decoration */}
+                <div style={{
+                  position: 'absolute',
+                  right: '15px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  fontSize: '20px',
+                  color: isFocused ? '#FF69B4' : 'rgba(255, 182, 193, 0.5)',
+                  pointerEvents: 'none',
+                  marginTop: '15px' // Adjust based on label height
+                }}>
+                  ✎
+                </div>
+
+                {/* Character Counter */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: '-25px',
+                  right: '10px',
+                  fontSize: '12px',
+                  color: inputValue.length >= 14 ? '#FF4757' : '#FFB6C1',
+                  fontFamily: "'Cormorant Garamond', serif",
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '5px'
+                }}>
+                  <span>{inputValue.length}/16</span>
+                  {inputValue.length >= 14 && (
+                    <span style={{ fontSize: '14px' }}>⚠</span>
+                  )}
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div style={{
+                display: 'flex',
+                gap: '15px',
+                marginTop: '40px'
+              }}>
+                {/* Random Name Button */}
+                <motion.button
+                  type="button"
+                  onClick={handleRandomName}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{
+                    flex: 1,
+                    padding: '16px',
+                    background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 252, 0.9))',
+                    color: '#FF69B4',
+                    border: '2px solid rgba(255, 182, 193, 0.6)',
+                    borderRadius: '12px',
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    backdropFilter: 'blur(10px)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '10px',
+                    boxShadow: '0 8px 25px rgba(255, 182, 193, 0.2)',
+                    fontFamily: "'Noto Sans JP', sans-serif"
+                  }}
+                >
+                  <span style={{ fontSize: '18px' }}>🎲</span>
+                  Random Name
+                </motion.button>
+
+                {/* Submit Button */}
+                <motion.button
+                  type="submit"
+                  whileHover={inputValue.trim() ? { scale: 1.05, y: -2 } : {}}
+                  whileTap={inputValue.trim() ? { scale: 0.98 } : {}}
+                  disabled={!inputValue.trim()}
+                  style={{
+                    flex: 2,
+                    padding: '18px',
+                    background: inputValue.trim()
+                      ? 'linear-gradient(145deg, #FF69B4, #FF1493)'
+                      : 'linear-gradient(145deg, #E0C8D1, #D4B7C9)',
+                    color: inputValue.trim() ? 'white' : '#CC99AA',
+                    border: 'none',
+                    borderRadius: '12px',
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    cursor: inputValue.trim() ? 'pointer' : 'not-allowed',
+                    boxShadow: inputValue.trim()
+                      ? '0 15px 35px rgba(255, 105, 180, 0.35)'
+                      : '0 5px 15px rgba(204, 153, 170, 0.2)',
+                    fontFamily: "'Noto Sans JP', sans-serif",
+                    letterSpacing: '1px',
+                    transition: 'all 0.3s ease',
+                    position: 'relative',
+                    overflow: 'hidden'
+                  }}
+                >
+                  <span style={{ position: 'relative', zIndex: 2 }}>
+                    {inputValue.trim() ? 'BEGIN THE VOW' : 'ENTER NAME FIRST'}
+                  </span>
+
+                  {/* Button Effects */}
+                  {inputValue.trim() && (
+                    <>
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                        style={{
+                          position: 'absolute',
+                          top: '-50%',
+                          left: '-50%',
+                          width: '200%',
+                          height: '200%',
+                          background: 'linear-gradient(transparent, rgba(255, 255, 255, 0.2), transparent)',
+                          pointerEvents: 'none'
+                        }}
+                      />
+                      <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)',
+                        animation: 'shimmer 2s infinite'
+                      }} />
+                    </>
+                  )}
+                </motion.button>
+              </div>
+
+              {/* Hint Text */}
+              {!inputValue.trim() && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  style={{
+                    textAlign: 'center',
+                    marginTop: '25px',
+                    fontSize: '13px',
+                    color: '#FFB6C1',
+                    fontStyle: 'italic',
+                    fontFamily: "'Noto Sans JP', sans-serif",
+                    lineHeight: '1.5'
+                  }}
+                >
+                  Your name will be remembered throughout this journey.
+                  <br />
+                  Choose one that resonates with your heart.
+                </motion.div>
+              )}
+            </form>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Confirmation Overlay */}
+      <AnimatePresence>
+        {currentStep === 2 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="confirmation-overlay"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'rgba(255, 240, 245, 0.95)',
+              backdropFilter: 'blur(20px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 100
+            }}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0, y: 50 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              transition={{ type: "spring", damping: 25 }}
+              style={{
+                background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 250, 252, 0.98))',
+                borderRadius: '30px',
+                padding: '50px',
+                maxWidth: '500px',
+                width: '90%',
+                textAlign: 'center',
+                border: '3px solid rgba(255, 182, 193, 0.5)',
+                boxShadow: `
+                  0 30px 70px rgba(255, 182, 193, 0.35),
+                  0 0 50px rgba(255, 255, 255, 0.4) inset
+                `
+              }}
+            >
+              {/* Confetti Effect */}
+              {[...Array(15)].map((_, i) => (
+                <motion.div
+                  key={`confetti-${i}`}
+                  initial={{ y: -20, x: 0, opacity: 0, rotate: 0 }}
+                  animate={{ y: 50, x: (Math.random() - 0.5) * 150, opacity: [0, 1, 0], rotate: 360 }}
+                  transition={{ duration: 1.5, delay: i * 0.1 }}
+                  style={{
+                    position: 'absolute',
+                    top: '20px',
+                    left: `${(i % 5) * 20 + 10}%`,
+                    width: '12px',
+                    height: '12px',
+                    background: ['#FF69B4', '#FFB6C1', '#FFD1DC'][i % 3],
+                    borderRadius: i % 2 === 0 ? '50%' : '2px',
+                    opacity: 0.7
+                  }}
+                />
+              ))}
+
+              {/* Heart Animation */}
+              <motion.div
+                animate={{
+                  scale: [1, 1.3, 1],
+                  rotate: [0, 10, -10, 0]
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+                style={{
+                  fontSize: '60px',
+                  color: '#FF69B4',
+                  marginBottom: '25px',
+                  filter: 'drop-shadow(0 5px 20px rgba(255, 105, 180, 0.4))'
+                }}
+              >
+                ❤
+              </motion.div>
+
+              {/* Confirmation Text */}
+              <div style={{
+                fontSize: '20px',
+                color: '#4A2C3A',
+                lineHeight: '1.6',
+                marginBottom: '30px',
+                fontFamily: "'Noto Sans JP', sans-serif"
+              }}>
+                Welcome, <span style={{
+                  color: '#FF1493',
+                  fontWeight: 'bold',
+                  textShadow: '0 2px 4px rgba(255, 105, 180, 0.2)'
+                }}>{inputValue}</span>
+                <br />
+                <span style={{
+                  fontSize: '16px',
+                  color: '#FF69B4',
+                  fontStyle: 'italic',
+                  marginTop: '10px',
+                  display: 'block'
+                }}>
+                  Your journey in the garden begins now...
+                </span>
+              </div>
+
+              {/* Loading Dots */}
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginTop: '30px' }}>
+                {[0, 1, 2].map((i) => (
+                  <motion.div
+                    key={i}
+                    animate={{ scale: [1, 1.4, 1], opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 1.5, delay: i * 0.2, repeat: Infinity }}
+                    style={{
+                      width: '12px',
+                      height: '12px',
+                      background: '#FF69B4',
+                      borderRadius: '50%',
+                      boxShadow: '0 0 15px rgba(255, 105, 180, 0.5)'
+                    }}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Background Ambient Elements */}
+      <div style={{
+        position: 'absolute',
+        top: '50px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        display: 'flex',
+        gap: '30px',
+        opacity: 0.4,
+        zIndex: 1
+      }}>
+        {['✿', '✦', '✿', '✦', '✿'].map((icon, i) => (
+          <motion.div
+            key={i}
+            animate={{
+              y: [0, -10, 0],
+              rotate: i % 2 === 0 ? [0, 5, 0] : [0, -5, 0]
+            }}
+            transition={{ duration: 3, delay: i * 0.2, repeat: Infinity }}
+            style={{
+              fontSize: '24px',
+              color: '#FFB6C1'
+            }}
+          >
+            {icon}
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Add CSS Animations */}
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.5; transform: scale(1.1); }
+        }
+        
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        
+        .galgame-name-entry-stage {
+          -webkit-font-smoothing: antialiased;
+          text-rendering: optimizeLegibility;
+        }
+        
+        input::placeholder {
+          color: rgba(255, 182, 193, 0.7);
+          font-style: italic;
+          transition: opacity 0.3s ease;
+        }
+        
+        input:focus::placeholder {
+          opacity: 0.4;
+        }
+        
+        /* Character breathing animation */
+        @keyframes characterBreathe {
+          0%, 100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-5px) scale(1.01); }
+        }
+      `}</style>
     </motion.div>
   );
 };
@@ -2934,23 +4117,69 @@ const SelectionStage = ({
   const [showDialogue, setShowDialogue] = useState(true);
   const [currentDialogueIndex, setCurrentDialogueIndex] = useState(0);
   const [hoveredCharacter, setHoveredCharacter] = useState<number | null>(null);
+  const [characterMood, setCharacterMood] = useState<'neutral' | 'curious' | 'happy'>('happy'); // Always happy
 
   // Dialogue sequences for different states
   const generalDialogues = [
-    "Who will be your companion in this journey of focus?",
-    "Each guardian has a unique vow to offer...",
-    "Click on a character to hear their promise.",
-    "Choose wisely, for this bond will guide your focus."
+    "I'm so excited to help you choose a companion!",
+    "Each companion has a unique gift for your focus journey.",
+    "Who makes your heart flutter with anticipation?",
+    "I can't wait to see who you'll choose!"
   ];
 
+
+  const WITNESS_DIALOGUES = {
+    1: {
+      happy: [
+        "Caleb provides wisdom in silence. An excellent choice!",
+        "Caleb's calm presence will guide your focus beautifully!",
+        "With Caleb, you'll find strength in quiet determination. Wonderful!"
+      ]
+    },
+    2: {
+      happy: [
+        "Zayne brings elegant focus. A refined selection!",
+        "Zayne's grace will elevate your work magnificently!",
+        "With Zayne, your focus will be both beautiful and powerful. Delightful!"
+      ]
+    },
+    3: {
+      happy: [
+        "Rafayel protects from distractions. A wise choice!",
+        "Rafayel's vigilance will keep you on track perfectly!",
+        "With Rafayel, your vow is in safe hands. Excellent!"
+      ]
+    },
+    4: {
+      happy: [
+        "Xavier stirs gentle momentum. A creative choice!",
+        "Xavier's inspiration will fuel your progress wonderfully!",
+        "With Xavier, you'll create something beautiful. Lovely!"
+      ]
+    },
+    5: {
+      happy: [
+        "Sylus offers steady patience. A reliable choice!",
+        "Sylus's endurance will support your journey splendidly!",
+        "With Sylus, you'll build lasting focus. Perfect!"
+      ]
+    }
+  };
+  
   // Get dialogue based on current state
   const getCurrentDialogue = useCallback(() => {
     if (selectedCharacter && selected) {
-      return selected.dialogue;
+      const dialogues = WITNESS_DIALOGUES[selected.id as keyof typeof WITNESS_DIALOGUES];
+      if (dialogues) {
+        const happyDialogues = dialogues.happy;
+        const index = currentDialogueIndex % happyDialogues.length;
+        return happyDialogues[index];
+      }
+      return "I'm delighted with your choice!";
     }
     if (hoveredCharacter) {
       const character = COMPANIONS.find(c => c.id === hoveredCharacter);
-      return `${character?.name}: "${character?.epithet}"`;
+      return `${character?.name} - What a wonderful companion!`;
     }
     return generalDialogues[currentDialogueIndex];
   }, [selectedCharacter, selected, hoveredCharacter, currentDialogueIndex]);
@@ -2967,19 +4196,23 @@ const SelectionStage = ({
         setDialogueText(character.secretDialogue);
         onSecretDialogue(character.secretDialogue);
       } else {
-        // Cycle through different dialogues
-        const dialogues = [
-          character.dialogue,
-          character.focusPower,
-          `My vow to you: ${character.dialogue}`
-        ];
-        setDialogueText(dialogues[clickCount % dialogues.length]);
+        const dialogues = WITNESS_DIALOGUES[id as keyof typeof WITNESS_DIALOGUES];
+        if (dialogues) {
+          const happyDialogues = dialogues.happy;
+          setDialogueText(happyDialogues[clickCount % happyDialogues.length]);
+        }
       }
       setIsTyping(true);
     } else {
       // New character selected
       onSelect(id);
-      setDialogueText(character.dialogue);
+      const dialogues = WITNESS_DIALOGUES[id as keyof typeof WITNESS_DIALOGUES];
+      if (dialogues) {
+        const happyDialogues = dialogues.happy;
+        setDialogueText(happyDialogues[0]);
+      } else {
+        setDialogueText("I'm absolutely delighted with your choice!");
+      }
       setIsTyping(true);
     }
   }, [selectedCharacter, characterClickCounts, onSelect, onSecretDialogue]);
@@ -2990,7 +4223,7 @@ const SelectionStage = ({
     if (id && selectedCharacter !== id) {
       const character = COMPANIONS.find(c => c.id === id);
       if (character) {
-        setDialogueText(`${character.name} - ${character.epithet}`);
+        setDialogueText(`${character.name} - I'm excited you're considering them!`);
         setIsTyping(true);
       }
     }
@@ -2999,7 +4232,7 @@ const SelectionStage = ({
   // Clear selection
   const handleClearSelection = useCallback(() => {
     onSelect(null);
-    setDialogueText("Selection cleared. Who calls to your heart?");
+    setDialogueText("I'm excited to see who you'll choose next!");
     setIsTyping(true);
   }, [onSelect]);
 
@@ -3063,7 +4296,7 @@ const SelectionStage = ({
         height: '100vh',
         overflow: 'hidden',
         background: 'linear-gradient(135deg, #ffffff 0%, #fff5f7 30%, #ffeef2 100%)',
-        fontFamily: "'Noto Sans JP', 'Segoe UI', sans-serif"
+        fontFamily: "'Cormorant Garamond', 'Georgia', serif"
       }}
     >
       {/* White-Pink Background Effects */}
@@ -3130,7 +4363,314 @@ const SelectionStage = ({
         ))}
       </div>
 
-      {/* GALGAME DIALOGUE BOX - ON TOP */}
+      {/* WITNESS CHARACTER SPRITE */}
+      <motion.div
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+        className="witness-character-sprite"
+        style={{
+          position: 'absolute',
+          left: '80px',
+          bottom: '200px',
+          width: '300px',
+          height: '500px',
+          zIndex: 30,
+          display: 'flex',
+          alignItems: 'flex-end',
+          justifyContent: 'center'
+        }}
+      >
+        {/* Character Container */}
+        <div style={{
+          position: 'relative',
+          width: '250px',
+          height: '400px'
+        }}>
+          {/* Character Frame with Glow */}
+          <motion.div
+            animate={{
+              y: [0, -5, 0],
+              scale: [1, 1.02, 1] // Always animated
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            style={{
+              width: '100%',
+              height: '100%',
+              background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 252, 0.9))',
+              borderRadius: '20px',
+              position: 'relative',
+              overflow: 'hidden',
+              boxShadow: `
+                0 20px 60px rgba(255, 105, 180, 0.3),
+                inset 0 0 40px rgba(255, 255, 255, 0.4)
+              `,
+              border: '3px solid rgba(255, 255, 255, 0.8)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '30px 20px'
+            }}
+          >
+            {/* Circle Frame for Character Image */}
+            <motion.div
+              animate={{
+                scale: [1, 1.05, 1], // Always animated
+                boxShadow: [
+                  '0 0 30px rgba(255, 105, 180, 0.4)',
+                  '0 0 50px rgba(255, 105, 180, 0.6)',
+                  '0 0 30px rgba(255, 105, 180, 0.4)'
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+              style={{
+                width: '160px',
+                height: '160px',
+                borderRadius: '50%',
+                border: '4px solid rgba(255, 182, 193, 0.8)',
+                background: 'linear-gradient(135deg, #FFF5F5, #FFECEC)',
+                marginBottom: '25px',
+                position: 'relative',
+                overflow: 'hidden',
+                boxShadow: '0 15px 40px rgba(255, 182, 193, 0.4)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              {/* Character Image */}
+              <div style={{
+                width: '150px',
+                height: '150px',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                position: 'relative',
+                border: '2px solid rgba(255, 255, 255, 0.9)',
+                boxShadow: 'inset 0 0 20px rgba(255, 255, 255, 0.5)'
+              }}>
+                <img
+                  src="/images/witness-character.png"
+                  alt="Witness Character"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    filter: 'brightness(1.1) saturate(1.2)' // Always happy filter
+                  }}
+                />
+
+                {/* Gradient Overlay */}
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'radial-gradient(circle at 30% 30%, transparent 50%, rgba(255, 182, 193, 0.2) 100%)',
+                  mixBlendMode: 'overlay'
+                }} />
+              </div>
+
+              {/* Animated Ring Around Image */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                style={{
+                  position: 'absolute',
+                  inset: '-10px',
+                  border: '2px dashed rgba(255, 182, 193, 0.4)',
+                  borderRadius: '50%',
+                  filter: 'blur(1px)'
+                }}
+              />
+            </motion.div>
+
+            {/* Character Info */}
+            <div style={{
+              textAlign: 'center',
+              marginTop: '10px'
+            }}>
+              {/* Character Name */}
+              <div style={{
+                fontSize: '22px',
+                color: '#FF69B4',
+                fontWeight: 'bold',
+                marginBottom: '8px',
+                textShadow: '0 2px 4px rgba(255, 105, 180, 0.2)',
+                letterSpacing: '1px'
+              }}>
+                WITNESS
+              </div>
+
+              {/* Status Indicator */}
+              <div style={{
+                fontSize: '14px',
+                color: '#FFB6C1',
+                fontStyle: 'italic',
+                marginBottom: '15px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px'
+              }}>
+                <motion.div
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.7, 1, 0.7]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  style={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    background: '#4CAF50' // Always green
+                  }}
+                />
+                <span>
+                  Absolutely Delighted
+                </span>
+              </div>
+
+              {/* Mood Description */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                style={{
+                  fontSize: '13px',
+                  color: '#7A5A6A',
+                  fontStyle: 'italic',
+                  lineHeight: '1.4',
+                  padding: '10px 15px',
+                  background: 'rgba(255, 255, 255, 0.7)',
+                  borderRadius: '10px',
+                  border: '1px solid rgba(255, 182, 193, 0.3)',
+                  maxWidth: '200px',
+                  margin: '0 auto'
+                }}
+              >
+                {selectedCharacter 
+                  ? `So happy you're considering ${selected?.name}!` 
+                  : "I'm absolutely delighted to help you choose your companion!"}
+              </motion.div>
+            </div>
+
+            {/* Decorative Elements */}
+            <div style={{
+              position: 'absolute',
+              top: '20px',
+              right: '20px',
+              opacity: 0.3
+            }}>
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                style={{ fontSize: '24px', color: '#FFB6C1' }}
+              >
+                ✿
+              </motion.div>
+            </div>
+
+            <div style={{
+              position: 'absolute',
+              bottom: '20px',
+              left: '20px',
+              opacity: 0.3
+            }}>
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                style={{ fontSize: '24px', color: '#FFB6C1' }}
+              >
+                ✿
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Character Name Plate */}
+          <div style={{
+            position: 'absolute',
+            top: '-20px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: 'linear-gradient(135deg, #FF69B4, #FF1493)',
+            color: 'white',
+            padding: '10px 30px',
+            borderRadius: '25px',
+            fontSize: '14px',
+            fontWeight: 'bold',
+            letterSpacing: '2px',
+            boxShadow: '0 10px 30px rgba(255, 105, 180, 0.4)',
+            whiteSpace: 'nowrap',
+            zIndex: 2,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px'
+          }}>
+            <span style={{ fontSize: '18px' }}>✦</span>
+            THE WITNESS
+            <span style={{ fontSize: '18px' }}>✦</span>
+          </div>
+
+          {/* Sparkle Effects Around Character */}
+          <div style={{
+            position: 'absolute',
+            inset: '-20px',
+            overflow: 'hidden',
+            pointerEvents: 'none',
+            zIndex: 1
+          }}>
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={`character-sparkle-${i}`}
+                initial={{ scale: 0, opacity: 0, x: '50%', y: '50%' }}
+                animate={{
+                  scale: [0, 1.5, 0],
+                  opacity: [0, 0.8, 0],
+                  x: ['50%', `${Math.cos(i * 45) * 100 + 50}%`],
+                  y: ['50%', `${Math.sin(i * 45) * 100 + 50}%`]
+                }}
+                transition={{
+                  duration: 2,
+                  delay: i * 0.3,
+                  repeat: Infinity
+                }}
+                style={{
+                  position: 'absolute',
+                  left: '50%',
+                  top: '50%',
+                  width: '15px',
+                  height: '15px',
+                  background: 'radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent 70%)',
+                  borderRadius: '50%',
+                  filter: 'blur(1px)',
+                  transform: 'translate(-50%, -50%)'
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Glow Effect - Always happy glow */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: 0.6, // Always visible
+              scale: 1.2
+            }}
+            transition={{ duration: 0.5 }}
+            style={{
+              position: 'absolute',
+              inset: '-15px',
+              background: 'radial-gradient(circle, rgba(255, 105, 180, 0.6), transparent 70%)',
+              filter: 'blur(15px)',
+              zIndex: -1,
+              borderRadius: '30px'
+            }}
+          />
+        </div>
+      </motion.div>
+
+      {/* GALGAME DIALOGUE BOX  */}
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -3140,9 +4680,11 @@ const SelectionStage = ({
         style={{
           position: 'absolute',
           top: '40px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: 'min(900px, 95vw)',
+          left: 'calc(300px + 100px)', // Adjusted for witness character on left
+          right: '40px', // Added right padding
+          transform: 'none', // Removed translateX since we're not centering
+          width: 'calc(100vw - 400px - 80px)', // Adjusted width for witness character
+          minWidth: '400px',
           height: '180px',
           background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.98), rgba(255, 250, 252, 0.98))',
           backdropFilter: 'blur(20px)',
@@ -3206,7 +4748,8 @@ const SelectionStage = ({
               color: '#FF69B4',
               fontSize: '14px',
               fontWeight: 'bold',
-              letterSpacing: '1px'
+              letterSpacing: '1px',
+              fontFamily: "'Cormorant Garamond', serif"
             }}>
               {selected?.name}
             </div>
@@ -3221,7 +4764,7 @@ const SelectionStage = ({
           flexDirection: 'column',
           justifyContent: 'center'
         }}>
-          {/* Character name or narrator */}
+          {/* Character name or witness */}
           <div style={{
             color: selectedCharacter ? '#FF1493' : '#FF69B4',
             fontSize: '16px',
@@ -3229,7 +4772,8 @@ const SelectionStage = ({
             marginBottom: '15px',
             display: 'flex',
             alignItems: 'center',
-            gap: '10px'
+            gap: '10px',
+            fontFamily: "'Cormorant Garamond', serif"
           }}>
             <div style={{
               width: '8px',
@@ -3238,7 +4782,7 @@ const SelectionStage = ({
               background: selectedCharacter ? '#FF1493' : '#FF69B4',
               animation: 'pulse 2s infinite'
             }} />
-            {selectedCharacter ? selected?.name.toUpperCase() : 'NARRATOR'}
+            {selectedCharacter ? selected?.name.toUpperCase() : 'THE WITNESS'}
           </div>
 
           {/* Dialogue text */}
@@ -3246,7 +4790,7 @@ const SelectionStage = ({
             color: '#4A2C3A',
             fontSize: '20px',
             lineHeight: '1.6',
-            fontFamily: "'Noto Sans JP', sans-serif",
+            fontFamily: "'Cormorant Garamond', serif",
             fontWeight: 400,
             letterSpacing: '0.5px',
             textShadow: '0 1px 2px rgba(255, 255, 255, 0.8)',
@@ -3281,7 +4825,8 @@ const SelectionStage = ({
                 fontStyle: 'italic',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px'
+                gap: '8px',
+                fontFamily: "'Cormorant Garamond', serif"
               }}
             >
               <div style={{ fontSize: '16px', color: '#FF69B4' }}>▶</div>
@@ -3335,7 +4880,7 @@ const SelectionStage = ({
         </div>
       </motion.div>
 
-      {/* CHARACTER CARDS - BELOW DIALOGUE - BIGGER SPACING */}
+      {/* CHARACTER CARDS*/}
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -3343,15 +4888,17 @@ const SelectionStage = ({
         className="character-cards-container"
         style={{
           position: 'absolute',
-          top: '240px', // Moved up slightly to make room for bigger spacing
-          left: 0,
-          right: 0,
+          top: '280px',
+          left: 'calc(300px + 100px)', 
+          right: '40px',
           display: 'flex',
           justifyContent: 'center',
-          gap: '40px', // INCREASED from 25px to 40px
-          padding: '0 50px', // INCREASED from 0 40px to 0 50px
+          gap: '40px',
+          padding: '0 20px',
           flexWrap: 'wrap',
-          zIndex: 30
+          zIndex: 30,
+          overflowY: 'visible',
+          maxHeight: 'calc(100vh - 300px)'
         }}
       >
         {COMPANIONS.map((companion) => (
@@ -3371,13 +4918,13 @@ const SelectionStage = ({
             style={{
               cursor: 'pointer',
               position: 'relative',
-              width: '200px', // INCREASED from 180px to 200px (wider spacing)
-              height: '350px', // INCREASED from 320px to 350px (taller spacing)
+              width: '200px',
+              height: '350px',
               background: selectedCharacter === companion.id
                 ? 'linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 250, 252, 0.98))'
                 : 'linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 245, 247, 0.95))',
               borderRadius: '20px',
-              padding: '25px', // INCREASED from 20px to 25px (more internal padding)
+              padding: '25px',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -3400,7 +4947,7 @@ const SelectionStage = ({
               overflow: 'hidden'
             }}
           >
-            {/* Background glow effect - bigger for larger card */}
+            {/* Background glow effect */}
             {selectedCharacter === companion.id && (
               <motion.div
                 initial={{ scale: 0, opacity: 0 }}
@@ -3408,21 +4955,21 @@ const SelectionStage = ({
                 className="selection-glow"
                 style={{
                   position: 'absolute',
-                  inset: '-25px', // INCREASED from -20px to -25px
+                  inset: '-25px',
                   background: 'radial-gradient(circle at 50% 0%, rgba(255, 105, 180, 0.15), transparent 70%)',
                   zIndex: -1,
-                  filter: 'blur(30px)' // INCREASED from 25px to 30px
+                  filter: 'blur(30px)'
                 }}
               />
             )}
 
-            {/* Character image with galgame-style frame - SAME SIZE */}
+            {/* Character image with galgame-style frame */}
             <div style={{
-              width: '140px', // KEPT SAME SIZE
-              height: '140px', // KEPT SAME SIZE
+              width: '140px',
+              height: '140px',
               borderRadius: '50%',
               overflow: 'hidden',
-              marginBottom: '25px', // INCREASED from 20px to 25px
+              marginBottom: '25px',
               border: selectedCharacter === companion.id
                 ? '4px solid rgba(255, 105, 180, 0.8)'
                 : '3px solid rgba(255, 182, 193, 0.5)',
@@ -3457,7 +5004,7 @@ const SelectionStage = ({
               }} />
             </div>
 
-            {/* Character info - SAME TEXT SIZES */}
+            {/* Character info */}
             <div style={{
               textAlign: 'center',
               flex: 1,
@@ -3467,47 +5014,50 @@ const SelectionStage = ({
               width: '100%'
             }}>
               <h3 style={{
-                fontSize: '22px', // KEPT SAME SIZE
+                fontSize: '22px',
                 color: selectedCharacter === companion.id ? '#FF1493' : '#FF69B4',
-                marginBottom: '10px', // INCREASED from 8px to 10px
+                marginBottom: '10px',
                 fontWeight: 'bold',
-                textShadow: '0 1px 2px rgba(255, 255, 255, 0.8)'
+                textShadow: '0 1px 2px rgba(255, 255, 255, 0.8)',
+                fontFamily: "'Cormorant Garamond', serif"
               }}>
                 {companion.name}
               </h3>
 
               <div style={{
-                fontSize: '12px', // KEPT SAME SIZE
+                fontSize: '12px',
                 color: selectedCharacter === companion.id ? '#FF69B4' : '#FFB6C1',
                 background: 'linear-gradient(135deg, rgba(255, 250, 252, 0.9), rgba(255, 240, 245, 0.9))',
-                padding: '6px 14px', // INCREASED from 5px 12px
+                padding: '6px 14px',
                 borderRadius: '15px',
-                marginBottom: '18px', // INCREASED from 15px to 18px
+                marginBottom: '18px',
                 letterSpacing: '1px',
                 border: '1px solid rgba(255, 182, 193, 0.3)',
-                fontStyle: 'italic'
+                fontStyle: 'italic',
+                fontFamily: "'Cormorant Garamond', serif"
               }}>
                 {companion.epithet}
               </div>
 
               <div style={{
-                fontSize: '11px', // KEPT SAME SIZE
+                fontSize: '11px',
                 color: '#A05252',
                 lineHeight: '1.4',
-                marginBottom: '18px', // INCREASED from 15px to 18px
+                marginBottom: '18px',
                 fontStyle: 'italic',
-                height: '45px', // INCREASED from 40px to 45px
+                height: '45px',
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 display: '-webkit-box',
                 WebkitLineClamp: 2,
                 WebkitBoxOrient: 'vertical',
-                padding: '0 5px'
+                padding: '0 5px',
+                fontFamily: "'Cormorant Garamond', serif"
               }}>
                 {companion.focusPower}
               </div>
 
-              {/* Hearts indicator - SAME SIZE */}
+              {/* Hearts indicator */}
               <div style={{
                 display: 'flex',
                 justifyContent: 'center',
@@ -3528,7 +5078,7 @@ const SelectionStage = ({
                     }}
                     style={{
                       color: selectedCharacter === companion.id ? '#FF1493' : '#FF69B4',
-                      fontSize: '18px', // KEPT SAME SIZE
+                      fontSize: '18px',
                       filter: selectedCharacter === companion.id ? 'drop-shadow(0 0 5px rgba(255, 105, 180, 0.4))' : 'none'
                     }}
                   >
@@ -3538,97 +5088,97 @@ const SelectionStage = ({
               </div>
             </div>
 
-            {/* Selection indicator - SAME SIZE */}
+            {/* Selection indicator */}
             {selectedCharacter === companion.id && (
-  <motion.div
-    initial={{ scale: 0, rotate: -180 }}
-    animate={{ scale: 1, rotate: 0 }}
-    transition={{ type: "spring", stiffness: 400, damping: 25 }}
-    className="selection-indicator"
-    style={{
-      position: 'absolute',
-      top: '-15px',
-      right: '-15px',
-      width: '50px',
-      height: '50px',
-      zIndex: 3
-    }}
-  >
-    {/* Outer wax ring */}
-    <motion.div
-      animate={{
-        boxShadow: [
-          '0 0 20px rgba(255, 105, 180, 0.4)',
-          '0 0 30px rgba(255, 105, 180, 0.6)',
-          '0 0 20px rgba(255, 105, 180, 0.4)'
-        ]
-      }}
-      transition={{
-        duration: 2,
-        repeat: Infinity
-      }}
-      style={{
-        position: 'absolute',
-        inset: 0,
-        background: 'linear-gradient(135deg, #FF6B93, #FF1493)',
-        borderRadius: '50%',
-        boxShadow: '0 0 25px rgba(255, 105, 180, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.3)'
-      }}
-    />
-    
-    {/* Inner wax texture */}
-    <div style={{
-      position: 'absolute',
-      inset: '8px',
-      background: 'linear-gradient(135deg, #FF8FAB, #FF6B93)',
-      borderRadius: '50%',
-      border: '2px solid rgba(255, 255, 255, 0.3)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }}>
-      {/* Wax seal symbol */}
-      <div style={{
-        width: '30px',
-        height: '30px',
-        border: '2px solid rgba(255, 255, 255, 0.2)',
-        borderRadius: '50%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}>
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          style={{
-            fontSize: '18px',
-            color: 'rgba(255, 255, 255, 0.9)',
-            fontWeight: 'bold'
-          }}
-        >
-          ✦
-        </motion.div>
-      </div>
-    </div>
-    
-    {/* Dripping wax effect */}
-    <motion.div
-      animate={{ y: [0, 3, 0] }}
-      transition={{ duration: 2, repeat: Infinity }}
-      style={{
-        position: 'absolute',
-        bottom: '-5px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: '15px',
-        height: '10px',
-        background: 'linear-gradient(to bottom, #FF1493, #FF6B93)',
-        borderRadius: '0 0 8px 8px',
-        filter: 'blur(1px)'
-      }}
-    />
-  </motion.div>
-)}
+              <motion.div
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                className="selection-indicator"
+                style={{
+                  position: 'absolute',
+                  top: '-15px',
+                  right: '-15px',
+                  width: '50px',
+                  height: '50px',
+                  zIndex: 3
+                }}
+              >
+                {/* Outer wax ring */}
+                <motion.div
+                  animate={{
+                    boxShadow: [
+                      '0 0 20px rgba(255, 105, 180, 0.4)',
+                      '0 0 30px rgba(255, 105, 180, 0.6)',
+                      '0 0 20px rgba(255, 105, 180, 0.4)'
+                    ]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity
+                  }}
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(135deg, #FF6B93, #FF1493)',
+                    borderRadius: '50%',
+                    boxShadow: '0 0 25px rgba(255, 105, 180, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.3)'
+                  }}
+                />
+
+                {/* Inner wax texture */}
+                <div style={{
+                  position: 'absolute',
+                  inset: '8px',
+                  background: 'linear-gradient(135deg, #FF8FAB, #FF6B93)',
+                  borderRadius: '50%',
+                  border: '2px solid rgba(255, 255, 255, 0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  {/* Wax seal symbol */}
+                  <div style={{
+                    width: '30px',
+                    height: '30px',
+                    border: '2px solid rgba(255, 255, 255, 0.2)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                      style={{
+                        fontSize: '18px',
+                        color: 'rgba(255, 255, 255, 0.9)',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      ✦
+                    </motion.div>
+                  </div>
+                </div>
+
+                {/* Dripping wax effect */}
+                <motion.div
+                  animate={{ y: [0, 3, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  style={{
+                    position: 'absolute',
+                    bottom: '-5px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '15px',
+                    height: '10px',
+                    background: 'linear-gradient(to bottom, #FF1493, #FF6B93)',
+                    borderRadius: '0 0 8px 8px',
+                    filter: 'blur(1px)'
+                  }}
+                />
+              </motion.div>
+            )}
 
             {/* Hover effect border */}
             <motion.div
@@ -3642,14 +5192,14 @@ const SelectionStage = ({
                 border: '2px solid rgba(255, 105, 180, 0.4)',
                 pointerEvents: 'none',
                 zIndex: 1,
-                boxShadow: 'inset 0 0 30px rgba(255, 182, 193, 0.1)' // Increased glow
+                boxShadow: 'inset 0 0 30px rgba(255, 182, 193, 0.1)'
               }}
             />
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Action buttons - adjusted position for bigger cards */}
+      {/* Action buttons - adjusted position for witness character */}
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -3657,9 +5207,9 @@ const SelectionStage = ({
         className="selection-actions"
         style={{
           position: 'absolute',
-          bottom: '60px', // INCREASED from 50px to 60px
-          left: 0,
-          right: 0,
+          bottom: '60px',
+          left: 'calc(300px + 100px)', 
+          right: '40px',
           display: 'flex',
           justifyContent: 'center',
           gap: '30px',
@@ -3687,7 +5237,8 @@ const SelectionStage = ({
               gap: '10px',
               minWidth: '180px',
               justifyContent: 'center',
-              boxShadow: '0 10px 30px rgba(255, 182, 193, 0.25)'
+              boxShadow: '0 10px 30px rgba(255, 182, 193, 0.25)',
+              fontFamily: "'Cormorant Garamond', serif"
             }}
           >
             <span style={{ fontSize: '18px' }}>←</span>
@@ -3718,16 +5269,17 @@ const SelectionStage = ({
               : '0 10px 30px rgba(204, 153, 170, 0.2)',
             minWidth: '220px',
             position: 'relative',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            fontFamily: "'Cormorant Garamond', serif"
           }}
         >
           <span style={{ position: 'relative', zIndex: 2 }}>
             {selectedCharacter ? (
               <>
-                Seal Vow with <span style={{ color: '#FFD1DC' }}>{selected?.name}</span>
+                Begin Vow with <span style={{ color: '#FFD1DC' }}>{selected?.name}</span>
               </>
             ) : (
-              'Select a Companion'
+              'Choose Your Witness'
             )}
           </span>
 
@@ -3788,7 +5340,7 @@ const VowSetupStage = ({
   const [dialogueText, setDialogueText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
   const [showContinue, setShowContinue] = useState(false);
-  const [showChangeConfirmation, setShowChangeConfirmation] = useState(false); // Add this state
+  const [showChangeConfirmation, setShowChangeConfirmation] = useState(false);
 
   // Typewriter effect
   useEffect(() => {
@@ -4876,103 +6428,102 @@ const TimerStage = ({
                 boxShadow: '0 20px 50px rgba(255, 182, 193, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.2)'
               }}
             >
-{/* Tea Ceremony Button - Minimal Sakura */}
-<motion.button
-  onClick={handleStartBreak}
-  whileHover={{ scale: 1.05, y: -2 }}
-  whileTap={{ scale: 0.98 }}
-  style={{
-    position: 'relative',
-    padding: '16px 32px',
-    borderRadius: '20px',
-    border: '2px solid rgba(255, 182, 193, 0.6)',
-    background: 'linear-gradient(135deg, rgba(255, 248, 250, 0.95), rgba(255, 240, 245, 0.95))',
-    color: '#4A2C3A',
-    fontWeight: '600',
-    fontSize: '14px',
-    letterSpacing: '1px',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-    backdropFilter: 'blur(10px)',
-    overflow: 'hidden',
-    minWidth: '200px',
-    justifyContent: 'center',
-    boxShadow: '0 8px 25px rgba(255, 182, 193, 0.4)'
-  }}
->
-  {/* Sakura pattern background */}
-  <div style={{
-    position: 'absolute',
-    inset: 0,
-    opacity: 0.1,
-    backgroundImage: `radial-gradient(circle at 20% 30%, #FFB6C1 2px, transparent 2px),
+              <motion.button
+                onClick={handleStartBreak}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                style={{
+                  position: 'relative',
+                  padding: '16px 32px',
+                  borderRadius: '20px',
+                  border: '2px solid rgba(255, 182, 193, 0.6)',
+                  background: 'linear-gradient(135deg, rgba(255, 248, 250, 0.95), rgba(255, 240, 245, 0.95))',
+                  color: '#4A2C3A',
+                  fontWeight: '600',
+                  fontSize: '14px',
+                  letterSpacing: '1px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  backdropFilter: 'blur(10px)',
+                  overflow: 'hidden',
+                  minWidth: '200px',
+                  justifyContent: 'center',
+                  boxShadow: '0 8px 25px rgba(255, 182, 193, 0.4)'
+                }}
+              >
+                {/* Sakura pattern background */}
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  opacity: 0.1,
+                  backgroundImage: `radial-gradient(circle at 20% 30%, #FFB6C1 2px, transparent 2px),
                       radial-gradient(circle at 80% 70%, #FFB6C1 2px, transparent 2px),
                       radial-gradient(circle at 40% 80%, #FFB6C1 2px, transparent 2px)`,
-    backgroundSize: '30px 30px',
-    pointerEvents: 'none'
-  }} />
+                  backgroundSize: '30px 30px',
+                  pointerEvents: 'none'
+                }} />
 
-  <Tea size={20} style={{ color: '#FF69B4' }} />
-  <span>Tea Ceremony</span>
-</motion.button>
+                <Tea size={20} style={{ color: '#FF69B4' }} />
+                <span>Tea Ceremony</span>
+              </motion.button>
 
-{/* End Vow Button - Minimal Sakura */}
-<motion.button
-  onClick={() => setShowEndConfirmation(true)}
-  whileHover={{ scale: 1.05, y: -2 }}
-  whileTap={{ scale: 0.98 }}
-  style={{
-    position: 'relative',
-    padding: '16px 32px',
-    borderRadius: '20px',
-    border: '2px solid rgba(255, 105, 180, 0.6)',
-    background: 'linear-gradient(135deg, rgba(255, 182, 193, 0.9), rgba(255, 105, 180, 0.9))',
-    color: 'white',
-    fontWeight: '600',
-    fontSize: '14px',
-    letterSpacing: '1px',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-    backdropFilter: 'blur(10px)',
-    overflow: 'hidden',
-    minWidth: '200px',
-    justifyContent: 'center',
-    boxShadow: '0 8px 25px rgba(255, 105, 180, 0.4)'
-  }}
->
-  {/* Falling sakura animation */}
-  <div style={{
-    position: 'absolute',
-    inset: 0,
-    overflow: 'hidden',
-    pointerEvents: 'none'
-  }}>
-    {[...Array(5)].map((_, i) => (
-      <motion.div
-        key={`minimal-petal-${i}`}
-        initial={{ y: -10, x: i * 25, opacity: 0 }}
-        animate={{ y: 50, opacity: [0, 1, 0] }}
-        transition={{ duration: 3, delay: i * 0.6, repeat: Infinity }}
-        style={{
-          position: 'absolute',
-          width: '6px',
-          height: '6px',
-          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4))',
-          borderRadius: '50% 0 50% 50%',
-          filter: 'blur(0.5px)',
-          transform: `rotate(${i * 72}deg)`
-        }}
-      />
-    ))}
-  </div>
+              {/* End Vow Button - Minimal Sakura */}
+              <motion.button
+                onClick={() => setShowEndConfirmation(true)}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                style={{
+                  position: 'relative',
+                  padding: '16px 32px',
+                  borderRadius: '20px',
+                  border: '2px solid rgba(255, 105, 180, 0.6)',
+                  background: 'linear-gradient(135deg, rgba(255, 182, 193, 0.9), rgba(255, 105, 180, 0.9))',
+                  color: 'white',
+                  fontWeight: '600',
+                  fontSize: '14px',
+                  letterSpacing: '1px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  backdropFilter: 'blur(10px)',
+                  overflow: 'hidden',
+                  minWidth: '200px',
+                  justifyContent: 'center',
+                  boxShadow: '0 8px 25px rgba(255, 105, 180, 0.4)'
+                }}
+              >
+                {/* Falling sakura animation */}
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  overflow: 'hidden',
+                  pointerEvents: 'none'
+                }}>
+                  {[...Array(5)].map((_, i) => (
+                    <motion.div
+                      key={`minimal-petal-${i}`}
+                      initial={{ y: -10, x: i * 25, opacity: 0 }}
+                      animate={{ y: 50, opacity: [0, 1, 0] }}
+                      transition={{ duration: 3, delay: i * 0.6, repeat: Infinity }}
+                      style={{
+                        position: 'absolute',
+                        width: '6px',
+                        height: '6px',
+                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4))',
+                        borderRadius: '50% 0 50% 50%',
+                        filter: 'blur(0.5px)',
+                        transform: `rotate(${i * 72}deg)`
+                      }}
+                    />
+                  ))}
+                </div>
 
-  <span style={{ fontSize: '20px' }}>✿</span>
-  <span>End Sacred Vow</span>
-</motion.button>
+                <span style={{ fontSize: '20px' }}>✿</span>
+                <span>End Sacred Vow</span>
+              </motion.button>
 
 
             </motion.div>
@@ -5000,6 +6551,7 @@ const TimerStage = ({
           )}
         </>
       )}
+
       {/* GALGAME END CONFIRMATION DIALOG - CENTERED OVERLAY */}
       <AnimatePresence>
         {showEndConfirmation && (
@@ -5012,27 +6564,16 @@ const TimerStage = ({
             }}
             onCancel={() => {
               setShowEndConfirmation(false);
-              // Play relieved sound
-              const reliefSound = new Audio('/audio/relief.mp3');
-              reliefSound.volume = 0.3;
-              reliefSound.play().catch(console.error);
+            
             }}
             onContinueVow={() => {
               setShowEndConfirmation(false);
-              // Play happy sound
-              const happySound = new Audio('/audio/happy.mp3');
-              happySound.volume = 0.3;
-              happySound.play().catch(console.error);
-              // Show encouragement dialogue
               showCharacterDialogue("middle");
             }}
           />
         )}
       </AnimatePresence>
     </motion.div>
-
-
-
   );
 };
 
