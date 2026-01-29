@@ -2828,6 +2828,92 @@ const CharacterCutIn = ({ character, onComplete }: {
     </motion.div>
   );
 };
+// Simpler version that just tracks word length
+const useWordLengthTypingSound = () => {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  
+  useEffect(() => {
+    audioRef.current = new Audio('/audio/typewriter.mp3');
+    audioRef.current.volume = 0.15;
+    audioRef.current.preload = 'auto';
+    
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+  
+  const playTypingSound = (character: string, wordLength: number, characterIndexInWord: number) => {
+    if (!audioRef.current) return;
+    
+    // Map word length to 30-second audio
+    // Divide the 30-second file into segments based on word length
+    const totalDuration = 30; // seconds
+    
+    // Calculate base start time (0-25 seconds)
+    let startTime = 0;
+    
+    if (wordLength === 1) {
+      startTime = 0; // First second
+    } else if (wordLength <= 3) {
+      startTime = 2 + (characterIndexInWord % 3); // Seconds 2-5
+    } else if (wordLength <= 6) {
+      startTime = 6 + (characterIndexInWord % 4); // Seconds 6-10
+    } else if (wordLength <= 9) {
+      startTime = 11 + (characterIndexInWord % 6); // Seconds 11-17
+    } else if (wordLength <= 12) {
+      startTime = 18 + (characterIndexInWord % 5); // Seconds 18-23
+    } else {
+      startTime = 24 + (characterIndexInWord % 6); // Seconds 24-30
+    }
+    
+    // Adjust for character type
+    let playbackRate = 1.0;
+    let volume = 0.15;
+    let duration = 0.2; // seconds to play
+    
+    if (character === ' ') {
+      startTime = 0.5;
+      playbackRate = 2.0;
+      volume = 0.1;
+      duration = 0.1;
+    } else if (/[.,!?;:]/.test(character)) {
+      startTime = 29; // Near the end for punctuation
+      playbackRate = 1.5;
+      volume = 0.12;
+      duration = 0.15;
+    } else if (/[A-Z]/.test(character)) {
+      // Capital letters - emphasize
+      playbackRate = 1.3;
+      volume = 0.18;
+      startTime += 0.5; // Slight offset
+    }
+    
+    try {
+      // Clone to allow overlapping
+      const soundClone = audioRef.current.cloneNode() as HTMLAudioElement;
+      soundClone.currentTime = startTime;
+      soundClone.playbackRate = playbackRate;
+      soundClone.volume = volume;
+      
+      soundClone.play();
+      
+      // Stop after duration
+      setTimeout(() => {
+        if (!soundClone.paused) {
+          soundClone.pause();
+        }
+      }, duration * 1000);
+      
+    } catch (error) {
+      // Silent fail for autoplay issues
+    }
+  };
+  
+  return { playTypingSound };
+};
 
 const NameEntryStage = ({
   onNameSubmitted
