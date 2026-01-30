@@ -6,6 +6,7 @@ import BreakCeremony from '../components/BreakCeremony';
 import GalgameEndConfirmation from '../components/GalgameEndConfirmation';
 import SpiritMeter from '../components/SpiritMeter';
 import ImmersiveTimer from '../components/ImmersiveTimer';
+import FloatingTimerNotification from '../components/FloatingTimerNotification';
 import { Coffee as Tea } from 'lucide-react';
 
 interface TimerStageProps {
@@ -40,6 +41,12 @@ const TimerStage = ({
   const [showDialogueBubble, setShowDialogueBubble] = useState(true);
   const [dialogueText, setDialogueText] = useState("");
   const [showCompletionPage, setShowCompletionPage] = useState(false);
+  
+  // Page Visibility API states
+  const [isTabVisible, setIsTabVisible] = useState(true);
+  const [showFloatingTimer, setShowFloatingTimer] = useState(false);
+  const [hasFocus, setHasFocus] = useState(true);
+  
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const selected = useMemo(
@@ -49,6 +56,81 @@ const TimerStage = ({
 
   const progress = ((selectedTime * 60 - timeLeft) / (selectedTime * 60)) * 100;
 
+  // ===================== PAGE VISIBILITY API =====================
+  useEffect(() => {
+    // Handle visibility change (tab switching)
+    const handleVisibilityChange = () => {
+      const isVisible = !document.hidden;
+      setIsTabVisible(isVisible);
+      
+      // When tab becomes inactive and timer is running
+      if (!isVisible && isActive && !isCompleted && !showCompletionPage && !isBreakMode) {
+        // Show floating timer after a short delay
+        setTimeout(() => {
+          setShowFloatingTimer(true);
+        }, 1000);
+        
+        // Optional: Play a subtle notification sound
+        try {
+          const audio = new Audio('/audio/notification-bell.mp3');
+          audio.volume = 0.3;
+          audio.play().catch(() => {}); // Silent fail if audio doesn't play
+        } catch (e) {
+          console.log('Audio notification failed:', e);
+        }
+        
+        // Optional: Send browser notification
+        if ('Notification' in window && Notification.permission === 'granted') {
+          new Notification('Focus Timer Running', {
+            body: `Your ${selectedTime} minute focus session is still active`,
+            icon: '/favicon.ico',
+            silent: true
+          });
+        }
+      } else if (isVisible) {
+        // Tab became active - hide floating timer
+        setShowFloatingTimer(false);
+      }
+    };
+
+    // Handle window focus (alt-tab, cmd+tab)
+    const handleWindowFocus = () => {
+      setHasFocus(true);
+      setShowFloatingTimer(false);
+    };
+
+    const handleWindowBlur = () => {
+      setHasFocus(false);
+      // Check if user switched to another window (not just another tab)
+      setTimeout(() => {
+        if (!document.hidden && !hasFocus && isActive && !isCompleted && !showCompletionPage && !isBreakMode) {
+          setShowFloatingTimer(true);
+        }
+      }, 500);
+    };
+
+    // Request notification permission if needed
+    if ('Notification' in window && Notification.permission === 'default') {
+      Notification.requestPermission().catch(() => {});
+    }
+
+    // Add event listeners
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('focus', handleWindowFocus);
+    window.addEventListener('blur', handleWindowBlur);
+
+    // Initial check
+    handleVisibilityChange();
+
+    // Cleanup
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('focus', handleWindowFocus);
+      window.removeEventListener('blur', handleWindowBlur);
+    };
+  }, [isActive, isCompleted, showCompletionPage, isBreakMode, selectedTime, hasFocus]);
+
+  // ===================== TIMER LOGIC =====================
   // Show "Let's start" dialogue at beginning
   useEffect(() => {
     if (selected && showDialogueBubble && !showCompletionPage) {
@@ -65,7 +147,7 @@ const TimerStage = ({
     }
   }, [selected, showDialogueBubble, showCompletionPage]);
 
-  // Timer logic
+  // Main timer logic
   useEffect(() => {
     let interval: number | null = null;
 
@@ -106,6 +188,7 @@ const TimerStage = ({
     } else if (isBreakMode && breakTimeLeft === 0) {
       setIsBreakMode(false);
       setBreakTimeLeft(5 * 60);
+      setIsActive(true);
     }
 
     return () => {
@@ -118,6 +201,26 @@ const TimerStage = ({
     setShowCompletionPage(true);
     showCharacterDialogue("end");
     setShowAffinity(true);
+    
+    // Hide floating timer when timer completes
+    setShowFloatingTimer(false);
+    
+    // Play completion sound
+    try {
+      const audio = new Audio('/audio/timer-complete.mp3');
+      audio.volume = 0.5;
+      audio.play().catch(() => {});
+    } catch (e) {
+      console.log('Completion sound failed:', e);
+    }
+    
+    // Show completion notification
+    if ('Notification' in window && Notification.permission === 'granted') {
+      new Notification('Focus Session Complete!', {
+        body: 'Your vow has been fulfilled. Great work!',
+        icon: '/favicon.ico'
+      });
+    }
   };
 
   // Show character dialogue function
@@ -242,6 +345,8 @@ const TimerStage = ({
     if (showCompletionPage) return;
     setIsBreakMode(true);
     setIsActive(false);
+    // Hide floating timer during break
+    setShowFloatingTimer(false);
   };
 
   const handleConfirmEndVow = () => {
@@ -249,8 +354,10 @@ const TimerStage = ({
     // Stop all timers and clean up
     setIsActive(false);
     setIsCompleted(true);
+    // Hide floating timer
+    setShowFloatingTimer(false);
     // Call parent function to go back to selection
-    onEndVow(); // This will call handleEndVow in App.tsx which sets stage to 'selection'
+    onEndVow();
   };
 
   // Handle staying in the vow
@@ -268,6 +375,18 @@ const TimerStage = ({
     setIsActive(true);
   };
 
+  // Handle restore from floating timer
+  const handleRestoreFromFloating = () => {
+    setShowFloatingTimer(false);
+    // Bring tab to front
+    window.focus();
+  };
+
+  // Handle minimize floating timer
+  const handleMinimizeFloatingTimer = () => {
+    setShowFloatingTimer(false);
+  };
+
   return (
     <motion.div
       key="timer"
@@ -276,6 +395,19 @@ const TimerStage = ({
       transition={{ duration: 1 }}
       className="timer-stage"
     >
+      {/* ===================== FLOATING TIMER NOTIFICATION ===================== */}
+      {showFloatingTimer && !isBreakMode && !showCompletionPage && (
+        <FloatingTimerNotification
+          selectedCharacter={selectedCharacter}
+          selectedTime={selectedTime}
+          playerName={playerName}
+          remainingTime={timeLeft}
+          isTimerRunning={isActive && !isCompleted}
+          onRestore={handleRestoreFromFloating}
+          onMinimize={handleMinimizeFloatingTimer}
+        />
+      )}
+
       {/* BREAK CEREMONY OVERLAY */}
       <AnimatePresence>
         {isBreakMode && !showCompletionPage && (
@@ -285,7 +417,6 @@ const TimerStage = ({
               setIsBreakMode(false);
               setIsActive(true);
               setBreakTimeLeft(5 * 60);
-              
             }}
             selectedCharacter={selectedCharacter}
           />
@@ -540,9 +671,8 @@ const TimerStage = ({
               </motion.button>
 
               {/* End Vow Button */}
-              {/* End Vow Button - Now triggers local confirmation dialog */}
               <motion.button
-                onClick={() => setShowEndConfirmation(true)} // Show local confirmation
+                onClick={() => setShowEndConfirmation(true)}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 style={{
@@ -566,13 +696,11 @@ const TimerStage = ({
                   boxShadow: '0 8px 25px rgba(255, 105, 180, 0.4)'
                 }}
               >
-                {/* ... button styling ... */}
                 <span style={{ fontSize: '20px' }}>✿</span>
                 <span>End Sacred Vow</span>
               </motion.button>
             </motion.div>
           )}
-
 
           {/* Right side - Zen mode indicator */}
           {isZenMode && (
@@ -603,9 +731,9 @@ const TimerStage = ({
           <GalgameEndConfirmation
             selectedCharacter={selectedCharacter}
             playerName={playerName}
-            onConfirmEnd={handleConfirmEndVow} // Calls local handler
-            onCancel={handleCancelEnd} // Calls local handler
-            onContinueVow={handleContinueVow} // Calls local handler
+            onConfirmEnd={handleConfirmEndVow}
+            onCancel={handleCancelEnd}
+            onContinueVow={handleContinueVow}
           />
         )}
       </AnimatePresence>

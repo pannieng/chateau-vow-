@@ -114,6 +114,9 @@ const LandingStage = ({ isOpening, onBegin }: LandingStageProps) => {
   const [viewportWidth, setViewportWidth] = useState(
     typeof window !== 'undefined' ? window.innerWidth : 1200
   );
+  const [viewportHeight, setViewportHeight] = useState(
+    typeof window !== 'undefined' ? window.innerHeight : 800
+  );
   const [showRegistry, setShowRegistry] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   
@@ -123,31 +126,47 @@ const LandingStage = ({ isOpening, onBegin }: LandingStageProps) => {
   const [audioVolume, setAudioVolume] = useState(0.3);
   const [hasUserStartedAudio, setHasUserStartedAudio] = useState(false);
 
-  // Determine device type based on viewport
+  // Determine device type with iPad detection
   const deviceType = useMemo(() => {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    const width = viewportWidth;
+    const height = viewportHeight;
     const aspectRatio = width / height;
-    const userAgent = navigator.userAgent.toLowerCase();
     
-    // Check for iPad first
-    const isIPad = /ipad|macintosh/.test(userAgent) && 'ontouchend' in document;
+    // Enhanced iPad detection
+    const detectIPad = () => {
+      if (typeof navigator === 'undefined') return false;
+      
+      const userAgent = navigator.userAgent.toLowerCase();
+      const isIOS = /iphone|ipod|ipad/.test(userAgent);
+      const isMacLike = /macintosh/.test(userAgent);
+      const hasTouch = 'ontouchend' in document;
+      
+      // Standard iPad detection
+      if (isIOS && /ipad/.test(userAgent)) return true;
+      
+      // Detect iPads on macOS Safari
+      if (isMacLike && hasTouch) return true;
+      
+      // Check screen characteristics (iPad has 4:3 aspect ratio)
+      const is4by3 = Math.abs(aspectRatio - 4/3) < 0.2;
+      const isIPadPro = Math.abs(aspectRatio - 4/3) < 0.15 && width >= 1024;
+      
+      // iPad typically has minimum width of 768px in portrait
+      return (is4by3 || isIPadPro) && width >= 768;
+    };
     
-    if (isIPad || (width <= 768 && aspectRatio < 1)) {
-      return 'mobile'; // Treat iPad in portrait as mobile-like
+    const isIPad = detectIPad();
+    
+    if (isIPad) {
+      // iPads always use desktop layout
+      return 'desktop';
     }
     
-    // Standard detection with iPad adjustments
+    // Standard responsive detection for other devices
     if (width <= 768) return 'mobile';
-    if (width <= 1024) {
-      // Check if it's a 4:3-ish device (iPad)
-      if (Math.abs(aspectRatio - 4/3) < 0.2) {
-        return 'tablet-ipad'; // Special category for iPad
-      }
-      return 'tablet';
-    }
+    if (width <= 1024) return 'tablet';
     return 'desktop';
-  }, [viewportWidth]);
+  }, [viewportWidth, viewportHeight]);
 
   const isMobile = deviceType === 'mobile';
   const isTablet = deviceType === 'tablet';
@@ -205,8 +224,9 @@ const LandingStage = ({ isOpening, onBegin }: LandingStageProps) => {
       clearTimeout(timeoutId);
       timeoutId = window.setTimeout(() => {
         setViewportWidth(window.innerWidth);
+        setViewportHeight(window.innerHeight);
         
-        // Auto-close mobile registry when switching to tablet/desktop
+        // Auto-close mobile registry when switching to desktop (including iPad)
         if (window.innerWidth > BREAKPOINTS.MOBILE && showRegistry) {
           setShowRegistry(false);
         }
@@ -251,7 +271,7 @@ const LandingStage = ({ isOpening, onBegin }: LandingStageProps) => {
     }
   }, [toggleRegistry]);
 
-  // Render desktop layout
+  // Render desktop layout (used for desktop AND iPads)
   const renderDesktopLayout = () => (
     <>
       {/* Background Audio */}
@@ -387,7 +407,7 @@ const LandingStage = ({ isOpening, onBegin }: LandingStageProps) => {
     </>
   );
 
-  // Render mobile/tablet layout with galgame style
+  // Render mobile/tablet layout (NOT used for iPads)
   const renderMobileTabletLayout = () => {
     const isTabletLayout = isTablet;
     
@@ -613,18 +633,20 @@ const LandingStage = ({ isOpening, onBegin }: LandingStageProps) => {
     );
   };
 
-  // Main render logic
+  // Main render logic - iPads use desktop layout
   const renderContent = () => {
+    // Desktop includes both regular desktop AND iPads
     if (isDesktop) {
       return renderDesktopLayout();
     }
+    // Mobile and tablet (non-iPad) use mobile/tablet layout
     return renderMobileTabletLayout();
   };
 
   return (
     <motion.div
       key="landing"
-      className={`landing-stage ${isMobile ? 'galgame-mobile-view' : isTablet ? 'galgame-tablet-view' : 'desktop-view'}`}
+      className={`landing-stage ${isMobile ? 'galgame-mobile-view' : isTablet ? 'galgame-tablet-view' : 'galgame-desktop-view'}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
