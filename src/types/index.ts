@@ -14,12 +14,45 @@ export interface Companion {
   videoSmilingUrl: string;
   vibeHearts: 1 | 2 | 3;
   imageUrl: string;
+  sadimageUrl: string;
   affinity: number;
-  // New dialogue stages for timer
   startDialogue: string[];
   middleDialogue: string[];
   endDialogue: string[];
   distractionDialogue: string[];
+}
+
+export interface BreakCeremonyTheme {
+  id: number;
+  name: string;
+  backgroundColor: string;
+  backgroundGradient: string[];
+  primaryColor: string;
+  secondaryColor: string;
+  accentColor: string;
+  fontFamily: string;
+  decorativeElements: DecorativeElement[];
+  characterDialogue: string;
+  progressBarStyle: ProgressBarStyle;
+  interactiveElements: InteractiveElement[];
+}
+
+export interface DecorativeElement {
+  type: 'floating' | 'static' | 'animated';
+  content: React.ReactNode;
+  position: { x: number; y: number };
+}
+
+export interface ProgressBarStyle {
+  background: string;
+  fillGradient: string[];
+  markerColor: string;
+}
+
+export interface InteractiveElement {
+  type: 'button' | 'toggle' | 'slider';
+  label: string;
+  action: () => void;
 }
 
 export interface BackgroundVideoProps {
@@ -37,17 +70,20 @@ export interface TimerDialogue {
 export interface SpiritMeterProps {
   progress: number;
   isCompleted: boolean;
+  isMobile?: boolean;
 }
 
 export interface TimerDialogueProps {
   dialogue: TimerDialogue;
   onHoverCharacter: () => void;
+  isMobile?: boolean;
 }
 
 export interface ImmersiveTimerProps {
   timeLeft: number;
   isImmersive: boolean;
   onToggleImmersive: () => void;
+  isMobile?: boolean;
 }
 
 export interface CharacterCardProps {
