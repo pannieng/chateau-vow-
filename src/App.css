@@ -123,10 +123,10 @@ video {
   width: 300px;
   height: 300px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle,
-      rgba(255, 182, 193, 0.1) 0%,
-      rgba(255, 107, 147, 0.05) 40%,
-      transparent 70%);
+  background: radial-gradient(circle, 
+    rgba(255, 182, 193, 0.1) 0%, 
+    rgba(255, 107, 147, 0.05) 40%, 
+    transparent 70%);
   border-radius: 50%;
   animation: dustRotate 20s linear infinite;
   z-index: -1;
@@ -143,7 +143,7 @@ video {
   transform: translate(-50%, -50%);
   border: 1px solid rgba(255, 182, 193, 0.1);
   border-radius: 50%;
-  box-shadow:
+  box-shadow: 
     0 0 30px rgba(255, 182, 193, 0.1),
     inset 0 0 30px rgba(255, 182, 193, 0.05);
   animation: constellationRotate 40s linear infinite reverse;
@@ -151,9 +151,7 @@ video {
 }
 
 @keyframes cosmicFloat {
-
-  0%,
-  100% {
+  0%, 100% { 
     transform: translateY(0) scale(1);
     text-shadow:
       0 1px 0 rgba(255, 255, 255, 0.9),
@@ -162,8 +160,7 @@ video {
       0 4px 8px rgba(255, 182, 193, 0.4),
       0 8px 30px rgba(255, 107, 147, 0.3);
   }
-
-  50% {
+  50% { 
     transform: translateY(-10px) scale(1.02);
     text-shadow:
       0 1px 0 rgba(255, 255, 255, 0.9),
@@ -175,33 +172,18 @@ video {
 }
 
 @keyframes orbit {
-  0% {
-    transform: rotate(0deg) translateX(40px) rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg) translateX(40px) rotate(-360deg);
-  }
+  0% { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
 }
 
 @keyframes dustRotate {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 @keyframes constellationRotate {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .landing-subtitle {
@@ -4115,1220 +4097,978 @@ video {
       animation-duration: 2s;
     }
   }
+ /* =========================== */
+/* GALGAME STYLE LANDING PAGE */
+/* =========================== */
 
-  /* =========================== */
-  /* GALGAME STYLE LANDING PAGE */
-  /* =========================== */
+/* Enhanced galgame-style background */
+.landing-stage {
+  background: linear-gradient(135deg, 
+    #fff0f5 0%, 
+    #ffe6eb 50%, 
+    #ffeef1 100%) !important;
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+}
 
-  /* Enhanced galgame-style background */
-  .landing-stage {
-    background: linear-gradient(135deg,
-        #fff0f5 0%,
-        #ffe6eb 50%,
-        #ffeef1 100%) !important;
-    position: fixed !important;
-    inset: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    overflow: hidden !important;
-  }
+/* Galgame style background patterns */
+.landing-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 107, 147, 0.05) 0%, transparent 50%);
+  z-index: 1;
+  pointer-events: none;
+}
 
-  /* Galgame style background patterns */
-  .landing-stage::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(255, 107, 147, 0.05) 0%, transparent 50%);
-    z-index: 1;
-    pointer-events: none;
-  }
+/* Galgame-style title */
+.galgame-title {
+  font-family: 'Georgia', 'Times New Roman', serif !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.1em !important;
+  color: #ff6b93 !important;
+  text-shadow: 
+    0 2px 4px rgba(255, 182, 193, 0.3),
+    0 4px 8px rgba(255, 182, 193, 0.2),
+    0 6px 12px rgba(255, 182, 193, 0.1) !important;
+  position: relative !important;
+  display: inline-block !important;
+}
 
-  /* Galgame-style title */
-  .galgame-title {
-    font-family: 'Georgia', 'Times New Roman', serif !important;
-    font-weight: 300 !important;
-    letter-spacing: 0.1em !important;
-    color: #ff6b93 !important;
-    text-shadow:
-      0 2px 4px rgba(255, 182, 193, 0.3),
-      0 4px 8px rgba(255, 182, 193, 0.2),
-      0 6px 12px rgba(255, 182, 193, 0.1) !important;
-    position: relative !important;
-    display: inline-block !important;
-  }
+.galgame-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    #ff6b93 50%, 
+    transparent 100%);
+  border-radius: 2px;
+}
 
-  .galgame-title::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 2px;
-    background: linear-gradient(90deg,
-        transparent 0%,
-        #ff6b93 50%,
-        transparent 100%);
-    border-radius: 2px;
-  }
+/* Galgame subtitle */
+.galgame-subtitle {
+  font-family: 'Comic Sans MS', 'Trebuchet MS', ui-rounded, sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  color: #4a2c3a !important;
+  text-shadow: 
+    0 1px 2px rgba(255, 255, 255, 0.8),
+    0 2px 4px rgba(255, 240, 245, 0.6) !important;
+  position: relative !important;
+  margin-top: 12px !important;
+}
 
-  /* Galgame subtitle */
-  .galgame-subtitle {
-    font-family: 'Comic Sans MS', 'Trebuchet MS', ui-rounded, sans-serif !important;
-    font-weight: 500 !important;
-    letter-spacing: 0.08em !important;
-    color: #4a2c3a !important;
-    text-shadow:
-      0 1px 2px rgba(255, 255, 255, 0.8),
-      0 2px 4px rgba(255, 240, 245, 0.6) !important;
-    position: relative !important;
-    margin-top: 12px !important;
-  }
+/* =========================== */
+/* MOBILE GALGAME STYLES */
+/* =========================== */
 
-  /* =========================== */
-  /* MOBILE GALGAME STYLES */
-  /* =========================== */
+/* Mobile container */
+.galgame-mobile-container {
+  position: relative !important;
+  width: 100% !important;
+  height: 100vh !important;
+  height: -webkit-fill-available !important;
+  padding: 20px 15px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
 
-  /* Mobile container */
-  .galgame-mobile-container {
-    position: relative !important;
-    width: 100% !important;
-    height: 100vh !important;
-    height: -webkit-fill-available !important;
-    padding: 20px 15px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
+/* Mobile title section */
+.galgame-mobile-title-section {
+  text-align: center !important;
+  margin-bottom: 25px !important;
+  padding: 15px 0 !important;
+  width: 100% !important;
+}
 
-  /* Mobile title section */
-  .galgame-mobile-title-section {
-    text-align: center !important;
-    margin-bottom: 25px !important;
-    padding: 15px 0 !important;
-    width: 100% !important;
-  }
+.galgame-mobile-title {
+  font-size: 34px !important;
+  line-height: 1.1 !important;
+  margin-bottom: 8px !important;
+}
 
-  .galgame-mobile-title {
-    font-size: 34px !important;
-    line-height: 1.1 !important;
-    margin-bottom: 8px !important;
-  }
+.galgame-mobile-subtitle {
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  margin-top: 10px !important;
+}
 
-  .galgame-mobile-subtitle {
-    font-size: 14px !important;
-    line-height: 1.4 !important;
-    margin-top: 10px !important;
-  }
+/* Mobile main card */
+.galgame-mobile-card {
+  width: 92% !important;
+  max-width: 380px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 2px solid rgba(255, 182, 193, 0.5) !important;
+  border-radius: 24px !important;
+  padding: 25px 20px !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 
+    0 8px 32px rgba(255, 182, 193, 0.25),
+    0 4px 16px rgba(255, 182, 193, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.5) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  z-index: 10 !important;
+}
 
-  /* Mobile main card */
-  .galgame-mobile-card {
-    width: 92% !important;
-    max-width: 380px !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-    border: 2px solid rgba(255, 182, 193, 0.5) !important;
-    border-radius: 24px !important;
-    padding: 25px 20px !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    box-shadow:
-      0 8px 32px rgba(255, 182, 193, 0.25),
-      0 4px 16px rgba(255, 182, 193, 0.15),
-      inset 0 0 20px rgba(255, 255, 255, 0.5) !important;
-    position: relative !important;
-    overflow: hidden !important;
-    z-index: 10 !important;
-  }
+.galgame-mobile-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 240, 245, 0.6) 100%);
+  z-index: -1;
+  border-radius: 22px;
+}
 
-  .galgame-mobile-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg,
-        rgba(255, 255, 255, 0.8) 0%,
-        rgba(255, 240, 245, 0.6) 100%);
-    z-index: -1;
-    border-radius: 22px;
-  }
+.galgame-mobile-proclamation {
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: #4a2c3a !important;
+  text-align: center !important;
+  margin-bottom: 25px !important;
+  padding: 0 5px !important;
+  font-family: 'Georgia', serif !important;
+  font-style: italic !important;
+}
 
-  .galgame-mobile-proclamation {
-    font-size: 15px !important;
-    line-height: 1.6 !important;
-    color: #4a2c3a !important;
-    text-align: center !important;
-    margin-bottom: 25px !important;
-    padding: 0 5px !important;
-    font-family: 'Georgia', serif !important;
-    font-style: italic !important;
-  }
+/* Mobile wax seal */
+.galgame-mobile-wax-seal-container {
+  margin: 25px 0 !important;
+  position: relative !important;
+  z-index: 20 !important;
+}
 
-  /* Mobile wax seal */
-  .galgame-mobile-wax-seal-container {
-    margin: 25px 0 !important;
-    position: relative !important;
-    z-index: 20 !important;
-  }
+/* Mobile hint text */
+.galgame-mobile-hint {
+  font-size: 12px !important;
+  letter-spacing: 0.3em !important;
+  color: #ff6b93 !important;
+  text-transform: uppercase !important;
+  margin-top: 20px !important;
+  text-align: center !important;
+  font-weight: 600 !important;
+  text-shadow: 0 0 10px rgba(255, 107, 147, 0.3) !important;
+  animation: galgamePulse 2s ease-in-out infinite !important;
+}
 
-  /* Mobile hint text */
-  .galgame-mobile-hint {
-    font-size: 12px !important;
-    letter-spacing: 0.3em !important;
-    color: #ff6b93 !important;
-    text-transform: uppercase !important;
-    margin-top: 20px !important;
-    text-align: center !important;
-    font-weight: 600 !important;
-    text-shadow: 0 0 10px rgba(255, 107, 147, 0.3) !important;
-    animation: galgamePulse 2s ease-in-out infinite !important;
-  }
-
-  @keyframes galgamePulse {
-
-    0%,
-    100% {
-      opacity: 0.7;
-      transform: translateY(0);
-    }
-
-    50% {
-      opacity: 1;
-      transform: translateY(-1px);
-      text-shadow: 0 0 15px rgba(255, 107, 147, 0.5);
-    }
-  }
-
-  /* =========================== */
-  /* TABLET GALGAME STYLES */
-  /* =========================== */
-
-  /* Tablet container */
-  .galgame-tablet-container {
-    position: relative !important;
-    width: 100% !important;
-    height: 100vh !important;
-    padding: 30px 25px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  /* Tablet title section */
-  .galgame-tablet-title-section {
-    text-align: center !important;
-    margin-bottom: 35px !important;
-    padding: 20px 0 !important;
-    width: 100% !important;
-  }
-
-  .galgame-tablet-title {
-    font-size: 52px !important;
-    line-height: 1.1 !important;
-    margin-bottom: 12px !important;
-  }
-
-  .galgame-tablet-subtitle {
-    font-size: 18px !important;
-    line-height: 1.4 !important;
-    margin-top: 12px !important;
-  }
-
-  /* Tablet main card */
-  .galgame-tablet-card {
-    width: 80% !important;
-    max-width: 500px !important;
-    background: rgba(255, 255, 255, 0.96) !important;
-    border: 2px solid rgba(255, 182, 193, 0.6) !important;
-    border-radius: 28px !important;
-    padding: 35px 30px !important;
-    backdrop-filter: blur(15px) !important;
-    -webkit-backdrop-filter: blur(15px) !important;
-    box-shadow:
-      0 15px 45px rgba(255, 182, 193, 0.3),
-      0 8px 25px rgba(255, 107, 147, 0.2),
-      inset 0 0 25px rgba(255, 255, 255, 0.6) !important;
-    position: relative !important;
-    overflow: hidden !important;
-    z-index: 10 !important;
-  }
-
-  .galgame-tablet-proclamation {
-    font-size: 17px !important;
-    line-height: 1.6 !important;
-    color: #4a2c3a !important;
-    text-align: center !important;
-    margin-bottom: 30px !important;
-    padding: 0 10px !important;
-    font-family: 'Georgia', serif !important;
-    font-style: italic !important;
-  }
-
-  /* Tablet wax seal */
-  .galgame-tablet-wax-seal-container {
-    margin: 30px 0 !important;
-  }
-
-  /* Tablet hint text */
-  .galgame-tablet-hint {
-    font-size: 14px !important;
-    letter-spacing: 0.35em !important;
-    margin-top: 25px !important;
-  }
-
-  /* =========================== */
-  /* GALGAME REGISTRY POPUP */
-  /* =========================== */
-
-  /* Registry toggle button - Galgame style */
-  .galgame-mobile-registry-toggle-btn,
-  .galgame-tablet-registry-toggle-btn {
-    width: 100% !important;
-    padding: 16px 20px !important;
-    background: rgba(255, 255, 255, 0.9) !important;
-    border: 2px solid rgba(255, 182, 193, 0.6) !important;
-    border-radius: 16px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    font-family: 'Georgia', serif !important;
-    color: #4a2c3a !important;
-    font-size: 15px !important;
-    font-weight: 600 !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-    margin: 20px 0 !important;
-    position: relative !important;
-    overflow: hidden !important;
-    z-index: 5 !important;
-  }
-
-  .galgame-tablet-registry-toggle-btn {
-    padding: 18px 25px !important;
-    font-size: 16px !important;
-    border-radius: 18px !important;
-  }
-
-  .galgame-mobile-registry-toggle-btn::before,
-  .galgame-tablet-registry-toggle-btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg,
-        rgba(255, 182, 193, 0.1) 0%,
-        rgba(255, 107, 147, 0.05) 100%);
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .galgame-mobile-registry-toggle-btn:hover::before,
-  .galgame-tablet-registry-toggle-btn:hover::before {
-    opacity: 1;
-  }
-
-  .galgame-mobile-registry-toggle-btn:active,
-  .galgame-tablet-registry-toggle-btn:active {
-    transform: translateY(2px) !important;
-  }
-
-  .galgame-mobile-registry-toggle-btn:hover,
-  .galgame-tablet-registry-toggle-btn:hover {
-    background: rgba(255, 255, 255, 0.95) !important;
-    border-color: #ff6b93 !important;
-    box-shadow:
-      0 6px 20px rgba(255, 107, 147, 0.15),
-      0 3px 10px rgba(255, 182, 193, 0.1) !important;
-  }
-
-  .galgame-toggle-btn-icon {
-    font-size: 20px !important;
-    margin-right: 12px !important;
-    color: #ff6b93 !important;
-    flex-shrink: 0 !important;
-  }
-
-  .galgame-toggle-btn-text {
-    flex: 1 !important;
-    text-align: left !important;
-    font-weight: 600 !important;
-  }
-
-  .galgame-toggle-btn-arrow {
-    color: #ff6b93 !important;
-    transition: all 0.3s ease !important;
-    flex-shrink: 0 !important;
-  }
-
-  /* Registry popup overlay */
-  .galgame-registry-popup-overlay {
-    position: fixed !important;
-    inset: 0 !important;
-    background: rgba(255, 240, 245, 0.85) !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-    z-index: 1000 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 20px !important;
-    opacity: 0 !important;
-  }
-
-  /* Registry popup container */
-  .galgame-mobile-popup-container,
-  .galgame-tablet-popup-container {
-    width: 92% !important;
-    max-width: 420px !important;
-    max-height: 85vh !important;
-    background: rgba(255, 255, 255, 0.98) !important;
-    border: 2px solid rgba(255, 182, 193, 0.7) !important;
-    border-radius: 24px !important;
-    padding: 25px !important;
-    backdrop-filter: blur(15px) !important;
-    -webkit-backdrop-filter: blur(15px) !important;
-    box-shadow:
-      0 20px 60px rgba(255, 182, 193, 0.3),
-      0 10px 30px rgba(255, 107, 147, 0.2),
-      inset 0 0 30px rgba(255, 255, 255, 0.5) !important;
-    position: relative !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    z-index: 1001 !important;
-  }
-
-  .galgame-tablet-popup-container {
-    width: 80% !important;
-    max-width: 500px !important;
-    max-height: 80vh !important;
-    padding: 30px !important;
-  }
-
-  /* Close button - Galgame style */
-  .galgame-popup-close-btn {
-    position: absolute !important;
-    top: 16px !important;
-    right: 16px !important;
-    width: 40px !important;
-    height: 40px !important;
-    border-radius: 50% !important;
-    background: rgba(255, 255, 255, 0.9) !important;
-    border: 2px solid rgba(255, 182, 193, 0.5) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-    z-index: 10 !important;
-  }
-
-  .galgame-popup-close-btn:hover {
-    background: white !important;
-    border-color: #ff6b93 !important;
-    box-shadow:
-      0 4px 15px rgba(255, 107, 147, 0.25),
-      0 2px 8px rgba(255, 182, 193, 0.15) !important;
-  }
-
-  .galgame-close-icon {
-    color: #ff6b93 !important;
-    transition: transform 0.3s ease !important;
-  }
-
-  /* Registry popup title */
-  .galgame-popup-title {
-    color: #4a2c3a !important;
-    font-size: 14px !important;
-    letter-spacing: 0.35em !important;
-    text-transform: uppercase !important;
-    text-align: center !important;
-    font-weight: 700 !important;
-    margin-bottom: 20px !important;
-    padding-bottom: 12px !important;
-    border-bottom: 2px solid rgba(255, 182, 193, 0.4) !important;
-    position: relative !important;
-  }
-
-  .galgame-popup-title::after {
-    content: '♛';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #ff6b93;
-    font-size: 16px;
+@keyframes galgamePulse {
+  0%, 100% {
     opacity: 0.7;
-  }
-
-  .galgame-popup-title::before {
-    content: '♛';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #ff6b93;
-    font-size: 16px;
-    opacity: 0.7;
-  }
-
-  /* Registry items container */
-  .galgame-popup-registry-items {
-    margin: 15px 0;
-  }
-
-  /* Registry items in popup */
-  .galgame-popup-registry-item {
-    display: flex !important;
-    align-items: flex-start !important;
-    gap: 16px !important;
-    margin-bottom: 24px !important;
-    padding-bottom: 24px !important;
-    border-bottom: 1px solid rgba(255, 182, 193, 0.3) !important;
-    position: relative !important;
-  }
-
-  .galgame-popup-registry-item:last-child {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-    border-bottom: none !important;
-  }
-
-  .galgame-popup-registry-item::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    top: 50px;
-    width: 1px;
-    height: calc(100% - 50px);
-    background: linear-gradient(to bottom,
-        rgba(255, 182, 193, 0.3) 0%,
-        transparent 100%);
-    z-index: 1;
-  }
-
-  /* Registry icon */
-  .galgame-popup-registry-icon {
-    width: 48px !important;
-    height: 48px !important;
-    border-radius: 50% !important;
-    border: 2px solid rgba(255, 182, 193, 0.5) !important;
-    background: rgba(255, 255, 255, 0.9) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-shrink: 0 !important;
-    position: relative !important;
-    z-index: 2 !important;
-    transition: all 0.3s ease !important;
-  }
-
-  .galgame-popup-registry-item:hover .galgame-popup-registry-icon {
-    border-color: #ff6b93 !important;
-    background: white !important;
-    box-shadow:
-      0 6px 20px rgba(255, 107, 147, 0.25),
-      0 3px 10px rgba(255, 182, 193, 0.15) !important;
-  }
-
-  /* Registry content */
-  .galgame-popup-registry-content {
-    flex: 1 !important;
-    padding-top: 4px !important;
-  }
-
-  .galgame-popup-registry-kicker {
-    color: #ff6b93 !important;
-    font-size: 11px !important;
-    letter-spacing: 0.25em !important;
-    text-transform: uppercase !important;
-    margin-bottom: 6px !important;
-    font-weight: 700 !important;
-  }
-
-  .galgame-popup-registry-label {
-    color: #4a2c3a !important;
-    font-size: 16px !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.02em !important;
-    margin-bottom: 8px !important;
-    line-height: 1.3 !important;
-    font-family: 'Georgia', serif !important;
-  }
-
-  .galgame-popup-registry-desc {
-    color: #7a5a6a !important;
-    font-size: 13px !important;
-    line-height: 1.5 !important;
-    opacity: 0.9 !important;
-  }
-
-  /* Popup footer */
-  .galgame-popup-footer {
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255, 182, 193, 0.3);
-    text-align: center;
-  }
-
-  .galgame-popup-hint {
-    color: rgba(74, 44, 58, 0.7);
-    font-size: 12px;
-    font-style: italic;
-    letter-spacing: 0.5px;
-  }
-
-  /* =========================== */
-  /* GALGAME SPARKLES ANIMATION */
-  /* =========================== */
-
-  .galgame-sparkles-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 15px;
-    position: relative;
-  }
-
-  .galgame-sparkle {
-    animation: galgameSparkleTwinkle 2s ease-in-out infinite;
-    filter: drop-shadow(0 0 4px rgba(255, 182, 193, 0.5));
-  }
-
-  .galgame-sparkle:nth-child(1) {
-    animation-delay: 0s;
-    color: #ffb6c1;
-  }
-
-  .galgame-sparkle:nth-child(2) {
-    animation-delay: 0.4s;
-    color: #ff8fa3;
-  }
-
-  .galgame-sparkle:nth-child(3) {
-    animation-delay: 0.8s;
-    color: #ff6b93;
-  }
-
-  @keyframes galgameSparkleTwinkle {
-
-    0%,
-    100% {
-      opacity: 0.5;
-      transform: scale(1) rotate(0deg);
-    }
-
-    50% {
-      opacity: 1;
-      transform: scale(1.2) rotate(10deg);
-      filter: drop-shadow(0 0 8px rgba(255, 182, 193, 0.7));
-    }
-  }
-
-  /* =========================== */
-  /* GALGAME DECORATIVE ELEMENTS */
-  /* =========================== */
-
-  .galgame-decorative-border {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .galgame-border-corner {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 2px solid rgba(255, 182, 193, 0.4);
-  }
-
-  .galgame-border-corner--tl {
-    top: 10px;
-    left: 10px;
-    border-right: none;
-    border-bottom: none;
-    border-radius: 8px 0 0 0;
-  }
-
-  .galgame-border-corner--tr {
-    top: 10px;
-    right: 10px;
-    border-left: none;
-    border-bottom: none;
-    border-radius: 0 8px 0 0;
-  }
-
-  .galgame-border-corner--bl {
-    bottom: 10px;
-    left: 10px;
-    border-right: none;
-    border-top: none;
-    border-radius: 0 0 0 8px;
-  }
-
-  .galgame-border-corner--br {
-    bottom: 10px;
-    right: 10px;
-    border-left: none;
-    border-top: none;
-    border-radius: 0 0 8px 0;
-  }
-
-  /* =========================== */
-  /* RESPONSIVE ADJUSTMENTS */
-  /* =========================== */
-
-  @media (max-width: 768px) {
-
-    /* Mobile optimizations */
-    .galgame-mobile-container {
-      padding: 15px 10px !important;
-    }
-
-    .galgame-mobile-title {
-      font-size: 28px !important;
-    }
-
-    .galgame-mobile-subtitle {
-      font-size: 13px !important;
-    }
-
-    .galgame-mobile-card {
-      width: 95% !important;
-      padding: 22px 18px !important;
-    }
-
-    .galgame-mobile-proclamation {
-      font-size: 14px !important;
-    }
-
-    /* Mobile popup */
-    .galgame-mobile-popup-container {
-      width: 95% !important;
-      padding: 20px !important;
-    }
-
-    .galgame-popup-registry-item {
-      gap: 12px !important;
-      margin-bottom: 20px !important;
-      padding-bottom: 20px !important;
-    }
-
-    .galgame-popup-registry-icon {
-      width: 44px !important;
-      height: 44px !important;
-    }
-
-    .galgame-popup-registry-label {
-      font-size: 15px !important;
-    }
-
-    .galgame-popup-registry-desc {
-      font-size: 12px !important;
-    }
-
-    /* Hide decorative border on small screens */
-    .galgame-decorative-border {
-      display: none;
-    }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
-
-    /* Tablet optimizations */
-    .galgame-tablet-container {
-      padding: 25px 20px !important;
-    }
-
-    .galgame-tablet-title {
-      font-size: 48px !important;
-    }
-
-    .galgame-tablet-subtitle {
-      font-size: 16px !important;
-    }
-
-    .galgame-tablet-card {
-      width: 85% !important;
-      padding: 32px 28px !important;
-    }
-
-    .galgame-tablet-proclamation {
-      font-size: 16px !important;
-    }
-  }
-
-  @media (max-width: 360px) {
-
-    /* Small phone optimizations */
-    .galgame-mobile-title {
-      font-size: 26px !important;
-    }
-
-    .galgame-mobile-card {
-      padding: 20px 16px !important;
-    }
-
-    .galgame-popup-registry-item {
-      flex-direction: column !important;
-      align-items: center !important;
-      text-align: center !important;
-      gap: 15px !important;
-    }
-
-    .galgame-popup-registry-item::before {
-      display: none !important;
-    }
-
-    .galgame-popup-registry-content {
-      width: 100% !important;
-    }
-  }
-
-  @media (orientation: landscape) and (max-width: 768px) {
-
-    /* Landscape mobile optimizations */
-    .galgame-mobile-container {
-      flex-direction: row !important;
-      flex-wrap: wrap !important;
-      justify-content: space-between !important;
-      align-items: flex-start !important;
-      padding-top: 15px !important;
-    }
-
-    .galgame-mobile-title-section {
-      width: 100% !important;
-      margin-bottom: 15px !important;
-    }
-
-    .galgame-mobile-card {
-      width: 55% !important;
-      margin: 0 !important;
-    }
-
-    .galgame-mobile-registry-toggle-btn {
-      margin: 15px 0 !important;
-    }
-  }
-
-  /* Otome Game Audio Prompt */
-  .otome-audio-prompt {
-    position: fixed;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 90;
-    background: linear-gradient(135deg, rgba(255, 107, 147, 0.9), rgba(255, 182, 193, 0.9));
-    backdrop-filter: blur(20px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    padding: 20px 30px;
-    box-shadow:
-      0 10px 40px rgba(255, 107, 147, 0.4),
-      0 0 0 1px rgba(255, 255, 255, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    animation: otomePromptFloat 3s ease-in-out infinite;
-    cursor: pointer;
-  }
-
-  @keyframes otomePromptFloat {
-
-    0%,
-    100% {
-      transform: translateX(-50%) translateY(0);
-    }
-
-    50% {
-      transform: translateX(-50%) translateY(-10px);
-    }
-  }
-
-  .otome-audio-prompt-content {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .otome-audio-icon-container {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-  }
-
-  .otome-audio-icon {
-    color: white;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
-  }
-
-  .otome-click-icon {
-    position: absolute;
-    bottom: -5px;
-    right: -5px;
-    color: white;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-    animation: clickPulse 1.5s ease-in-out infinite;
-  }
-
-  @keyframes clickPulse {
-
-    0%,
-    100% {
-      transform: scale(1);
-    }
-
-    50% {
-      transform: scale(1.2);
-    }
-  }
-
-  .otome-audio-message {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .otome-audio-title {
-    font-family: 'Cinzel', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: white;
-    text-shadow:
-      0 2px 10px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(255, 107, 147, 0.5);
-    letter-spacing: 1px;
-  }
-
-  .otome-audio-hint {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.95);
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-    font-style: italic;
-  }
-
-  /* Inline audio hint */
-  .otome-audio-inline-hint {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 15px;
-    padding: 12px 20px;
-    background: linear-gradient(135deg, rgba(255, 107, 147, 0.2), rgba(255, 182, 193, 0.2));
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.95);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    animation: hintPulse 2s ease-in-out infinite;
-  }
-
-  @keyframes hintPulse {
-
-    0%,
-    100% {
-      opacity: 0.8;
-      transform: scale(1);
-    }
-
-    50% {
-      opacity: 1;
-      transform: scale(1.02);
-    }
-  }
-
-  .otome-inline-icon {
-    color: white;
-    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
-  }
-
-  /* Audio click animation */
-  .audio-click-animation::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(255, 107, 147, 0.2) 0%,
-        rgba(255, 107, 147, 0.1) 40%,
-        transparent 70%);
-    pointer-events: none;
-    z-index: 5;
-    animation: clickRipple 0.6s ease-out forwards;
-  }
-
-  @keyframes clickRipple {
-    0% {
-      opacity: 0;
-      transform: scale(0.5);
-    }
-
-    50% {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    100% {
-      opacity: 0;
-      transform: scale(1.5);
-    }
-  }
-
-  /* Update speaker button for otome style */
-  .galgame-audio-control-btn:not(.audio-playing) .galgame-audio-icon {
-    animation: musicNoteFloat 2s ease-in-out infinite;
-  }
-
-  @keyframes musicNoteFloat {
-
-    0%,
-    100% {
-      transform: translateY(0) rotate(0deg);
-    }
-
-    25% {
-      transform: translateY(-3px) rotate(-5deg);
-    }
-
-    75% {
-      transform: translateY(3px) rotate(5deg);
-    }
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .otome-audio-prompt {
-      bottom: 20px;
-      padding: 15px 20px;
-      width: 90%;
-      max-width: 400px;
-    }
-
-    .otome-audio-icon-container {
-      width: 50px;
-      height: 50px;
-    }
-
-    .otome-audio-title {
-      font-size: 1.2rem;
-    }
-
-    .otome-audio-hint {
-      font-size: 0.9rem;
-    }
-
-    .otome-audio-inline-hint {
-      font-size: 0.85rem;
-      padding: 10px 15px;
-    }
-  }
-
-  /* Hide prompt when audio is started */
-  .audio-click-animation .otome-audio-prompt {
-    opacity: 0;
-    transform: translateX(-50%) translateY(20px);
-    pointer-events: none;
-  }
-
-  /* Floating Timer Notification Styles */
-  .floating-timer-notification {
-    width: 280px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
-
-  .floating-timer-glow {
-    position: absolute;
-    inset: -2px;
-    background: linear-gradient(135deg,
-        rgba(255, 105, 180, 0.4),
-        rgba(147, 112, 219, 0.4),
-        rgba(255, 105, 180, 0.4));
-    border-radius: 16px;
-    filter: blur(8px);
-    z-index: -1;
-    animation: floatingGlow 3s ease-in-out infinite;
-  }
-
-  @keyframes floatingGlow {
-
-    0%,
-    100% {
-      opacity: 0.6;
-    }
-
-    50% {
-      opacity: 0.9;
-    }
-  }
-
-  .floating-timer-container {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 182, 193, 0.3);
-    border-radius: 14px;
-    box-shadow:
-      0 20px 60px rgba(255, 105, 180, 0.3),
-      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-    overflow: hidden;
-  }
-
-  .floating-timer-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 16px;
-    background: linear-gradient(135deg, #FF69B4, #9370DB);
-    color: white;
-    cursor: grab;
-    user-select: none;
-  }
-
-  .floating-timer-header:active {
-    cursor: grabbing;
-  }
-
-  .floating-timer-drag-handle {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  .floating-timer-title {
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  .floating-timer-paused {
-    font-size: 11px;
-    opacity: 0.9;
-    margin-left: 8px;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 2px 6px;
-    border-radius: 10px;
-  }
-
-  .floating-timer-controls {
-    display: flex;
-    gap: 6px;
-  }
-
-  .floating-timer-btn {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-  }
-
-  .floating-timer-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
-  }
-
-  .floating-timer-btn-restore:hover {
-    background: rgba(76, 175, 80, 0.3);
-  }
-
-  .floating-timer-btn-close:hover {
-    background: rgba(244, 67, 54, 0.3);
-  }
-
-  .floating-timer-display {
-    padding: 20px 16px;
-    text-align: center;
-    border-bottom: 1px solid rgba(255, 182, 193, 0.2);
-  }
-
-  .floating-timer-time {
-    font-size: 32px;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    color: #FF69B4;
-    margin-bottom: 10px;
-    text-shadow: 0 2px 4px rgba(255, 105, 180, 0.2);
-  }
-
-  .floating-timer-progress {
-    height: 6px;
-    background: rgba(255, 182, 193, 0.2);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .floating-timer-progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #FF69B4, #9370DB);
-    border-radius: 3px;
-    transition: width 1s linear;
-  }
-
-  .floating-timer-character {
-    padding: 16px;
-    border-bottom: 1px solid rgba(255, 182, 193, 0.2);
-  }
-
-  .floating-timer-character-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 4px;
-  }
-
-  .floating-timer-character-desc {
-    font-size: 12px;
-    color: #666;
-    opacity: 0.8;
-  }
-
-  .floating-timer-actions {
-    padding: 16px;
-  }
-
-  .floating-timer-action-btn {
-    width: 100%;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 10px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  .floating-timer-action-primary {
-    background: linear-gradient(135deg, #FF69B4, #9370DB);
-    color: white;
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
-  }
-
-  .floating-timer-action-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
-  }
-
-  .floating-timer-action-primary:active {
     transform: translateY(0);
   }
+  50% {
+    opacity: 1;
+    transform: translateY(-1px);
+    text-shadow: 0 0 15px rgba(255, 107, 147, 0.5);
+  }
+}
+
+/* =========================== */
+/* TABLET GALGAME STYLES */
+/* =========================== */
+
+/* Tablet container */
+.galgame-tablet-container {
+  position: relative !important;
+  width: 100% !important;
+  height: 100vh !important;
+  padding: 30px 25px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Tablet title section */
+.galgame-tablet-title-section {
+  text-align: center !important;
+  margin-bottom: 35px !important;
+  padding: 20px 0 !important;
+  width: 100% !important;
+}
+
+.galgame-tablet-title {
+  font-size: 52px !important;
+  line-height: 1.1 !important;
+  margin-bottom: 12px !important;
+}
+
+.galgame-tablet-subtitle {
+  font-size: 18px !important;
+  line-height: 1.4 !important;
+  margin-top: 12px !important;
+}
+
+/* Tablet main card */
+.galgame-tablet-card {
+  width: 80% !important;
+  max-width: 500px !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  border: 2px solid rgba(255, 182, 193, 0.6) !important;
+  border-radius: 28px !important;
+  padding: 35px 30px !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  box-shadow: 
+    0 15px 45px rgba(255, 182, 193, 0.3),
+    0 8px 25px rgba(255, 107, 147, 0.2),
+    inset 0 0 25px rgba(255, 255, 255, 0.6) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  z-index: 10 !important;
+}
+
+.galgame-tablet-proclamation {
+  font-size: 17px !important;
+  line-height: 1.6 !important;
+  color: #4a2c3a !important;
+  text-align: center !important;
+  margin-bottom: 30px !important;
+  padding: 0 10px !important;
+  font-family: 'Georgia', serif !important;
+  font-style: italic !important;
+}
+
+/* Tablet wax seal */
+.galgame-tablet-wax-seal-container {
+  margin: 30px 0 !important;
+}
+
+/* Tablet hint text */
+.galgame-tablet-hint {
+  font-size: 14px !important;
+  letter-spacing: 0.35em !important;
+  margin-top: 25px !important;
+}
+
+/* =========================== */
+/* GALGAME REGISTRY POPUP */
+/* =========================== */
+
+/* Registry toggle button - Galgame style */
+.galgame-mobile-registry-toggle-btn,
+.galgame-tablet-registry-toggle-btn {
+  width: 100% !important;
+  padding: 16px 20px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 2px solid rgba(255, 182, 193, 0.6) !important;
+  border-radius: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  font-family: 'Georgia', serif !important;
+  color: #4a2c3a !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  margin: 20px 0 !important;
+  position: relative !important;
+  overflow: hidden !important;
+  z-index: 5 !important;
+}
+
+.galgame-tablet-registry-toggle-btn {
+  padding: 18px 25px !important;
+  font-size: 16px !important;
+  border-radius: 18px !important;
+}
+
+.galgame-mobile-registry-toggle-btn::before,
+.galgame-tablet-registry-toggle-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 182, 193, 0.1) 0%,
+    rgba(255, 107, 147, 0.05) 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.galgame-mobile-registry-toggle-btn:hover::before,
+.galgame-tablet-registry-toggle-btn:hover::before {
+  opacity: 1;
+}
+
+.galgame-mobile-registry-toggle-btn:active,
+.galgame-tablet-registry-toggle-btn:active {
+  transform: translateY(2px) !important;
+}
+
+.galgame-mobile-registry-toggle-btn:hover,
+.galgame-tablet-registry-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: #ff6b93 !important;
+  box-shadow: 
+    0 6px 20px rgba(255, 107, 147, 0.15),
+    0 3px 10px rgba(255, 182, 193, 0.1) !important;
+}
+
+.galgame-toggle-btn-icon {
+  font-size: 20px !important;
+  margin-right: 12px !important;
+  color: #ff6b93 !important;
+  flex-shrink: 0 !important;
+}
+
+.galgame-toggle-btn-text {
+  flex: 1 !important;
+  text-align: left !important;
+  font-weight: 600 !important;
+}
+
+.galgame-toggle-btn-arrow {
+  color: #ff6b93 !important;
+  transition: all 0.3s ease !important;
+  flex-shrink: 0 !important;
+}
+
+/* Registry popup overlay */
+.galgame-registry-popup-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(255, 240, 245, 0.85) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  z-index: 1000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+  opacity: 0 !important;
+}
+
+/* Registry popup container */
+.galgame-mobile-popup-container,
+.galgame-tablet-popup-container {
+  width: 92% !important;
+  max-width: 420px !important;
+  max-height: 85vh !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  border: 2px solid rgba(255, 182, 193, 0.7) !important;
+  border-radius: 24px !important;
+  padding: 25px !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  box-shadow: 
+    0 20px 60px rgba(255, 182, 193, 0.3),
+    0 10px 30px rgba(255, 107, 147, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.5) !important;
+  position: relative !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  z-index: 1001 !important;
+}
+
+.galgame-tablet-popup-container {
+  width: 80% !important;
+  max-width: 500px !important;
+  max-height: 80vh !important;
+  padding: 30px !important;
+}
+
+/* Close button - Galgame style */
+.galgame-popup-close-btn {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 2px solid rgba(255, 182, 193, 0.5) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  z-index: 10 !important;
+}
+
+.galgame-popup-close-btn:hover {
+  background: white !important;
+  border-color: #ff6b93 !important;
+  box-shadow: 
+    0 4px 15px rgba(255, 107, 147, 0.25),
+    0 2px 8px rgba(255, 182, 193, 0.15) !important;
+}
+
+.galgame-close-icon {
+  color: #ff6b93 !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* Registry popup title */
+.galgame-popup-title {
+  color: #4a2c3a !important;
+  font-size: 14px !important;
+  letter-spacing: 0.35em !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  font-weight: 700 !important;
+  margin-bottom: 20px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 2px solid rgba(255, 182, 193, 0.4) !important;
+  position: relative !important;
+}
+
+.galgame-popup-title::after {
+  content: '♛';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff6b93;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.galgame-popup-title::before {
+  content: '♛';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff6b93;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+/* Registry items container */
+.galgame-popup-registry-items {
+  margin: 15px 0;
+}
+
+/* Registry items in popup */
+.galgame-popup-registry-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  margin-bottom: 24px !important;
+  padding-bottom: 24px !important;
+  border-bottom: 1px solid rgba(255, 182, 193, 0.3) !important;
+  position: relative !important;
+}
+
+.galgame-popup-registry-item:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+}
+
+.galgame-popup-registry-item::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 50px;
+  width: 1px;
+  height: calc(100% - 50px);
+  background: linear-gradient(to bottom, 
+    rgba(255, 182, 193, 0.3) 0%,
+    transparent 100%);
+  z-index: 1;
+}
+
+/* Registry icon */
+.galgame-popup-registry-icon {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  border: 2px solid rgba(255, 182, 193, 0.5) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+  transition: all 0.3s ease !important;
+}
+
+.galgame-popup-registry-item:hover .galgame-popup-registry-icon {
+  border-color: #ff6b93 !important;
+  background: white !important;
+  box-shadow: 
+    0 6px 20px rgba(255, 107, 147, 0.25),
+    0 3px 10px rgba(255, 182, 193, 0.15) !important;
+}
+
+/* Registry content */
+.galgame-popup-registry-content {
+  flex: 1 !important;
+  padding-top: 4px !important;
+}
+
+.galgame-popup-registry-kicker {
+  color: #ff6b93 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 6px !important;
+  font-weight: 700 !important;
+}
+
+.galgame-popup-registry-label {
+  color: #4a2c3a !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  margin-bottom: 8px !important;
+  line-height: 1.3 !important;
+  font-family: 'Georgia', serif !important;
+}
+
+.galgame-popup-registry-desc {
+  color: #7a5a6a !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  opacity: 0.9 !important;
+}
+
+/* Popup footer */
+.galgame-popup-footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 182, 193, 0.3);
+  text-align: center;
+}
+
+.galgame-popup-hint {
+  color: rgba(74, 44, 58, 0.7);
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+/* =========================== */
+/* GALGAME SPARKLES ANIMATION */
+/* =========================== */
+
+.galgame-sparkles-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  position: relative;
+}
+
+.galgame-sparkle {
+  animation: galgameSparkleTwinkle 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(255, 182, 193, 0.5));
+}
+
+.galgame-sparkle:nth-child(1) {
+  animation-delay: 0s;
+  color: #ffb6c1;
+}
+
+.galgame-sparkle:nth-child(2) {
+  animation-delay: 0.4s;
+  color: #ff8fa3;
+}
+
+.galgame-sparkle:nth-child(3) {
+  animation-delay: 0.8s;
+  color: #ff6b93;
+}
+
+@keyframes galgameSparkleTwinkle {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(10deg);
+    filter: drop-shadow(0 0 8px rgba(255, 182, 193, 0.7));
+  }
+}
+
+/* =========================== */
+/* GALGAME DECORATIVE ELEMENTS */
+/* =========================== */
+
+.galgame-decorative-border {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.galgame-border-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 182, 193, 0.4);
+}
+
+.galgame-border-corner--tl {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 8px 0 0 0;
+}
+
+.galgame-border-corner--tr {
+  top: 10px;
+  right: 10px;
+  border-left: none;
+  border-bottom: none;
+  border-radius: 0 8px 0 0;
+}
+
+.galgame-border-corner--bl {
+  bottom: 10px;
+  left: 10px;
+  border-right: none;
+  border-top: none;
+  border-radius: 0 0 0 8px;
+}
+
+.galgame-border-corner--br {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 8px 0;
+}
+
+/* =========================== */
+/* RESPONSIVE ADJUSTMENTS */
+/* =========================== */
+
+@media (max-width: 768px) {
+  /* Mobile optimizations */
+  .galgame-mobile-container {
+    padding: 15px 10px !important;
+  }
+  
+  .galgame-mobile-title {
+    font-size: 28px !important;
+  }
+  
+  .galgame-mobile-subtitle {
+    font-size: 13px !important;
+  }
+  
+  .galgame-mobile-card {
+    width: 95% !important;
+    padding: 22px 18px !important;
+  }
+  
+  .galgame-mobile-proclamation {
+    font-size: 14px !important;
+  }
+  
+  /* Mobile popup */
+  .galgame-mobile-popup-container {
+    width: 95% !important;
+    padding: 20px !important;
+  }
+  
+  .galgame-popup-registry-item {
+    gap: 12px !important;
+    margin-bottom: 20px !important;
+    padding-bottom: 20px !important;
+  }
+  
+  .galgame-popup-registry-icon {
+    width: 44px !important;
+    height: 44px !important;
+  }
+  
+  .galgame-popup-registry-label {
+    font-size: 15px !important;
+  }
+  
+  .galgame-popup-registry-desc {
+    font-size: 12px !important;
+  }
+  
+  /* Hide decorative border on small screens */
+  .galgame-decorative-border {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Tablet optimizations */
+  .galgame-tablet-container {
+    padding: 25px 20px !important;
+  }
+  
+  .galgame-tablet-title {
+    font-size: 48px !important;
+  }
+  
+  .galgame-tablet-subtitle {
+    font-size: 16px !important;
+  }
+  
+  .galgame-tablet-card {
+    width: 85% !important;
+    padding: 32px 28px !important;
+  }
+  
+  .galgame-tablet-proclamation {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Small phone optimizations */
+  .galgame-mobile-title {
+    font-size: 26px !important;
+  }
+  
+  .galgame-mobile-card {
+    padding: 20px 16px !important;
+  }
+  
+  .galgame-popup-registry-item {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 15px !important;
+  }
+  
+  .galgame-popup-registry-item::before {
+    display: none !important;
+  }
+  
+  .galgame-popup-registry-content {
+    width: 100% !important;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 768px) {
+  /* Landscape mobile optimizations */
+  .galgame-mobile-container {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    padding-top: 15px !important;
+  }
+  
+  .galgame-mobile-title-section {
+    width: 100% !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .galgame-mobile-card {
+    width: 55% !important;
+    margin: 0 !important;
+  }
+  
+  .galgame-mobile-registry-toggle-btn {
+    margin: 15px 0 !important;
+  }
+}
+/* Otome Game Audio Prompt */
+.otome-audio-prompt {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  background: linear-gradient(135deg, rgba(255, 107, 147, 0.9), rgba(255, 182, 193, 0.9));
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 20px 30px;
+  box-shadow: 
+    0 10px 40px rgba(255, 107, 147, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  animation: otomePromptFloat 3s ease-in-out infinite;
+  cursor: pointer;
+}
+
+@keyframes otomePromptFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+.otome-audio-prompt-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.otome-audio-icon-container {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.otome-audio-icon {
+  color: white;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.otome-click-icon {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  animation: clickPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes clickPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.otome-audio-message {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.otome-audio-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(255, 107, 147, 0.5);
+  letter-spacing: 1px;
+}
+
+.otome-audio-hint {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  font-style: italic;
+}
+
+/* Inline audio hint */
+.otome-audio-inline-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, rgba(255, 107, 147, 0.2), rgba(255, 182, 193, 0.2));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  animation: hintPulse 2s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+.otome-inline-icon {
+  color: white;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+}
+
+/* Audio click animation */
+.audio-click-animation::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+    rgba(255, 107, 147, 0.2) 0%,
+    rgba(255, 107, 147, 0.1) 40%,
+    transparent 70%);
+  pointer-events: none;
+  z-index: 5;
+  animation: clickRipple 0.6s ease-out forwards;
+}
+
+@keyframes clickRipple {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.5); }
+}
+
+/* Update speaker button for otome style */
+.galgame-audio-control-btn:not(.audio-playing) .galgame-audio-icon {
+  animation: musicNoteFloat 2s ease-in-out infinite;
+}
+
+@keyframes musicNoteFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-3px) rotate(-5deg); }
+  75% { transform: translateY(3px) rotate(5deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .otome-audio-prompt {
+    bottom: 20px;
+    padding: 15px 20px;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  .otome-audio-icon-container {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .otome-audio-title {
+    font-size: 1.2rem;
+  }
+  
+  .otome-audio-hint {
+    font-size: 0.9rem;
+  }
+  
+  .otome-audio-inline-hint {
+    font-size: 0.85rem;
+    padding: 10px 15px;
+  }
+}
+
+/* Hide prompt when audio is started */
+.audio-click-animation .otome-audio-prompt {
+  opacity: 0;
+  transform: translateX(-50%) translateY(20px);
+  pointer-events: none;
+}
+
+
 }
