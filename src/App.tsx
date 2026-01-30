@@ -91,7 +91,7 @@ function App() {
     if (currentAudioStage === 'selection') {
       return '/audio/landing.mp3'; // Replace with your selection stage audio path
     } else if (currentAudioStage === 'timer') {
-      return '/audio/timer.mp3'; // Replace with your timer stage audio path
+      return '/audio/landing1.mp3'; // Replace with your timer stage audio path
     }
     return '';
   };
